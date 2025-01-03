@@ -1,0 +1,116 @@
+﻿  main.cpp
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\texture.h(61,8): warning C4244: 'inizializzazione': conversione da 'float' a 'int'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\texture.h(62,8): warning C4244: 'inizializzazione': conversione da 'float' a 'int'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\texture.h(153,9): warning C4244: 'inizializzazione': conversione da 'float' a 'int'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\texture.h(154,9): warning C4244: 'inizializzazione': conversione da 'float' a 'int'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\texture.h(251,9): warning C4244: 'inizializzazione': conversione da 'float' a 'int'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\texture.h(252,9): warning C4244: 'inizializzazione': conversione da 'float' a 'int'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\sphere.h(155,17): warning C4244: 'inizializzazione': conversione da 'double' a 'float'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\sphere.h(166,22): warning C4244: 'inizializzazione': conversione da 'double' a 'float'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\sphere.h(221,24): warning C4244: '=': conversione da 'double' a 'float'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\sphere.h(252,17): warning C4244: 'inizializzazione': conversione da 'double' a 'float'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\sphere.h(344,70): warning C4244: 'argomento': conversione da 'double' a 'float'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\mesh.h(74,45): warning C4267: '=': conversione da 'size_t' a 'int'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\mesh.h(75,43): warning C4267: '=': conversione da 'size_t' a 'int'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\mesh.h(76,46): warning C4267: '=': conversione da 'size_t' a 'int'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\mesh.h(77,28): warning C4267: '=': conversione da 'size_t' a 'int'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\light.h(367,29): warning C4244: 'argomento': conversione da 'int' a 'float'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\light.h(378,23): warning C4244: 'argomento': conversione da 'int' a 'float'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\light.h(397,13): warning C4244: 'inizializzazione': conversione da 'double' a 'float'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\light.h(403,13): warning C4244: 'return': conversione da 'double' a 'float'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\light.h(416,5): warning C4305: 'argomento': troncamento da 'double' a 'float'
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\camera.h(65,32): warning C4244: 'argomento': conversione da 'int' a 'float'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\camera.h(66,32): warning C4244: 'argomento': conversione da 'int' a 'float'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\camera.h(85,20): warning C4244: 'argomento': conversione da 'int' a 'float'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\camera.h(105,20): warning C4244: 'argomento': conversione da 'int' a 'float'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\camera.h(130,38): warning C4244: 'argomento': conversione da 'int' a 'float'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\camera.h(130,60): warning C4244: 'argomento': conversione da 'int' a 'float'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\camera.h(141,12): warning C4244: 'inizializzazione': conversione da 'double' a 'float'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\camera.h(142,12): warning C4244: 'inizializzazione': conversione da 'double' a 'float'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\spline.h(44,9): warning C4068: l'istruzione pragma 'GCC' è sconosciuta
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\spline.h(45,9): warning C4068: l'istruzione pragma 'GCC' è sconosciuta
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\spline.h(427,17): warning C4244: 'inizializzazione': conversione da 'double' a 'int'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\spline.h(428,17): warning C4244: 'inizializzazione': conversione da 'double' a 'int'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\spline.h(472,16): warning C4244: 'inizializzazione': conversione da 'double' a 'size_t'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\spline.h(645,33): warning C4267: 'return': conversione da 'size_t' a 'int'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\spline.h(696,19): warning C4244: '=': conversione da 'double' a 'int'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\spline.h(697,19): warning C4244: '=': conversione da 'double' a 'int'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\spline.h(706,19): warning C4244: '=': conversione da 'double' a 'int'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\spline.h(711,23): warning C4244: '=': conversione da 'double' a 'int'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\spline.h(728,21): warning C4244: '=': conversione da 'double' a 'int'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\spline.h(743,20): warning C4244: '=': conversione da 'double' a 'int'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\spline.h(945,9): warning C4068: l'istruzione pragma 'GCC' è sconosciuta
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\main.cpp(66,13): warning C4244: 'inizializzazione': conversione da 'double' a 'float'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\main.cpp(81,52): warning C4244: 'argomento': conversione da 'double' a 'float'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\main.cpp(92,42): warning C4305: 'inizializzazione': troncamento da 'double' a 'float'
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\main.cpp(100,10): warning C4244: 'inizializzazione': conversione da 'double' a 'float'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\main.cpp(122,36): warning C4305: '=': troncamento da 'double' a 'float'
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\main.cpp(123,43): warning C4305: 'inizializzazione': troncamento da 'double' a 'float'
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\main.cpp(132,13): warning C4244: '=': conversione da 'double' a 'float'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\main.cpp(206,69): warning C4244: 'argomento': conversione da 'double' a 'float'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\main.cpp(206,42): warning C4244: 'argomento': conversione da 'double' a 'float'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\main.cpp(206,15): warning C4244: 'argomento': conversione da 'double' a 'float'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\main.cpp(211,24): warning C4305: '=': troncamento da 'double' a 'float'
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\main.cpp(225,26): warning C4305: '=': troncamento da 'double' a 'float'
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\main.cpp(231,32): warning C4244: 'argomento': conversione da 'double' a 'const float'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\main.cpp(244,32): warning C4305: 'inizializzazione': troncamento da 'double' a 'float'
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\main.cpp(257,122): warning C4244: 'argomento': conversione da 'double' a 'float'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\main.cpp(264,36): warning C4244: 'argomento': conversione da 'double' a 'const float'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\main.cpp(265,56): warning C4244: 'argomento': conversione da 'double' a 'const float'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\main.cpp(275,123): warning C4244: 'argomento': conversione da 'double' a 'float'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\main.cpp(282,36): warning C4244: 'argomento': conversione da 'double' a 'const float'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\main.cpp(283,60): warning C4244: 'argomento': conversione da 'double' a 'const float'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\main.cpp(386,37): warning C4305: 'argomento': troncamento da 'double' a 'const float'
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\main.cpp(388,37): warning C4244: 'argomento': conversione da 'double' a 'const float'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\main.cpp(402,37): warning C4305: 'argomento': troncamento da 'double' a 'const float'
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\main.cpp(404,44): warning C4244: 'argomento': conversione da 'double' a 'const float'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\main.cpp(410,39): warning C4305: 'argomento': troncamento da 'double' a 'const float'
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\main.cpp(412,44): warning C4244: 'argomento': conversione da 'double' a 'const float'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\main.cpp(418,39): warning C4305: 'argomento': troncamento da 'double' a 'const float'
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\main.cpp(420,52): warning C4244: 'argomento': conversione da 'double' a 'const float'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\main.cpp(520,16): warning C4244: 'inizializzazione': conversione da 'double' a 'int'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\main.cpp(571,16): warning C4244: 'inizializzazione': conversione da 'double' a 'float'. Possibile perdita di dati.
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\main.cpp(568,9): warning C4101: 'fattore': variabile locale senza riferimenti
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\xutility(149,77): warning C4244: 'argomento': conversione da '_Ty' a 'float'. Possibile perdita di dati.
+          with
+          [
+              _Ty=int
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\memory(2006): message : vedere il riferimento all'istanza 'void std::_Construct_in_place<_Ty,vec3,vec3,float,int,point3&,point3&,point3&>(_Ty &,vec3 &&,vec3 &&,float &&,int &&,point3 &,point3 &,point3 &) noexcept(false)' della funzione modello di cui è in corso la compilazione
+          with
+          [
+              _Ty=spot_light
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\memory(2725): message : vedere il riferimento all'istanza 'std::_Ref_count_obj2<_Ty>::_Ref_count_obj2<vec3,vec3,float,int,point3&,point3&,point3&>(vec3 &&,vec3 &&,float &&,int &&,point3 &,point3 &,point3 &)' della funzione modello di cui è in corso la compilazione
+          with
+          [
+              _Ty=spot_light
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\memory(2726): message : vedere il riferimento all'istanza 'std::_Ref_count_obj2<_Ty>::_Ref_count_obj2<vec3,vec3,float,int,point3&,point3&,point3&>(vec3 &&,vec3 &&,float &&,int &&,point3 &,point3 &,point3 &)' della funzione modello di cui è in corso la compilazione
+          with
+          [
+              _Ty=spot_light
+          ]
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\main.cpp(104): message : vedere il riferimento all'istanza 'std::shared_ptr<spot_light> std::make_shared<spot_light,point3,point3,float,int,color&,color&,color&>(point3 &&,point3 &&,float &&,int &&,color &,color &,color &)' della funzione modello di cui è in corso la compilazione
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\xutility(149,77): warning C4244: 'argomento': conversione da '_Ty' a 'float'. Possibile perdita di dati.
+          with
+          [
+              _Ty=double
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\memory(2006): message : vedere il riferimento all'istanza 'void std::_Construct_in_place<_Ty,point3&,point3&,float,double,point3&,point3&,point3&>(_Ty &,point3 &,point3 &,float &&,double &&,point3 &,point3 &,point3 &) noexcept(false)' della funzione modello di cui è in corso la compilazione
+          with
+          [
+              _Ty=spot_light
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\memory(2725): message : vedere il riferimento all'istanza 'std::_Ref_count_obj2<_Ty>::_Ref_count_obj2<point3&,point3&,float,double,point3&,point3&,point3&>(point3 &,point3 &,float &&,double &&,point3 &,point3 &,point3 &)' della funzione modello di cui è in corso la compilazione
+          with
+          [
+              _Ty=spot_light
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\memory(2726): message : vedere il riferimento all'istanza 'std::_Ref_count_obj2<_Ty>::_Ref_count_obj2<point3&,point3&,float,double,point3&,point3&,point3&>(point3 &,point3 &,float &&,double &&,point3 &,point3 &,point3 &)' della funzione modello di cui è in corso la compilazione
+          with
+          [
+              _Ty=spot_light
+          ]
+C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\main.cpp(151): message : vedere il riferimento all'istanza 'std::shared_ptr<spot_light> std::make_shared<spot_light,point3&,vec3&,float,double,color&,color&,color&>(point3 &,vec3 &,float &&,double &&,color &,color &,color &)' della funzione modello di cui è in corso la compilazione
+  Mapping.vcxproj -> C:\Users\HP\Documents\Donato\Università\Magistrale\secondo anno\Fondamenti di grafica tridimensionale\Progetto finale\x64\Debug\Mapping.exe
