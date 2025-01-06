@@ -15,6 +15,8 @@
 using std::shared_ptr;
 using std::make_shared;
 
+const int DEEP_MAX = 8;
+
 inline vec3 reflect(const vec3& i, const vec3& n)
 {
 	//return i - 2.0f * dot(i, n) * n;
@@ -403,9 +405,6 @@ float fresnel(hit_record& hr, float eta_in, float eta_out) {
 	return 0.5 * (r_parallel * r_parallel + r_perpendicular * r_perpendicular);
 }
 
-
-const int DEEP_MAX = 10;
-
 color ray_color(const ray& r, hittable_list& world, light& worldlight, point3& camera_pos, float &t, int depth) {
 	if (depth > DEEP_MAX) {
 		return color(0.0, 0.0, 0.0);
@@ -413,11 +412,12 @@ color ray_color(const ray& r, hittable_list& world, light& worldlight, point3& c
 
 	hit_record rec;
 
-	if (world.hit(r, interval(0.00001, infinity), rec)) {
+	if (world.hit(r, interval(0.0001, infinity), rec)) {
 		t = rec.t;
 		return rec.m->shading(r, worldlight, rec, camera_pos, world, depth);
 	}
 
+	//return color(1.0, 1.0, 1.0);
 	vec3 unit_direction = unit_vector(r.direction());
 	float tt = 0.5f * (unit_direction.y() + 1.0f);
 	//return lerp(color(1.0f, 1.0f, 1.0f), color(0.5f, 0.7f, 1.0f), t);
@@ -433,6 +433,8 @@ inline vec3 refract(const vec3& v, const vec3& n, float ni_over_nt) {
 
 color dielectric::shading(const ray& r, light& light, hit_record& hr, point3& camera_pos, hittable_list& world, int depth) {
 	color L= light.p_shading(hr, camera_pos, world);
+	if (isnan(L.x()) || isnan(L.y()) || isnan(L.z()))
+		L = color(0.0, 0.0, 0.0);
 	vec3 wi, wo, wt;
 	float len = r.d.length();
 	wi = -r.d / len;

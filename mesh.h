@@ -33,6 +33,7 @@ public:
 	tinybvh::BVH bvh;
 
 	bool areNormals = false;
+	bool areTex = false;
 
 	mesh(const char* filename, const char* basepath = NULL, bool triangulate = true) {
 		load_mesh(filename, basepath, triangulate);
@@ -102,6 +103,7 @@ bool mesh::load_mesh(const char* filename, const char* basepath = NULL, bool tri
 
 	if (attrib.texcoords.size() > 0)
 	{
+		areTex = true;
 		for (int v = 0; v < attrib.texcoords.size() / 2; v++) {
 			textures.push_back(point2(attrib.texcoords[2 * v + 0], attrib.texcoords[2 * v + 1]));
 		}
@@ -172,7 +174,9 @@ bool mesh::load_mesh(const char* filename, const char* basepath = NULL, bool tri
 
 		bvh.Build(triangles, num_faces);
 
-
+		/*bvh.Convert(tinybvh::BVH::WALD_32BYTE, tinybvh::BVH::BASIC_BVH8);
+		bvh.Convert(tinybvh::BVH::BASIC_BVH8, tinybvh::BVH::CWBVH);
+		bvh.Refit();*/
 
 	}
 
@@ -235,59 +239,141 @@ bool mesh::hit(const ray& ray, interval ray_t, hit_record& rec) const
 		tinybvh::bvhvec3 O(ray.o[0], ray.o[1], ray.o[2]);
 		tinybvh::bvhvec3 D(dir[0], dir[1], dir[2]);
 		tinybvh::Ray r(O, D);
-		bvh.Intersect(r);
+		bvh.Intersect(r, ray_t.min);
 		int primIdx = r.hit.prim;
 		if (r.hit.t > 10000)
 			return false;
 
+		int i0, i1, i2;
+		point3 v0, v1, v2;
+
+		//// inizio pezza
+		//i0 = vertex_faces[0][3 * primIdx + 0];
+		//i1 = vertex_faces[0][3 * primIdx + 1];
+		//i2 = vertex_faces[0][3 * primIdx + 2];
+
+		//v0 = vertices[i0];
+		//v1 = vertices[i1];
+		//v2 = vertices[i2];
+
+		//if (triangle_intersection(ray, ray_t.min, closest_so_far, temp_rec, v0, v1, v2, u, v)) {
+		//	closest_so_far = temp_rec.t;
+		//	rec = temp_rec;
+
+		//	vec3 bary(1.0f - u - v, u, v);
+
+		//	if (areNormals) {
+		//		i0 = vertex_faces[1][3 * primIdx + 0];
+		//		i1 = vertex_faces[1][3 * primIdx + 1];
+		//		i2 = vertex_faces[1][3 * primIdx + 2];
+
+		//		rec.normal = unit_vector(normals[i0] * bary[0] + normals[i1] * bary[1] + normals[i2] * bary[2]);
+		//	}
+
+		//	rec.set_face_normal(ray, rec.normal);
+
+		//	if (areTex) {
+		//		i0 = vertex_faces[2][3 * primIdx + 0];
+		//		i1 = vertex_faces[2][3 * primIdx + 1];
+		//		i2 = vertex_faces[2][3 * primIdx + 2];
+
+		//		point2 uv0 = textures[i0];
+		//		point2 uv1 = textures[i1];
+		//		point2 uv2 = textures[i2];
+
+		//		point2 uv = uv0 * bary[0] + uv1 * bary[1] + uv2 * bary[2];
+		//		rec.u = uv.x;
+		//		rec.v = uv.y;
+		//	}
+		//}
+		//else
+		//	cout << "Impossibile\n";
+		//// fine pezza
 
 		tinybvh::bvhvec4 vet0 = triangles[3 * primIdx + 0];
 		tinybvh::bvhvec4 vet1 = triangles[3 * primIdx + 1];
 		tinybvh::bvhvec4 vet2 = triangles[3 * primIdx + 2];
 
-		int i0, i1, i2;
-
 		/*int i0 = vertex_faces[0][3 * primIdx + 0];
 		int i1 = vertex_faces[0][3 * primIdx + 1];
 		int i2 = vertex_faces[0][3 * primIdx + 2];*/
 
-		point3 v0(vet0.x, vet0.y, vet0.z);
-		point3 v1(vet1.x, vet1.y, vet1.z);
-		point3 v2(vet2.x, vet2.y, vet2.z);
+		v0 = point3(vet0.x, vet0.y, vet0.z);
+		v1 = point3(vet1.x, vet1.y, vet1.z);
+		v2 = point3(vet2.x, vet2.y, vet2.z);
 
-		if ((v2 - vertices[vertex_faces[0][3 * primIdx + 2]]).length_squared() >= 0.00000001)
-			cout << "problema vertici\n";
+
 
 		float t = r.hit.t / lungDir;
 		if (t <= ray_t.min || t >= ray_t.max)
 			return false;
 
+		const float EPSILON = 0.0000001f;
+		if (t < EPSILON)
+			return false;
+
+		//if ((v2 - vertices[vertex_faces[0][3 * primIdx + 2]]).length_squared() >= 0.00000001)
+		//	cout << "problema vertici\n";
+
+		//float tmin = ray_t.min, tmax = closest_so_far;
+		//vec3 edge1, edge2, h, s, q;
+		//float a, f;	// , u, v;
+		//edge1 = v1 - v0;
+		//edge2 = v2 - v0;
+		//h = cross(ray.d, edge2);
+		//a = dot(edge1, h);
+		//if (a > -0.000000001 && a < 0.000000001)
+		//	cout << "raggio giace su piano, a = " << a << endl;
+		//f = 1 / a;
+		//s = ray.o - v0;
+		//u = f * (dot(s, h));
+		//if (u < -0.0001f || u > 1.0001f)
+		//	cout << "raggio interseca piano ma non triangolo,  u = " << u << endl;
+		//q = cross(s, edge1);
+		//v = f * dot(ray.d, q);
+		//if (v < -0.0001f || u + v > 1.0001f)
+		//	cout << "raggio interseca piano ma non triangolo,  v = " << v << ", u+v = " << u+v << endl;
+		//// At this stage we can compute t to find out where the intersection point is on the line.
+		//float tt = f * dot(edge2, q);
+		//if (tt > tmin && tt < tmax) {
+		//	if (tt <= EPSILON) 
+		//		cout << "raggio interseca triangolo in un istante sbagliato\ntt = " << tt << " not in ] " << tmin << ", " << tmax << "]" << endl << "t con BVH = " << t << endl;
+		//} else
+		//	cout << "raggio interseca triangolo ma in un istante sbagliato\ntt = " << tt << " not in ] " << tmin << ", " << tmax << "]" << endl << "t con BVH = " << t << endl;
+
+		//if (pow(u - r.hit.u, 2) + pow(v - r.hit.v, 2) > 0.0001)
+		//	cout << "problema coordinate\n";
+
 		vec3 bary(1.0f - r.hit.u - r.hit.v, r.hit.u, r.hit.v);
 		//vec3 bary(r.hit.u, r.hit.v, 1.0f - r.hit.u - r.hit.v);
-		if (areNormals)
-			rec.normal = unit_vector(cross(v1 - v0, v2 - v0));
-		else {
+		if (areNormals) {
 			i0 = vertex_faces[1][3 * primIdx + 0];
 			i1 = vertex_faces[1][3 * primIdx + 1];
 			i2 = vertex_faces[1][3 * primIdx + 2];
 
 			rec.normal = unit_vector(normals[i0] * bary[0] + normals[i1] * bary[1] + normals[i2] * bary[2]);
 		}
+		else
+			rec.normal = unit_vector(cross(v1 - v0, v2 - v0));
+
+		rec.set_face_normal(ray, rec.normal);
+
 		rec.t = t;
 		rec.p = ray.at(rec.t);
 
-		
-		i0 = vertex_faces[2][3 * primIdx + 0];
-		i1 = vertex_faces[2][3 * primIdx + 1];
-		i2 = vertex_faces[2][3 * primIdx + 2];
+		if (areTex) {
+			i0 = vertex_faces[2][3 * primIdx + 0];
+			i1 = vertex_faces[2][3 * primIdx + 1];
+			i2 = vertex_faces[2][3 * primIdx + 2];
 
-		point2 uv0 = textures[i0];
-		point2 uv1 = textures[i1];
-		point2 uv2 = textures[i2];
+			point2 uv0 = textures[i0];
+			point2 uv1 = textures[i1];
+			point2 uv2 = textures[i2];
 
-		point2 uv = uv0 * bary[0] + uv1 * bary[1] + uv2 * bary[2];
-		rec.u = uv.x;
-		rec.v = uv.y;
+			point2 uv = uv0 * bary[0] + uv1 * bary[1] + uv2 * bary[2];
+			rec.u = uv.x;
+			rec.v = uv.y;
+		}
 
 
 		/*if (triangle_intersection(ray, ray_t.min, closest_so_far, temp_rec, v0, v1, v2, u, v)) {
@@ -345,8 +431,7 @@ bool mesh::hit(const ray& ray, interval ray_t, hit_record& rec) const
 
 			vec3 bary(1.0f - u - v, u, v);
 
-			if (areNormals)
-			{
+			if (areNormals) {
 				i0 = vertex_faces[1][3 * i + 0];
 				i1 = vertex_faces[1][3 * i + 1];
 				i2 = vertex_faces[1][3 * i + 2];
@@ -354,17 +439,21 @@ bool mesh::hit(const ray& ray, interval ray_t, hit_record& rec) const
 				rec.normal = unit_vector(normals[i0] * bary[0] + normals[i1] * bary[1] + normals[i2] * bary[2]);
 			}
 
-			i0 = vertex_faces[2][3 * i + 0];
-			i1 = vertex_faces[2][3 * i + 1];
-			i2 = vertex_faces[2][3 * i + 2];
+			rec.set_face_normal(ray, rec.normal);
 
-			point2 uv0 = textures[i0];
-			point2 uv1 = textures[i1];
-			point2 uv2 = textures[i2];
+			if (areTex) {
+				i0 = vertex_faces[2][3 * i + 0];
+				i1 = vertex_faces[2][3 * i + 1];
+				i2 = vertex_faces[2][3 * i + 2];
 
-			point2 uv = uv0 * bary[0] + uv1 * bary[1] + uv2 * bary[2];
-			rec.u = uv.x;
-			rec.v = uv.y;
+				point2 uv0 = textures[i0];
+				point2 uv1 = textures[i1];
+				point2 uv2 = textures[i2];
+
+				point2 uv = uv0 * bary[0] + uv1 * bary[1] + uv2 * bary[2];
+				rec.u = uv.x;
+				rec.v = uv.y;
+			}
 		}
 	}
 	return hit_anything;
@@ -388,7 +477,7 @@ bool mesh::hit_shadow(const ray& ray, interval ray_t) const
 		tinybvh::bvhvec3 O(ray.o[0], ray.o[1], ray.o[2]);
 		tinybvh::bvhvec3 D(dir[0], dir[1], dir[2]);
 		tinybvh::Ray r(O, D);
-		bvh.Intersect(r);
+		bvh.Intersect(r, ray_t.min);
 		if (r.hit.t > 10000)
 			return false;
 

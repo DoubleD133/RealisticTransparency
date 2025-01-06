@@ -152,6 +152,7 @@ int main(int argc, char* argv[])
 	FaroAuto1->att_a = 0.75f;
 	FaroAuto1->att_b = 0.001f;
 	FaroAuto1->att_c = 0.11f;
+
 	worldlight.add(FaroAuto1);
 
 	point3 posFaroAuto2 = point3(112.00, 32.50, -30.00);
@@ -160,6 +161,7 @@ int main(int argc, char* argv[])
 	FaroAuto1->att_a = 0.75f;
 	FaroAuto2->att_b = 0.001f;
 	FaroAuto2->att_c = 0.11f;
+
 	worldlight.add(FaroAuto2);
 
 
@@ -167,12 +169,14 @@ int main(int argc, char* argv[])
 	FaroAuto3->att_a = 0.75f;
 	FaroAuto3->att_b = 0.001f;
 	FaroAuto3->att_c = 0.11f;
+
 	worldlight.add(FaroAuto3);
 
 	shared_ptr<spot_light> FaroAuto4 = make_shared<spot_light>(posFaroAuto2, dirFaroAuto2, 30.0f, 1.5, lightHardGray, lightYellow, lightYellow);
 	FaroAuto4->att_a = 0.75f;
 	FaroAuto4->att_b = 0.001f;
 	FaroAuto4->att_c = 0.11f;
+
 	worldlight.add(FaroAuto4);
 
 	
@@ -212,7 +216,6 @@ int main(int argc, char* argv[])
 	mPoloSp->eta_out = 1.0; // vuoto
 	mPoloSp->c_out = color(1.0, 1.0, 1.0);
 	mPoloSp->c_in = cf; // = color(1.0, 1.0, 1.0);
-	mPoloSp->calcola_angolo_critico();
 	
 	// materiale da vetro a aria
 	dielectric* mPoloSp2 = new dielectric();
@@ -225,7 +228,6 @@ int main(int argc, char* argv[])
 	mPoloSp2->eta_out = 1.51; // vetro
 	mPoloSp2->c_out = cf; // = color(1.0, 1.0, 1.0);
 	mPoloSp2->c_in = color(1.0, 1.0, 1.0);
-	mPoloSp2->calcola_angolo_critico();
 
 	auto instance_ptr = make_shared<instance>(paesaggio, mPolo);
 	instance_ptr->scale(raggio, h / 2.0, raggio);
@@ -234,7 +236,7 @@ int main(int argc, char* argv[])
 	instance_ptr->FaOmbra = false;
 	world.add(instance_ptr);
 	
-	auto instance_ptr1 = make_shared<instance>(sfera, mPoloSp);
+	/*auto instance_ptr1 = make_shared<instance>(sfera, mPoloSp);
 	instance_ptr1->scale(raggioS, raggioS, raggioS);
 	instance_ptr1->translate(centroS);
 	instance_ptr1->InOmbrabile = true;
@@ -247,9 +249,61 @@ int main(int argc, char* argv[])
 	instance_ptr1_dentro->translate(centroS);
 	instance_ptr1_dentro->InOmbrabile = true;
 	instance_ptr1_dentro->FaOmbra = true;
-	world.add(instance_ptr1_dentro);
+	world.add(instance_ptr1_dentro);*/
 
 
+	//texture* cat_texture = new image_texture("models/texturecat.jpg");
+
+	//material* mcat = new material();
+	//mcat->texture = cat_texture;
+	//mcat->ka = lightgray;
+	//mcat->ks = lightgray;
+
+	//mesh* gatto = new mesh("models/cat.obj", "models/");
+	//mPoloSp->kd = color(1.0, 1.0, 1.0)/1.1;
+	//mPoloSp->ka = color(1.0, 1.0, 1.0)/1.1;
+	//mPoloSp->c_in = color(0.65, 0.45, 0.0);
+	//auto instance_ptrG = make_shared<instance>(gatto, mPoloSp); // mcat);
+	//instance_ptrG->rotate_x(-90.0f);
+	//instance_ptrG->translate(0.0f, -17.0f, 0.0f);
+	//instance_ptrG->scale(1.0 / 30.0f, 1.0 / 30.0f, 1.0 / 30.0f);
+	//instance_ptrG->scale(raggioS, raggioS, raggioS);
+	//instance_ptrG->translate(centroS);
+	//instance_ptrG->InOmbrabile = true;
+	//instance_ptrG->FaOmbra = true;
+	//world.add(instance_ptrG);
+
+
+	mesh* con = new mesh("models/bunny.obj", "models/");
+	cout << con->areNormals << endl;
+	//con->areNormals = false;
+	//con->UsaBVH = false;
+	mPoloSp->kd = color(1.0, 1.0, 1.0);
+	mPoloSp->ka = color(1.0, 1.0, 1.0);
+	mPoloSp->ks = color(1.0, 1.0, 1.0);
+	mPoloSp->c_in = color(0.65, 0.45, 0.0);
+	auto instance_ptrG = make_shared<instance>(con, mPoloSp);
+	instance_ptrG->translate(0.0f, -0.5f, 0.0f);
+	instance_ptrG->scale(raggioS, raggioS, raggioS);
+	instance_ptrG->translate(centroS);
+	instance_ptrG->InOmbrabile = true;
+	instance_ptrG->FaOmbra = true;
+	world.add(instance_ptrG);
+
+	//mesh* con = new mesh("models/bunny2.obj", "models/");
+	////con->UsaBVH = false;
+	//mPoloSp->kd = color(1.0, 1.0, 1.0);
+	//mPoloSp->ka = color(1.0, 1.0, 1.0);
+	//mPoloSp->ks = color(1.0, 1.0, 1.0);
+	//mPoloSp->c_in = color(0.65, 0.45, 0.0);
+	//auto instance_ptrG = make_shared<instance>(con, mPoloSp); // mcat);
+	//instance_ptrG->translate(0.0f, -0.07f, 0.0f);
+	//instance_ptrG->scale(10.0f, 10.0f, 10.0f);
+	//instance_ptrG->scale(raggioS, raggioS, raggioS);
+	//instance_ptrG->translate(centroS);
+	//instance_ptrG->InOmbrabile = true;
+	//instance_ptrG->FaOmbra = true;
+	//world.add(instance_ptrG);
 
 	discoStandard* paesaggioSu = new discoStandard( - 1.0);
 	paesaggioSu->normAlto = false;
@@ -428,7 +482,7 @@ int main(int argc, char* argv[])
 
 	cam.aspect_ratio = 16.0f / 9.0f;
 	cam.image_width = 1500; // 1280;
-	cam.samples_per_pixel = 64;
+	cam.samples_per_pixel = 10;
 	cam.vfov = 60;
 
 	cam.initialize();
@@ -561,7 +615,7 @@ int main(int argc, char* argv[])
 	while (SDL_PollEvent(&event) || (!quit)) {
 		cam.lookfrom = point3(0.0, 0.0, -raggio * -14.5f / 30.0f);
 		cam.lookat = point3(0.0f, 0.0f, 0.0f);
-		cam.vfov = 60;
+		cam.vfov = 40;
 		cam.vup = vec3(0.0, 1.0, 0.0);
 		cam.initialize();
 
@@ -632,9 +686,24 @@ int main(int argc, char* argv[])
 			E = A * B;
 			instance_ptr9->setIMat(E);
 			cam.initialize();
-			//cam.render(world);
-			cam.parallel_render(world, worldlight);
-			SDL_RenderPresent(renderer);
+			
+			if (frame >= 17) {
+				world.clear();
+				//world.add(instance_ptr);
+				//world.add(instance_ptrGiu);
+				//world.add(instance_ptrSu);
+				world.add(instance_ptrG);
+
+				worldlight.clear();
+
+				//cam.render(world);
+				cam.parallel_render(world, worldlight);
+				SDL_RenderPresent(renderer);
+				/*saveScreenshotBMP("screenshotGattoBVHmod.bmp");
+				close();
+				return 0;*/
+			}
+			
 			//saveScreenshotBMP("screenshotPallaVetro.bmp");
 			//saveScreenshotBMP("screenshotSferaVetro.bmp");
 
