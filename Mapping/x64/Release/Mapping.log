@@ -1,0 +1,215 @@
+﻿  main.cpp
+D:\ivans\Desktop\RealisticTransparency\texture.h(61,8): warning C4244: 'inizializzazione': conversione da 'float' a 'int'. Possibile perdita di dati.
+  (compilazione del file di origine 'main.cpp')
+  
+D:\ivans\Desktop\RealisticTransparency\texture.h(62,8): warning C4244: 'inizializzazione': conversione da 'float' a 'int'. Possibile perdita di dati.
+  (compilazione del file di origine 'main.cpp')
+  
+D:\ivans\Desktop\RealisticTransparency\texture.h(153,9): warning C4244: 'inizializzazione': conversione da 'float' a 'int'. Possibile perdita di dati.
+  (compilazione del file di origine 'main.cpp')
+  
+D:\ivans\Desktop\RealisticTransparency\texture.h(154,9): warning C4244: 'inizializzazione': conversione da 'float' a 'int'. Possibile perdita di dati.
+  (compilazione del file di origine 'main.cpp')
+  
+D:\ivans\Desktop\RealisticTransparency\texture.h(251,9): warning C4244: 'inizializzazione': conversione da 'float' a 'int'. Possibile perdita di dati.
+  (compilazione del file di origine 'main.cpp')
+  
+D:\ivans\Desktop\RealisticTransparency\texture.h(252,9): warning C4244: 'inizializzazione': conversione da 'float' a 'int'. Possibile perdita di dati.
+  (compilazione del file di origine 'main.cpp')
+  
+D:\ivans\Desktop\RealisticTransparency\sphere.h(155,17): warning C4244: 'inizializzazione': conversione da 'double' a 'float'. Possibile perdita di dati.
+  (compilazione del file di origine 'main.cpp')
+  
+D:\ivans\Desktop\RealisticTransparency\sphere.h(166,22): warning C4244: 'inizializzazione': conversione da 'double' a 'float'. Possibile perdita di dati.
+  (compilazione del file di origine 'main.cpp')
+  
+D:\ivans\Desktop\RealisticTransparency\sphere.h(221,24): warning C4244: '=': conversione da 'double' a 'float'. Possibile perdita di dati.
+  (compilazione del file di origine 'main.cpp')
+  
+D:\ivans\Desktop\RealisticTransparency\sphere.h(252,17): warning C4244: 'inizializzazione': conversione da 'double' a 'float'. Possibile perdita di dati.
+  (compilazione del file di origine 'main.cpp')
+  
+D:\ivans\Desktop\RealisticTransparency\sphere.h(344,70): warning C4244: 'argomento': conversione da 'double' a 'float'. Possibile perdita di dati.
+  (compilazione del file di origine 'main.cpp')
+  
+D:\ivans\Desktop\RealisticTransparency\mesh.h(75,41): warning C4267: '=': conversione da 'size_t' a 'int'. Possibile perdita di dati.
+  (compilazione del file di origine 'main.cpp')
+  
+D:\ivans\Desktop\RealisticTransparency\mesh.h(76,39): warning C4267: '=': conversione da 'size_t' a 'int'. Possibile perdita di dati.
+  (compilazione del file di origine 'main.cpp')
+  
+D:\ivans\Desktop\RealisticTransparency\mesh.h(77,42): warning C4267: '=': conversione da 'size_t' a 'int'. Possibile perdita di dati.
+  (compilazione del file di origine 'main.cpp')
+  
+D:\ivans\Desktop\RealisticTransparency\mesh.h(78,26): warning C4267: '=': conversione da 'size_t' a 'int'. Possibile perdita di dati.
+  (compilazione del file di origine 'main.cpp')
+  
+D:\ivans\Desktop\RealisticTransparency\light.h(369,29): warning C4244: 'argomento': conversione da 'int' a 'float'. Possibile perdita di dati.
+  (compilazione del file di origine 'main.cpp')
+  
+D:\ivans\Desktop\RealisticTransparency\light.h(380,23): warning C4244: 'argomento': conversione da 'int' a 'float'. Possibile perdita di dati.
+  (compilazione del file di origine 'main.cpp')
+  
+D:\ivans\Desktop\RealisticTransparency\light.h(399,13): warning C4244: 'inizializzazione': conversione da 'double' a 'float'. Possibile perdita di dati.
+  (compilazione del file di origine 'main.cpp')
+  
+D:\ivans\Desktop\RealisticTransparency\light.h(405,13): warning C4244: 'return': conversione da 'double' a 'float'. Possibile perdita di dati.
+  (compilazione del file di origine 'main.cpp')
+  
+D:\ivans\Desktop\RealisticTransparency\light.h(415,28): warning C4305: 'argomento': troncamento da 'double' a 'float'
+  (compilazione del file di origine 'main.cpp')
+  
+D:\ivans\Desktop\RealisticTransparency\camera.h(65,32): warning C4244: 'argomento': conversione da 'int' a 'float'. Possibile perdita di dati.
+  (compilazione del file di origine 'main.cpp')
+  
+D:\ivans\Desktop\RealisticTransparency\camera.h(66,32): warning C4244: 'argomento': conversione da 'int' a 'float'. Possibile perdita di dati.
+  (compilazione del file di origine 'main.cpp')
+  
+D:\ivans\Desktop\RealisticTransparency\camera.h(85,20): warning C4244: 'argomento': conversione da 'int' a 'float'. Possibile perdita di dati.
+  (compilazione del file di origine 'main.cpp')
+  
+D:\ivans\Desktop\RealisticTransparency\camera.h(105,20): warning C4244: 'argomento': conversione da 'int' a 'float'. Possibile perdita di dati.
+  (compilazione del file di origine 'main.cpp')
+  
+D:\ivans\Desktop\RealisticTransparency\camera.h(130,38): warning C4244: 'argomento': conversione da 'int' a 'float'. Possibile perdita di dati.
+  (compilazione del file di origine 'main.cpp')
+  
+D:\ivans\Desktop\RealisticTransparency\camera.h(130,60): warning C4244: 'argomento': conversione da 'int' a 'float'. Possibile perdita di dati.
+  (compilazione del file di origine 'main.cpp')
+  
+D:\ivans\Desktop\RealisticTransparency\camera.h(141,12): warning C4244: 'inizializzazione': conversione da 'double' a 'float'. Possibile perdita di dati.
+  (compilazione del file di origine 'main.cpp')
+  
+D:\ivans\Desktop\RealisticTransparency\camera.h(142,12): warning C4244: 'inizializzazione': conversione da 'double' a 'float'. Possibile perdita di dati.
+  (compilazione del file di origine 'main.cpp')
+  
+D:\ivans\Desktop\RealisticTransparency\spline.h(44,9): warning C4068: l'istruzione pragma 'GCC' è sconosciuta
+  (compilazione del file di origine 'main.cpp')
+  
+D:\ivans\Desktop\RealisticTransparency\spline.h(45,9): warning C4068: l'istruzione pragma 'GCC' è sconosciuta
+  (compilazione del file di origine 'main.cpp')
+  
+D:\ivans\Desktop\RealisticTransparency\spline.h(427,17): warning C4244: 'inizializzazione': conversione da 'double' a 'int'. Possibile perdita di dati.
+  (compilazione del file di origine 'main.cpp')
+  
+D:\ivans\Desktop\RealisticTransparency\spline.h(428,17): warning C4244: 'inizializzazione': conversione da 'double' a 'int'. Possibile perdita di dati.
+  (compilazione del file di origine 'main.cpp')
+  
+D:\ivans\Desktop\RealisticTransparency\spline.h(472,16): warning C4244: 'inizializzazione': conversione da 'double' a 'size_t'. Possibile perdita di dati.
+  (compilazione del file di origine 'main.cpp')
+  
+D:\ivans\Desktop\RealisticTransparency\spline.h(645,31): warning C4267: 'return': conversione da 'size_t' a 'int'. Possibile perdita di dati.
+  (compilazione del file di origine 'main.cpp')
+  
+D:\ivans\Desktop\RealisticTransparency\spline.h(696,19): warning C4244: '=': conversione da 'double' a 'int'. Possibile perdita di dati.
+  (compilazione del file di origine 'main.cpp')
+  
+D:\ivans\Desktop\RealisticTransparency\spline.h(697,19): warning C4244: '=': conversione da 'double' a 'int'. Possibile perdita di dati.
+  (compilazione del file di origine 'main.cpp')
+  
+D:\ivans\Desktop\RealisticTransparency\spline.h(706,19): warning C4244: '=': conversione da 'double' a 'int'. Possibile perdita di dati.
+  (compilazione del file di origine 'main.cpp')
+  
+D:\ivans\Desktop\RealisticTransparency\spline.h(711,23): warning C4244: '=': conversione da 'double' a 'int'. Possibile perdita di dati.
+  (compilazione del file di origine 'main.cpp')
+  
+D:\ivans\Desktop\RealisticTransparency\spline.h(728,21): warning C4244: '=': conversione da 'double' a 'int'. Possibile perdita di dati.
+  (compilazione del file di origine 'main.cpp')
+  
+D:\ivans\Desktop\RealisticTransparency\spline.h(743,20): warning C4244: '=': conversione da 'double' a 'int'. Possibile perdita di dati.
+  (compilazione del file di origine 'main.cpp')
+  
+D:\ivans\Desktop\RealisticTransparency\spline.h(945,9): warning C4068: l'istruzione pragma 'GCC' è sconosciuta
+  (compilazione del file di origine 'main.cpp')
+  
+D:\ivans\Desktop\RealisticTransparency\main.cpp(66,13): warning C4244: 'inizializzazione': conversione da 'double' a 'float'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\main.cpp(81,52): warning C4244: 'argomento': conversione da 'double' a 'float'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\main.cpp(92,10): warning C4305: 'inizializzazione': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(100,10): warning C4244: 'inizializzazione': conversione da 'double' a 'float'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\main.cpp(122,8): warning C4305: '=': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(123,11): warning C4305: 'inizializzazione': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(132,13): warning C4244: '=': conversione da 'double' a 'float'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\main.cpp(210,69): warning C4244: 'argomento': conversione da 'double' a 'float'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\main.cpp(210,42): warning C4244: 'argomento': conversione da 'double' a 'float'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\main.cpp(210,15): warning C4244: 'argomento': conversione da 'double' a 'float'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\main.cpp(215,20): warning C4305: '=': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(228,22): warning C4305: '=': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(233,32): warning C4244: 'argomento': conversione da 'double' a 'const float'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\main.cpp(284,30): warning C4305: 'argomento': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(284,24): warning C4305: 'argomento': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(316,30): warning C4305: 'argomento': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(316,24): warning C4305: 'argomento': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(331,30): warning C4305: 'argomento': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(331,24): warning C4305: 'argomento': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(346,30): warning C4305: 'argomento': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(346,24): warning C4305: 'argomento': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(362,30): warning C4305: 'argomento': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(362,24): warning C4305: 'argomento': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(377,30): warning C4305: 'argomento': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(377,24): warning C4305: 'argomento': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(393,30): warning C4305: 'argomento': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(393,24): warning C4305: 'argomento': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(396,38): warning C4305: 'argomento': troncamento da 'double' a 'const float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(396,33): warning C4305: 'argomento': troncamento da 'double' a 'const float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(396,28): warning C4305: 'argomento': troncamento da 'double' a 'const float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(404,122): warning C4244: 'argomento': conversione da 'double' a 'float'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\main.cpp(411,36): warning C4244: 'argomento': conversione da 'double' a 'const float'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\main.cpp(412,56): warning C4244: 'argomento': conversione da 'double' a 'const float'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\main.cpp(422,123): warning C4244: 'argomento': conversione da 'double' a 'float'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\main.cpp(429,36): warning C4244: 'argomento': conversione da 'double' a 'const float'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\main.cpp(430,60): warning C4244: 'argomento': conversione da 'double' a 'const float'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\main.cpp(667,16): warning C4244: 'inizializzazione': conversione da 'double' a 'int'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\main.cpp(718,16): warning C4244: 'inizializzazione': conversione da 'double' a 'float'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\main.cpp(715,9): warning C4101: 'fattore': variabile locale senza riferimenti
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\xutility(406,82): warning C4244: 'argomento': conversione da '_Ty' a 'float'. Possibile perdita di dati.
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\xutility(406,82): warning C4244:         with
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\xutility(406,82): warning C4244:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\xutility(406,82): warning C4244:             _Ty=int
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\xutility(406,82): warning C4244:         ]
+  (compilazione del file di origine 'main.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\xutility(406,82):
+      il contesto di creazione dell'istanza del modello (prima il meno recente) è
+          D:\ivans\Desktop\RealisticTransparency\main.cpp(104,35):
+          vedere il riferimento all'istanza 'std::shared_ptr<spot_light> std::make_shared<spot_light,point3,point3,float,int,color&,color&,color&>(point3 &&,point3 &&,float &&,int &&,color &,color &,color &)' della funzione modello di cui è in corso la compilazione
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\memory(2906,46):
+          vedere il riferimento all'istanza 'std::_Ref_count_obj2<spot_light>::_Ref_count_obj2<_Ty,_Ty,float,int,point3&,point3&,point3&>(_Ty &&,_Ty &&,float &&,int &&,point3 &,point3 &,point3 &)' della funzione modello di cui è in corso la compilazione
+          with
+          [
+              _Ty=point3
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\memory(2095,18):
+          vedere il riferimento all'istanza 'void std::_Construct_in_place<_Ty,vec3,vec3,float,int,point3&,point3&,point3&>(_Ty &,vec3 &&,vec3 &&,float &&,int &&,point3 &,point3 &,point3 &) noexcept(false)' della funzione modello di cui è in corso la compilazione
+          with
+          [
+              _Ty=spot_light
+          ]
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\xutility(406,82): warning C4244: 'argomento': conversione da '_Ty' a 'float'. Possibile perdita di dati.
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\xutility(406,82): warning C4244:         with
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\xutility(406,82): warning C4244:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\xutility(406,82): warning C4244:             _Ty=double
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\xutility(406,82): warning C4244:         ]
+  (compilazione del file di origine 'main.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\xutility(406,82):
+      il contesto di creazione dell'istanza del modello (prima il meno recente) è
+          D:\ivans\Desktop\RealisticTransparency\main.cpp(151,37):
+          vedere il riferimento all'istanza 'std::shared_ptr<spot_light> std::make_shared<spot_light,point3&,vec3&,float,double,color&,color&,color&>(point3 &,vec3 &,float &&,double &&,color &,color &,color &)' della funzione modello di cui è in corso la compilazione
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\memory(2906,46):
+          vedere il riferimento all'istanza 'std::_Ref_count_obj2<spot_light>::_Ref_count_obj2<point3&,point3&,_Ty,double,point3&,point3&,point3&>(point3 &,point3 &,_Ty &&,double &&,point3 &,point3 &,point3 &)' della funzione modello di cui è in corso la compilazione
+          with
+          [
+              _Ty=float
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\memory(2095,18):
+          vedere il riferimento all'istanza 'void std::_Construct_in_place<_Ty,point3&,point3&,float,double,point3&,point3&,point3&>(_Ty &,point3 &,point3 &,float &&,double &&,point3 &,point3 &,point3 &) noexcept(false)' della funzione modello di cui è in corso la compilazione
+          with
+          [
+              _Ty=spot_light
+          ]
+  
+  Generazione codice in corso...
+  1 of 2178 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    9 functions had inline decision re-evaluated but remain unchanged
+  Generazione codice terminata
+  Mapping.vcxproj -> D:\ivans\Desktop\RealisticTransparency\x64\Release\Mapping.exe

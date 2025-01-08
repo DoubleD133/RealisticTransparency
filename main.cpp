@@ -305,6 +305,99 @@ int main(int argc, char* argv[])
 	//instance_ptrG->FaOmbra = true;
 	//world.add(instance_ptrG);
 
+	//NATIVITA'
+	mesh* gesu = new mesh("models/Gesu con mangiatoia.obj", "models/");
+	cout << gesu->areNormals << endl;
+	//con->areNormals = false;
+	//con->UsaBVH = false;
+	mPoloSp->kd = color(1.0, 1.0, 1.0);
+	mPoloSp->ka = color(1.0, 1.0, 1.0);
+	mPoloSp->ks = color(1.0, 1.0, 1.0);
+	mPoloSp->c_in = color(0.65, 0.45, 0.0);
+	auto instance_ptrGesu = make_shared<instance>(gesu, mPoloSp);
+	instance_ptrGesu->translate(0.0f, -0.5f, 0.0f);
+	instance_ptrGesu->scale(6, 6, 6);
+	instance_ptrGesu->InOmbrabile = true;
+	instance_ptrGesu->FaOmbra = true;
+	world.add(instance_ptrGesu);
+
+	mesh* madonna = new mesh("models/virginMary.obj", "models/");
+	cout << madonna->areNormals << endl;
+	//con->areNormals = false;
+	//con->UsaBVH = false;
+	mPoloSp->kd = color(1.0, 1.0, 1.0);
+	mPoloSp->ka = color(1.0, 1.0, 1.0);
+	mPoloSp->ks = color(1.0, 1.0, 1.0);
+	mPoloSp->c_in = color(0.65, 0.45, 0.0);
+	auto instance_ptrMadonna = make_shared<instance>(madonna, mPoloSp);
+	instance_ptrMadonna->translate(-0.3f, -0.5f, 0.0f);
+	instance_ptrMadonna->scale(6, 6, 6);
+	instance_ptrMadonna->InOmbrabile = true;
+	instance_ptrMadonna->FaOmbra = true;
+	world.add(instance_ptrMadonna);
+
+	mesh* giuseppe = new mesh("models/Giuseppe.obj", "models/");
+	cout << giuseppe->areNormals << endl;
+	//con->areNormals = false;
+	//con->UsaBVH = false;
+	mPoloSp->kd = color(1.0, 1.0, 1.0);
+	mPoloSp->ka = color(1.0, 1.0, 1.0);
+	mPoloSp->ks = color(1.0, 1.0, 1.0);
+	mPoloSp->c_in = color(0.65, 0.45, 0.0);
+	auto instance_ptrGiuseppe = make_shared<instance>(giuseppe, mPoloSp);
+	//instance_ptrGiuseppe->translate(0.2f, -0.48f, 0.15f);
+	instance_ptrGiuseppe->translate(0.2f, -0.48f, 0.15f);
+	instance_ptrGiuseppe->scale(6, 6, 6);
+	instance_ptrGiuseppe->InOmbrabile = true;
+	instance_ptrGiuseppe->FaOmbra = true;
+	world.add(instance_ptrGiuseppe);
+
+	mesh* bue = new mesh("models/bue.obj", "models/");
+	cout << bue->areNormals << endl;
+	//con->areNormals = false;
+	//con->UsaBVH = false;
+	mPoloSp->kd = color(1.0, 1.0, 1.0);
+	mPoloSp->ka = color(1.0, 1.0, 1.0);
+	mPoloSp->ks = color(1.0, 1.0, 1.0);
+	mPoloSp->c_in = color(0.65, 0.45, 0.0);
+	auto instance_ptrBue = make_shared<instance>(bue, mPoloSp);
+	instance_ptrBue->translate(0.15f, -0.48f, -0.020f);
+	instance_ptrBue->scale(6, 6, 6);
+	instance_ptrBue->InOmbrabile = true;
+	instance_ptrBue->FaOmbra = true;
+	world.add(instance_ptrBue);
+
+	mesh* asinello = new mesh("models/asinello.obj", "models/");
+	cout << asinello->areNormals << endl;
+	//con->areNormals = false;
+	//con->UsaBVH = false;
+	mPoloSp->kd = color(1.0, 1.0, 1.0);
+	mPoloSp->ka = color(1.0, 1.0, 1.0);
+	mPoloSp->ks = color(1.0, 1.0, 1.0);
+	mPoloSp->c_in = color(0.65, 0.45, 0.0);
+	auto instance_ptrAsinello = make_shared<instance>(asinello, mPoloSp);
+	instance_ptrAsinello->translate(-0.1f, -0.5f, -0.05f);
+	instance_ptrAsinello->rotate_y(10);
+	instance_ptrAsinello->scale(6, 6, 6);
+	instance_ptrAsinello->InOmbrabile = true;
+	instance_ptrAsinello->FaOmbra = true;
+	world.add(instance_ptrAsinello);
+
+	mesh* stalla = new mesh("models/stalla.obj", "models/");
+	cout << stalla->areNormals << endl;
+	//con->areNormals = false;
+	//con->UsaBVH = false;
+	mPoloSp->kd = color(1.0, 1.0, 1.0);
+	mPoloSp->ka = color(1.0, 1.0, 1.0);
+	mPoloSp->ks = color(1.0, 1.0, 1.0);
+	mPoloSp->c_in = color(0.65, 0.45, 0.0);
+	auto instance_ptrStalla = make_shared<instance>(stalla, mPoloSp);
+	instance_ptrStalla->translate(0.0f, 0.0f, 0.0f);
+	instance_ptrStalla->scale(0.7, 0.7, 0.7);
+	instance_ptrStalla->InOmbrabile = true;
+	instance_ptrStalla->FaOmbra = true;
+	world.add(instance_ptrStalla);
+
 	discoStandard* paesaggioSu = new discoStandard( - 1.0);
 	paesaggioSu->normAlto = false;
 	paesaggioSu->normSp = true;
@@ -426,7 +519,7 @@ int main(int argc, char* argv[])
 	auto instance_ptr9 = make_shared<instance>(Death, mSp);
 	world.add(instance_ptr9);
 
-	image_texture_Cylindrical* Oro = new image_texture_Cylindrical("models/lamina-oro.jpg");
+	/*image_texture_Cylindrical* Oro = new image_texture_Cylindrical("models/lamina-oro.jpg");
 	material* mOro = new material();
 	mOro->texture = Oro;
 	mOro->kd = lightgray;
@@ -474,7 +567,7 @@ int main(int argc, char* argv[])
 	instance_ptr13->translate(0.0, + 1.0 + 0.4 + 0.15 + raggioS, 0.0);
 	instance_ptr13->InOmbrabile = true;
 	instance_ptr13->FaOmbra = true;
-	world.add(instance_ptr13);
+	world.add(instance_ptr13);*/
 
 	camera cam;
 	cam.lookfrom = point3(0.0, 0.0, - raggio * -14.5f / 30.0f);
@@ -692,8 +785,12 @@ int main(int argc, char* argv[])
 				//world.add(instance_ptr);
 				//world.add(instance_ptrGiu);
 				//world.add(instance_ptrSu);
-				world.add(instance_ptrG);
-
+				world.add(instance_ptrGesu);
+				world.add(instance_ptrGiuseppe);
+				world.add(instance_ptrMadonna);
+				world.add(instance_ptrBue);
+				world.add(instance_ptrAsinello);
+				world.add(instance_ptrStalla);
 				worldlight.clear();
 
 				//cam.render(world);

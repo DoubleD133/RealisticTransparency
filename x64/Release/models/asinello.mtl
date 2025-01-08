@@ -1,0 +1,13 @@
+# Blender 4.3.2 MTL File: 'None'
+# www.blender.org
+
+newmtl Burro_LP2
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd D:/VILA3D/2023/MVFC/MVFC_Presepio/MVFC3828_Burro/SP/Textures_2K/MVFC3828_burro_LP1_albedo.jpg
+map_Ns D:/VILA3D/2023/MVFC/MVFC_Presepio/MVFC3828_Burro/SP/Textures_2K/MVFC3828_burro_LP1_roughness.jpg
+map_Bump -bm 1.000000 D:/VILA3D/2023/MVFC/MVFC_Presepio/MVFC3828_Burro/SP/Textures_2K/MVFC3828_burro_LP1_normal.png

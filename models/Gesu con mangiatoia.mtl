@@ -1,0 +1,24 @@
+# Blender 4.3.2 MTL File: 'None'
+# www.blender.org
+
+newmtl Manjedoura
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd D:/VILA3D/2023/MVFC/MVFC_Presepio/MVFC3832a_Manjedoura/SP/Textures/Manjedoura_albedo.jpg
+map_Ns D:/VILA3D/2023/MVFC/MVFC_Presepio/MVFC3832a_Manjedoura/SP/Textures/Manjedoura_roughness.jpg
+map_Bump -bm 1.000000 D:/VILA3D/2023/MVFC/MVFC_Presepio/MVFC3832a_Manjedoura/SP/Textures/Manjedoura_normal.png
+
+newmtl Menino
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd D:/VILA3D/2023/MVFC/MVFC_Presepio/MVFC3832b_Menino/SP/Textures_2K/Menino_albedo.jpg
+map_Ns D:/VILA3D/2023/MVFC/MVFC_Presepio/MVFC3832b_Menino/SP/Textures_2K/Menino_roughness.jpg
+map_Bump -bm 1.000000 D:/VILA3D/2023/MVFC/MVFC_Presepio/MVFC3832b_Menino/SP/Textures_2K/Menino_normal.png
