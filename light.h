@@ -418,7 +418,7 @@ color ray_color(const ray& r, hittable_list& world, light& worldlight, point3& c
 		return rec.m->shading(r, worldlight, rec, camera_pos, world, depth);
 	}
 
-	//return color(1.0, 1.0, 1.0);
+	return color(1.0, 1.0, 1.0);
 	vec3 unit_direction = unit_vector(r.direction());
 	float tt = 0.5f * (unit_direction.y() + 1.0f);
 	//return lerp(color(1.0f, 1.0f, 1.0f), color(0.5f, 0.7f, 1.0f), t);
