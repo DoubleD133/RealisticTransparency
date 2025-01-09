@@ -412,6 +412,7 @@ color ray_color(const ray& r, hittable_list& world, light& worldlight, point3& c
 
 	hit_record rec;
 
+	// 0.0001 può essere ulteriormente aumentato se si hanno problemi con gli obj
 	if (world.hit(r, interval(0.0001, infinity), rec)) {
 		t = rec.t;
 		return rec.m->shading(r, worldlight, rec, camera_pos, world, depth);
