@@ -1,4 +1,4 @@
-#ifndef GEOMETRY_H
+ï»¿#ifndef GEOMETRY_H
 #define GEOMETRY_H
 
 #include "interval.h"
@@ -16,7 +16,7 @@ public:
         float ComponenteNormale3 = dot(n, raggio3);
         float ComponenteNormale3Normalizzata = ComponenteNormale3 / raggio3.length();
         if (ComponenteNormale3Normalizzata >= 0.0001 || ComponenteNormale3Normalizzata <= -0.0001) {
-            std::cout << "Il quadrilatero è sghembo (non piano), ne modifico il vertice3\n";
+            std::cout << "Il quadrilatero Ã¨ sghembo (non piano), ne modifico il vertice3\n";
             vec3 NuovoRaggio3 = raggio3 - ComponenteNormale3 * n;
             vertice3 = vertice1 + NuovoRaggio3;
         }
@@ -24,7 +24,7 @@ public:
         latoOppostoA = vertice3 - vertice4;
         latoOppostoB = vertice3 - vertice2;
 
-        // in vec3 c'è la funzione RimuoviComponenteParallela(vec3 partenza, vec3 ortogonale)
+        // in vec3 c'Ã¨ la funzione RimuoviComponenteParallela(vec3 partenza, vec3 ortogonale)
         nA = unit_vector(RimuoviComponenteParallela(latoB,latoA)); //tolgo a latoB la componente parallela a latoA
         nB = unit_vector(RimuoviComponenteParallela(latoA,latoB));
         nOppostoA = unit_vector(RimuoviComponenteParallela(-latoB, latoOppostoA));
@@ -58,7 +58,7 @@ public:
             }
         }
 
-        // se arriviamo qui il raggio è parallelo al piano
+        // se arriviamo qui il raggio Ã¨ parallelo al piano
         // verifivhiamo se giace o meno nel piano
         if (scalare2 != 0)
             return false; // non giace nel piano
@@ -88,7 +88,7 @@ private:
     // il piano ha un orientamento locale con origine vertice1 ed assi diretti come latoA e latoB
 };
 
-class cubo : public hittable_list {
+class cubo : public hittable {
 public:
 
     // costruttore con tre punti orari su una faccia
@@ -175,7 +175,7 @@ public:
             return true;
         }
 
-        // se arriviamo qui il raggio è parallelo al piano
+        // se arriviamo qui il raggio Ã¨ parallelo al piano
         // verifivhiamo se giace o meno nel piano
         if (scalare2 != 0)
             return false;
@@ -224,7 +224,7 @@ public:
             return false;
         }
 
-        // se arriviamo qui il raggio è parallelo al piano
+        // se arriviamo qui il raggio Ã¨ parallelo al piano
         // verifivhiamo se giace o meno nel piano
         if (scalare2 != 0)
             return false;
@@ -252,8 +252,8 @@ public:
         lato31 = vertice1 - vertice3;
         n = unit_vector(cross(lato31, lato12));
 
-        // in vec3 c'è la funzione RimuoviComponenteParallela(vec3 partenza, vec3 ortogonale)
-        // RimuoviComponenteParallela( v, w) è la componente di v ortogonale a w
+        // in vec3 c'Ã¨ la funzione RimuoviComponenteParallela(vec3 partenza, vec3 ortogonale)
+        // RimuoviComponenteParallela( v, w) Ã¨ la componente di v ortogonale a w
         n12 = unit_vector(RimuoviComponenteParallela(-lato31, lato12)); //tolgo a -lato31 la componente parallela a lato12
         n23 = unit_vector(RimuoviComponenteParallela(lato31, lato23));
         n31 = unit_vector(RimuoviComponenteParallela(lato12, lato31));
@@ -343,7 +343,7 @@ public:
         }*/
 
         // CASO RARISSIMISSIMO (soprattutto per l'errore numerico)
-        // se arriviamo qui il raggio è parallelo al piano
+        // se arriviamo qui il raggio Ã¨ parallelo al piano
         // verifichiamo se giace o meno nel piano
         if (scalare2 != 0)
             return false; // non giace nel piano
@@ -363,9 +363,9 @@ public:
             return true;
         }
 
-        // se arriviamo qui il raggio giace nel piano del triangolo ma l'origine è fuori dal triangolo
+        // se arriviamo qui il raggio giace nel piano del triangolo ma l'origine Ã¨ fuori dal triangolo
         // le eventuali intersezioni raggio-triangolo sono intersezioni raggio-segmento
-        // le calcolo di seguito è prendo la prima
+        // le calcolo di seguito Ã¨ prendo la prima
 
         hit_record temp_rec;
         bool hit_anything = false;
@@ -443,7 +443,7 @@ public:
         else
             w1 = unit_vector(vec3(v.z(), 0.0f, -v.x()));
 
-        // essendo v e w1 ortonormali allora w2 è unitario
+        // essendo v e w1 ortonormali allora w2 Ã¨ unitario
         w2 = cross(v, w1);
 
         fattore = tan(alpha);
@@ -468,7 +468,7 @@ public:
         else
             w1 = unit_vector(vec3(v.z(), 0.0f, -v.x()));
 
-        // essendo v e w1 ortonormali allora w2 è unitario
+        // essendo v e w1 ortonormali allora w2 Ã¨ unitario
         w2 = cross(v, w1);
 
         fattore = tan(alpha);
@@ -493,7 +493,7 @@ public:
         else
             w1 = unit_vector(vec3(v.z(), 0.0f, -v.x()));
 
-        // essendo v e w1 ortonormali allora w2 è unitario
+        // essendo v e w1 ortonormali allora w2 Ã¨ unitario
         w2 = cross(v, w1);
 
         fattore = radiusBase / h;
@@ -654,7 +654,7 @@ public:
         else
             w1 = unit_vector(vec3(v.z(), 0.0f, -v.x()));
 
-        // essendo v e w1 ortonormali allora w2 è unitario
+        // essendo v e w1 ortonormali allora w2 Ã¨ unitario
         w2 = cross(v, w1);
 
         radiusBase_squared = radiusBase * radiusBase;
@@ -672,7 +672,7 @@ public:
         else
             w1 = unit_vector(vec3(v.z(), 0.0f, -v.x()));
 
-        // essendo v e w1 ortonormali allora w2 è unitario
+        // essendo v e w1 ortonormali allora w2 Ã¨ unitario
         w2 = cross(v, w1);
 
         radiusBase_squared = radiusBase * radiusBase;
@@ -796,7 +796,7 @@ public:
         // tolgo a dirx la componente parallela a v e lo normalizzo
         w1 = unit_vector(dirx - dot(dirx, v) * v);
         w2 = cross(v, w1);
-        // così w1, w2 e v sono ortonormali
+        // cosÃ¬ w1, w2 e v sono ortonormali
 
         a_squared = a * a;
         b_squared = b * b;
@@ -813,7 +813,7 @@ public:
         else
             w1 = unit_vector(vec3(v.z(), 0.0f, -v.x()));
 
-        // essendo v e w1 ortonormali allora w2 è unitario
+        // essendo v e w1 ortonormali allora w2 Ã¨ unitario
         w2 = cross(v, w1);
 
         a_squared = a * a;
@@ -918,7 +918,7 @@ public:
         else
             w1 = unit_vector(vec3(v.z(), 0.0f, -v.x()));
 
-        // essendo v e w1 ortonormali allora w2 è unitario
+        // essendo v e w1 ortonormali allora w2 Ã¨ unitario
         w2 = cross(v, w1);
     }
 
@@ -1016,7 +1016,7 @@ public:
         else
             w1 = unit_vector(vec3(v.z(), 0.0f, -v.x()));
 
-        // essendo v e w1 ortonormali allora w2 è unitario
+        // essendo v e w1 ortonormali allora w2 Ã¨ unitario
         w2 = cross(v, w1);
     }
 
@@ -1104,7 +1104,7 @@ private:
 class cilindroStandard : public hittable {
 public:
 
-    //cilindro standard è un cilindro senza basi di raggio unitario,
+    //cilindro standard Ã¨ un cilindro senza basi di raggio unitario,
     //altezza 2 e centro l'origine. Tramite istanze crea tutti gli altri cilindri
 
     cilindroStandard() {
@@ -1119,7 +1119,7 @@ public:
         //// costruisco un vettore non nullo ed ortogonale a v
         //w1 = vec3(1.0, 0.0, 0.0);
 
-        //// essendo v e w1 ortonormali allora w2 è unitario
+        //// essendo v e w1 ortonormali allora w2 Ã¨ unitario
         //w2 = vec3(0.0, 0.0, 1.0);
 
         //radiusBase_squared = 1.0;

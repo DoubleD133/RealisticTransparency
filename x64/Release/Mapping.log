@@ -1,0 +1,77 @@
+﻿  main.cpp
+D:\ivans\Desktop\RealisticTransparency\texture.h(61,8): warning C4244: 'inizializzazione': conversione da 'float' a 'int'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\texture.h(62,8): warning C4244: 'inizializzazione': conversione da 'float' a 'int'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\texture.h(153,9): warning C4244: 'inizializzazione': conversione da 'float' a 'int'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\texture.h(154,9): warning C4244: 'inizializzazione': conversione da 'float' a 'int'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\texture.h(251,9): warning C4244: 'inizializzazione': conversione da 'float' a 'int'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\texture.h(252,9): warning C4244: 'inizializzazione': conversione da 'float' a 'int'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\sphere.h(155,17): warning C4244: 'inizializzazione': conversione da 'double' a 'float'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\sphere.h(166,22): warning C4244: 'inizializzazione': conversione da 'double' a 'float'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\sphere.h(221,24): warning C4244: '=': conversione da 'double' a 'float'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\sphere.h(252,17): warning C4244: 'inizializzazione': conversione da 'double' a 'float'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\sphere.h(344,70): warning C4244: 'argomento': conversione da 'double' a 'float'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\mesh.h(75,45): warning C4267: '=': conversione da 'size_t' a 'int'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\mesh.h(76,43): warning C4267: '=': conversione da 'size_t' a 'int'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\mesh.h(77,46): warning C4267: '=': conversione da 'size_t' a 'int'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\mesh.h(78,28): warning C4267: '=': conversione da 'size_t' a 'int'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\light.h(369,29): warning C4244: 'argomento': conversione da 'int' a 'float'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\light.h(380,23): warning C4244: 'argomento': conversione da 'int' a 'float'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\light.h(399,13): warning C4244: 'inizializzazione': conversione da 'double' a 'float'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\light.h(405,13): warning C4244: 'return': conversione da 'double' a 'float'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\light.h(416,5): warning C4305: 'argomento': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\camera.h(65,32): warning C4244: 'argomento': conversione da 'int' a 'float'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\camera.h(66,32): warning C4244: 'argomento': conversione da 'int' a 'float'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\camera.h(85,20): warning C4244: 'argomento': conversione da 'int' a 'float'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\camera.h(105,20): warning C4244: 'argomento': conversione da 'int' a 'float'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\camera.h(130,38): warning C4244: 'argomento': conversione da 'int' a 'float'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\camera.h(130,60): warning C4244: 'argomento': conversione da 'int' a 'float'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\camera.h(141,12): warning C4244: 'inizializzazione': conversione da 'double' a 'float'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\camera.h(142,12): warning C4244: 'inizializzazione': conversione da 'double' a 'float'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\spline.h(44,9): warning C4068: l'istruzione pragma 'GCC' è sconosciuta
+D:\ivans\Desktop\RealisticTransparency\spline.h(45,9): warning C4068: l'istruzione pragma 'GCC' è sconosciuta
+D:\ivans\Desktop\RealisticTransparency\spline.h(427,17): warning C4244: 'inizializzazione': conversione da 'double' a 'int'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\spline.h(428,17): warning C4244: 'inizializzazione': conversione da 'double' a 'int'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\spline.h(472,16): warning C4244: 'inizializzazione': conversione da 'double' a 'size_t'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\spline.h(645,33): warning C4267: 'return': conversione da 'size_t' a 'int'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\spline.h(696,19): warning C4244: '=': conversione da 'double' a 'int'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\spline.h(697,19): warning C4244: '=': conversione da 'double' a 'int'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\spline.h(706,19): warning C4244: '=': conversione da 'double' a 'int'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\spline.h(711,23): warning C4244: '=': conversione da 'double' a 'int'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\spline.h(728,21): warning C4244: '=': conversione da 'double' a 'int'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\spline.h(743,20): warning C4244: '=': conversione da 'double' a 'int'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\spline.h(945,9): warning C4068: l'istruzione pragma 'GCC' è sconosciuta
+D:\ivans\Desktop\RealisticTransparency\main.cpp(88,58): warning C4305: 'argomento': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(89,58): warning C4305: 'argomento': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(98,40): warning C4305: '=': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(103,55): warning C4305: 'argomento': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(115,58): warning C4305: 'argomento': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(116,58): warning C4305: 'argomento': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(125,40): warning C4305: '=': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(130,69): warning C4305: 'argomento': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(142,55): warning C4305: 'argomento': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(143,55): warning C4305: 'argomento': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(152,37): warning C4305: '=': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(157,90): warning C4244: 'argomento': conversione da 'double' a 'float'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\main.cpp(157,65): warning C4244: 'argomento': conversione da 'double' a 'float'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\main.cpp(157,40): warning C4244: 'argomento': conversione da 'double' a 'float'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\main.cpp(169,54): warning C4305: 'argomento': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(170,54): warning C4305: 'argomento': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(179,36): warning C4305: '=': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(184,51): warning C4305: 'argomento': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(196,57): warning C4305: 'argomento': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(197,57): warning C4305: 'argomento': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(206,39): warning C4305: '=': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(211,82): warning C4305: 'argomento': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(223,50): warning C4305: 'argomento': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(224,50): warning C4305: 'argomento': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(233,32): warning C4305: '=': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(299,20): warning C4305: 'inizializzazione': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(346,42): warning C4305: 'argomento': troncamento da 'double' a 'const float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(360,38): warning C4305: 'argomento': troncamento da 'double' a 'const float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(395,42): warning C4305: 'argomento': troncamento da 'double' a 'const float'
+  Generazione codice in corso...
+  1 of 1946 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    6 functions had inline decision re-evaluated but remain unchanged
+  Generazione codice terminata
+  Mapping.vcxproj -> D:\ivans\Desktop\RealisticTransparency\x64\Release\Mapping.exe

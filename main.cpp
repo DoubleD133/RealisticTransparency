@@ -20,6 +20,7 @@
 #include <cstdio>
 #include <vector>
 #include "spline.h"
+#include "geometry.h"
 
 
 using namespace std;
@@ -65,10 +66,16 @@ int main(int argc, char* argv[])
 	hittable_list world;
 	list_light worldlight;
 	
+	point3 light_position(0.0, 7.0, 20.0);
+	shared_ptr<point_light> punto = make_shared<point_light>(light_position, black, lightgray, black);
+	worldlight.add(punto);
 
-	/*color lightgray = color(0.75f, 0.75f, 0.75f);
-	shared_ptr<diffuse_light> bagliore = make_shared<diffuse_light>(vec3(0.0, -1.0, 0.0), lightgray, lightgray, lightgray);
-	worldlight.add(bagliore);*/
+	/*point3 light_position(0.0, -3.0, 10.0);
+	shared_ptr<point_light> punto = make_shared<point_light>(light_position, black, lightgray, black);
+	worldlight.add(punto);*/
+
+	/*shared_ptr<diffuse_light> diff = make_shared<diffuse_light>(vec3(0.0, 50.0, 120.0), white, black, black);
+	worldlight.add(diff);*/
 
 	// materiale per le superfici che dentro sono in vetro e fuori sono circondate da aria
 	// inoltre questo vetro è colorato di marrone/giallo (vedi c_in)
@@ -213,8 +220,8 @@ int main(int argc, char* argv[])
 	m_vetro_in_aria->texture = NULL;
 
 	// colori per l'illuminazione di phong
-	m_vetro_in_aria->kd = color(1.0, 1.0, 1.0) / 1.1;
-	m_vetro_in_aria->ka = color(1.0, 1.0, 1.0) / 1.1;
+	m_vetro_in_aria->kd = color(1.0, 1.0, 1.0) / 1.7;
+	m_vetro_in_aria->ka = color(1.0, 1.0, 1.0) / 1.7;
 	m_vetro_in_aria->ks = color(1.0, 1.0, 1.0);
 	// (di solito kd e ka possono essere diminuiti per dare maggiore risalto ai giochi di
 	//  riflessione e rifrazione, ad esempio se ci fosse uno sfondo o molta luce li ridurrei)
@@ -239,7 +246,6 @@ int main(int argc, char* argv[])
 	instance_ptrG->InOmbrabile = true;
 	instance_ptrG->FaOmbra = true;
 	world.add(instance_ptrG);*/
-
 
 	/*mesh* con = new mesh("models/bunny.obj", "models/");
 	auto instance_ptrG = make_shared<instance>(con, m_vetro_marrone_in_aria);
@@ -281,7 +287,7 @@ int main(int argc, char* argv[])
 	instance_ptrMadonna->translate( - scala2 / 10.0f, 0.0f, scala2 / 20.0f);
 
 	instance_ptrMadonna->translate(-0.05f, -0.5f, 0.0f);
-	instance_ptrMadonna->translate(0.0f, 0.0f, 0.12f);
+	instance_ptrMadonna->translate(0.0f, -0.0f, 0.12f);
 	instance_ptrMadonna->scale(6.0, 6.0, 6.0);
 	instance_ptrMadonna->InOmbrabile = true;
 	instance_ptrMadonna->FaOmbra = true;
@@ -298,7 +304,7 @@ int main(int argc, char* argv[])
 
 	//instance_ptrGiuseppe->translate(0.2f, -0.48f, 0.15f);
 	instance_ptrGiuseppe->translate(0.07f, -0.48f, 0.15f);
-	instance_ptrGiuseppe->translate(-0.07f, 0.0f, -0.20f);
+	instance_ptrGiuseppe->translate(-0.07f, -0.0f, -0.20f);
 	instance_ptrGiuseppe->scale(6.0, 6.0, 6.0);
 	instance_ptrGiuseppe->InOmbrabile = true;
 	instance_ptrGiuseppe->FaOmbra = true;
@@ -310,10 +316,10 @@ int main(int argc, char* argv[])
 	instance_ptrBue->translate(-0.1f, 0.0f, 0.07f);
 	instance_ptrBue->scale(scala2, scala2, scala2);
 	instance_ptrBue->rotate_y(-15.0);
-	instance_ptrBue->translate(scala2 * 0.1f, 0.0f, - scala2 * 0.07f);
+	instance_ptrBue->translate(scala2 * 0.1f, -0.0f, - scala2 * 0.07f);
 
 	instance_ptrBue->translate(0.15f, -0.48f, -0.020f);
-	instance_ptrBue->translate(0.0f, 0.0f, 0.4f);
+	instance_ptrBue->translate(0.0f, -0.0f, 0.4f);
 	instance_ptrBue->scale(6.0, 6.0, 6.0);
 	instance_ptrBue->InOmbrabile = true;
 	instance_ptrBue->FaOmbra = true;
@@ -328,7 +334,7 @@ int main(int argc, char* argv[])
 	instance_ptrAsinello->translate(- scala3 * 0.11f, 0.0f, - scala3 * 0.07f);
 
 	instance_ptrAsinello->translate(-0.1f, -0.5f, -0.05f);
-	instance_ptrAsinello->translate(0.15f, 0.0f, -0.07f);
+	instance_ptrAsinello->translate(0.15f, -0.0f, -0.07f);
 	instance_ptrAsinello->rotate_y(10);
 	instance_ptrAsinello->scale(6, 6, 6);
 	instance_ptrAsinello->InOmbrabile = true;
@@ -338,18 +344,68 @@ int main(int argc, char* argv[])
 	mesh* stalla = new mesh("models/stalla.obj", "models/");
 	auto instance_ptrStalla = make_shared<instance>(stalla, m_vetro_in_aria);
 	instance_ptrStalla->scale(0.75, 0.7, 0.7);
-	instance_ptrStalla->translate(0.5f, 0.0f, 0.7f);
+	/*instance_ptrStalla->translate(0.5f, 0.0f, 0.7f);*/
+	instance_ptrStalla->translate(0.5f, -8.5f, 0.7f);
 	instance_ptrStalla->InOmbrabile = true;
 	instance_ptrStalla->FaOmbra = true;
 	world.add(instance_ptrStalla);
 
+	mesh* tavolino = new mesh("models/tavolino.obj", "models/");
+	texture* tavolino_tex = new image_texture("models/legnoScuro.jpg");
+	material* tavolino_m = new material();
+	tavolino_m->texture = tavolino_tex;
+	tavolino_m->ka = white;
+	tavolino_m->ks = black;
+	auto tavolino_ptr = make_shared<instance>(tavolino, tavolino_m);
+	tavolino_ptr->scale(0.37, 0.37, 0.37);
+	tavolino_ptr->translate(17.0f, -18.6f, -15.0f);
+	tavolino_ptr->InOmbrabile = true;
+	tavolino_ptr->FaOmbra = true;
+	world.add(tavolino_ptr);
+
+	mesh* tv = new mesh("models/TV.obj", "models/");
+	texture* tv_tex = new image_texture("models/TV_tex.jpg");
+	material* tv_m = new material();
+	tv_m->texture = tv_tex;
+	tv_m->ka = black;
+	tv_m->ks = white;
+	auto tv_ptr = make_shared<instance>(tv, tv_m);
+	tv_ptr->scale(15.0, 15.0, 15.0);
+	tv_ptr->translate(20.5f, -4.5f, -13.0f);
+	tv_ptr->rotate_y(-19.0f);
+	tv_ptr->InOmbrabile = true;
+	tv_ptr->FaOmbra = true;
+	world.add(tv_ptr);
+
+	/*mesh* teca = new mesh("models/Chest.obj", "models/");
+	auto instance_ptrTeca = make_shared<instance>(teca, m_vetro_in_aria);
+	instance_ptrTeca->translate(0.0f, -10.0f, 0.12f);
+	instance_ptrTeca->scale(0.3, 0.26, 0.3);
+	instance_ptrTeca->InOmbrabile = true;
+	instance_ptrTeca->FaOmbra = true;
+	world.add(instance_ptrTeca);*/
+
+	mesh* tavolinoPresepe = new mesh("models/tavolinoPresepe.obj", "models/");
+	texture* tavolinoPresepe_tex = new image_texture("models/BaseColor.jpg");
+	material* tavolinoPresepe_m = new material();
+	tavolinoPresepe_m->texture = tavolinoPresepe_tex;
+	tavolinoPresepe_m->ka = white;
+	tavolinoPresepe_m->ks = black;
+	auto tavolinoPresepe_ptr = make_shared<instance>(tavolinoPresepe, tavolinoPresepe_m);
+	tavolinoPresepe_ptr->scale(2.2, 2.2, 2.2);
+	tavolinoPresepe_ptr->translate(-6.0f, -14.5f, 3.0f);
+	tavolinoPresepe_ptr->InOmbrabile = true;
+	tavolinoPresepe_ptr->FaOmbra = true;
+	world.add(tavolinoPresepe_ptr);
 
 	camera cam;
 	// camera dall'alto
 	/*cam.lookfrom = point3(0.0, 10.0, 8.0);
 	cam.lookat = point3(0.0f, -3.0f, 0.0f);*/
 	//camera frontale:
-	cam.lookfrom = point3(0.0, 0.0, 10.0);
+	/*cam.lookfrom = point3(0.0, -10.9, 15.0);
+	cam.lookat = point3(0.0f, -10.9f, 0.0f);*/
+	cam.lookfrom = point3(0.0, 4.0, 40.0);
 	cam.lookat = point3(0.0f, -2.5f, 0.0f);
 	//camera da sinistra:
 	/*cam.lookfrom = point3(-10.0, 0.0, -3.0);
