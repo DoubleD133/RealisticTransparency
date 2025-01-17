@@ -40,37 +40,36 @@ D:\ivans\Desktop\RealisticTransparency\spline.h(711,23): warning C4244: '=': con
 D:\ivans\Desktop\RealisticTransparency\spline.h(728,21): warning C4244: '=': conversione da 'double' a 'int'. Possibile perdita di dati.
 D:\ivans\Desktop\RealisticTransparency\spline.h(743,20): warning C4244: '=': conversione da 'double' a 'int'. Possibile perdita di dati.
 D:\ivans\Desktop\RealisticTransparency\spline.h(945,9): warning C4068: l'istruzione pragma 'GCC' è sconosciuta
-D:\ivans\Desktop\RealisticTransparency\main.cpp(88,58): warning C4305: 'argomento': troncamento da 'double' a 'float'
-D:\ivans\Desktop\RealisticTransparency\main.cpp(89,58): warning C4305: 'argomento': troncamento da 'double' a 'float'
-D:\ivans\Desktop\RealisticTransparency\main.cpp(98,40): warning C4305: '=': troncamento da 'double' a 'float'
-D:\ivans\Desktop\RealisticTransparency\main.cpp(103,55): warning C4305: 'argomento': troncamento da 'double' a 'float'
-D:\ivans\Desktop\RealisticTransparency\main.cpp(115,58): warning C4305: 'argomento': troncamento da 'double' a 'float'
-D:\ivans\Desktop\RealisticTransparency\main.cpp(116,58): warning C4305: 'argomento': troncamento da 'double' a 'float'
-D:\ivans\Desktop\RealisticTransparency\main.cpp(125,40): warning C4305: '=': troncamento da 'double' a 'float'
-D:\ivans\Desktop\RealisticTransparency\main.cpp(130,69): warning C4305: 'argomento': troncamento da 'double' a 'float'
-D:\ivans\Desktop\RealisticTransparency\main.cpp(142,55): warning C4305: 'argomento': troncamento da 'double' a 'float'
-D:\ivans\Desktop\RealisticTransparency\main.cpp(143,55): warning C4305: 'argomento': troncamento da 'double' a 'float'
-D:\ivans\Desktop\RealisticTransparency\main.cpp(152,37): warning C4305: '=': troncamento da 'double' a 'float'
-D:\ivans\Desktop\RealisticTransparency\main.cpp(157,90): warning C4244: 'argomento': conversione da 'double' a 'float'. Possibile perdita di dati.
-D:\ivans\Desktop\RealisticTransparency\main.cpp(157,65): warning C4244: 'argomento': conversione da 'double' a 'float'. Possibile perdita di dati.
-D:\ivans\Desktop\RealisticTransparency\main.cpp(157,40): warning C4244: 'argomento': conversione da 'double' a 'float'. Possibile perdita di dati.
-D:\ivans\Desktop\RealisticTransparency\main.cpp(169,54): warning C4305: 'argomento': troncamento da 'double' a 'float'
-D:\ivans\Desktop\RealisticTransparency\main.cpp(170,54): warning C4305: 'argomento': troncamento da 'double' a 'float'
-D:\ivans\Desktop\RealisticTransparency\main.cpp(179,36): warning C4305: '=': troncamento da 'double' a 'float'
-D:\ivans\Desktop\RealisticTransparency\main.cpp(184,51): warning C4305: 'argomento': troncamento da 'double' a 'float'
-D:\ivans\Desktop\RealisticTransparency\main.cpp(196,57): warning C4305: 'argomento': troncamento da 'double' a 'float'
-D:\ivans\Desktop\RealisticTransparency\main.cpp(197,57): warning C4305: 'argomento': troncamento da 'double' a 'float'
-D:\ivans\Desktop\RealisticTransparency\main.cpp(206,39): warning C4305: '=': troncamento da 'double' a 'float'
-D:\ivans\Desktop\RealisticTransparency\main.cpp(211,82): warning C4305: 'argomento': troncamento da 'double' a 'float'
-D:\ivans\Desktop\RealisticTransparency\main.cpp(223,50): warning C4305: 'argomento': troncamento da 'double' a 'float'
-D:\ivans\Desktop\RealisticTransparency\main.cpp(224,50): warning C4305: 'argomento': troncamento da 'double' a 'float'
-D:\ivans\Desktop\RealisticTransparency\main.cpp(233,32): warning C4305: '=': troncamento da 'double' a 'float'
-D:\ivans\Desktop\RealisticTransparency\main.cpp(299,20): warning C4305: 'inizializzazione': troncamento da 'double' a 'float'
-D:\ivans\Desktop\RealisticTransparency\main.cpp(346,42): warning C4305: 'argomento': troncamento da 'double' a 'const float'
-D:\ivans\Desktop\RealisticTransparency\main.cpp(360,38): warning C4305: 'argomento': troncamento da 'double' a 'const float'
-D:\ivans\Desktop\RealisticTransparency\main.cpp(395,42): warning C4305: 'argomento': troncamento da 'double' a 'const float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(94,58): warning C4305: 'argomento': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(95,58): warning C4305: 'argomento': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(104,40): warning C4305: '=': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(109,55): warning C4305: 'argomento': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(121,58): warning C4305: 'argomento': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(122,58): warning C4305: 'argomento': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(131,40): warning C4305: '=': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(136,69): warning C4305: 'argomento': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(148,55): warning C4305: 'argomento': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(149,55): warning C4305: 'argomento': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(158,37): warning C4305: '=': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(163,90): warning C4244: 'argomento': conversione da 'double' a 'float'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\main.cpp(163,65): warning C4244: 'argomento': conversione da 'double' a 'float'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\main.cpp(163,40): warning C4244: 'argomento': conversione da 'double' a 'float'. Possibile perdita di dati.
+D:\ivans\Desktop\RealisticTransparency\main.cpp(175,54): warning C4305: 'argomento': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(176,54): warning C4305: 'argomento': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(185,36): warning C4305: '=': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(190,51): warning C4305: 'argomento': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(202,57): warning C4305: 'argomento': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(203,57): warning C4305: 'argomento': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(212,39): warning C4305: '=': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(217,82): warning C4305: 'argomento': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(229,50): warning C4305: 'argomento': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(230,50): warning C4305: 'argomento': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(239,32): warning C4305: '=': troncamento da 'double' a 'float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(352,42): warning C4305: 'argomento': troncamento da 'double' a 'const float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(366,38): warning C4305: 'argomento': troncamento da 'double' a 'const float'
+D:\ivans\Desktop\RealisticTransparency\main.cpp(394,44): warning C4305: 'argomento': troncamento da 'double' a 'const float'
   Generazione codice in corso...
-  1 of 1946 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+  1 of 1971 functions (<0.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     6 functions had inline decision re-evaluated but remain unchanged
   Generazione codice terminata
