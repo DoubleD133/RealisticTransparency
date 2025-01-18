@@ -154,6 +154,7 @@
     <ClInclude Include="material.h" />
     <ClInclude Include="mesh.h" />
     <ClInclude Include="MieFunzioniComuni.h" />
+    <ClInclude Include="plane.h" />
     <ClInclude Include="point2.h" />
     <ClInclude Include="raster.h" />
     <ClInclude Include="ray.h" />

@@ -90,6 +90,9 @@
     <ClInclude Include="dielectric.h">
       <Filter>File di origine</Filter>
     </ClInclude>
+    <ClInclude Include="plane.h">
+      <Filter>File di origine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

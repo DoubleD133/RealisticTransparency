@@ -16,7 +16,7 @@
 #include "camera.h"
 #include "color.h"
 #include "texture.h"
-
+#include "plane.h"
 #include <cstdio>
 #include <vector>
 #include "spline.h"
@@ -66,23 +66,22 @@ int main(int argc, char* argv[])
 	hittable_list world;
 	list_light worldlight;
 
-	//luce a sinistra
-	point3 light_position(-8.0, 3.0, 30.0);
-	/*point3 light_position(2.0, 3.0, 30.0);*/
+	//luce1 
+	point3 light_position(-16.0, 3.0, 30.0);
 	shared_ptr<point_light> punto = make_shared<point_light>(light_position, black, darkgray, black);
 	worldlight.add(punto);
 
-	//luce che fa ombra dritta alla tv
-	point3 light_position2(20.0, 13.0, 30.0);
-	/*point3 light_position2(10.0, 13.0, 30.0);*/
+
+	point3 light_position2(0.5f, 10.0f, 0.0f);
 	shared_ptr<point_light> punto2 = make_shared<point_light>(light_position2, black, darkgray, black);
 	worldlight.add(punto2);
 
-	shared_ptr<diffuse_light> diff = make_shared<diffuse_light>(vec3(-10.0, 50.0, 60.0), darkgray, black, black);
+	shared_ptr<diffuse_light> diff = make_shared<diffuse_light>(vec3(-10.0, 50.0, 60.0), darkgray, white, black);
 	worldlight.add(diff);
-	shared_ptr<diffuse_light> diff2 = make_shared<diffuse_light>(vec3(10.0, 50.0, 60.0), darkgray, black, black);
+	shared_ptr<diffuse_light> diff2 = make_shared<diffuse_light>(vec3(10.0, 50.0, 60.0), darkgray, white, black);
 	worldlight.add(diff2);
 
+	
 	// materiale per le superfici che dentro sono in vetro e fuori sono circondate da aria
 	// inoltre questo vetro è colorato di marrone/giallo (vedi c_in)
 	dielectric* m_vetro_marrone_in_aria = new dielectric();
@@ -356,18 +355,33 @@ int main(int argc, char* argv[])
 	instance_ptrStalla->FaOmbra = true;
 	world.add(instance_ptrStalla);
 
-	mesh* tavolino = new mesh("models/tavolino.obj", "models/");
-	texture* tavolino_tex = new image_texture("models/BaseColor.jpg");
-	material* tavolino_m = new material();
-	tavolino_m->texture = tavolino_tex;
-	tavolino_m->ka = white;
-	tavolino_m->ks = white;
-	auto tavolino_ptr = make_shared<instance>(tavolino, tavolino_m);
-	tavolino_ptr->scale(0.37, 0.37, 0.37);
-	tavolino_ptr->translate(20.0f, -18.6f, -15.0f);
-	tavolino_ptr->InOmbrabile = true;
-	tavolino_ptr->FaOmbra = true;
-	world.add(tavolino_ptr);
+	mesh* library = new mesh("models/library.obj", "models/");
+	texture* library_tex = new image_texture("models/BaseColor.jpg");
+	material* library_m = new material();
+	library_m->texture = library_tex;
+	library_m->ka = white;
+	library_m->ks = white;
+	auto library_ptr = make_shared<instance>(library, library_m);
+	library_ptr->scale(3.8f, 3.8f, 3.8f);
+	library_ptr->rotate_y(-90.0f);
+	library_ptr->translate(28.0f, -19.0f, -18.0f);
+	library_ptr->InOmbrabile = true;
+	library_ptr->FaOmbra = true;
+	world.add(library_ptr);
+
+	mesh* chair = new mesh("models/chair.obj", "models/");
+	texture* chair_tex = new image_texture("models/chairTexture.jpg");
+	material* chair_m = new material();
+	chair_m->texture = chair_tex;
+	chair_m->ka = white;
+	chair_m->ks = white;
+	auto chair_ptr = make_shared<instance>(chair, chair_m);
+	chair_ptr->scale(0.15f, 0.15f, 0.15f);
+	chair_ptr->rotate_y(-150.0f);
+	chair_ptr->translate(35.0f, -20.5f, 5.0f);
+	chair_ptr->InOmbrabile = true;
+	chair_ptr->FaOmbra = true;
+	world.add(chair_ptr);
 
 	mesh* tv = new mesh("models/TV.obj", "models/");
 	texture* tv_tex = new image_texture("models/TV_tex.jpg");
@@ -376,16 +390,16 @@ int main(int argc, char* argv[])
 	tv_m->ka = black;
 	tv_m->ks = white;
 	auto tv_ptr = make_shared<instance>(tv, tv_m);
-	tv_ptr->scale(15.0, 15.0, 15.0);
-	tv_ptr->translate(23.5f, -4.5f, -13.0f);
-	tv_ptr->rotate_y(-19.0f);
+	tv_ptr->scale(12.0, 12.0, 12.0);
+	tv_ptr->translate(-47.5f, -8.7f, -34.0f);
+	tv_ptr->rotate_y(20.0f);
 	tv_ptr->InOmbrabile = true;
 	tv_ptr->FaOmbra = true;
 	world.add(tv_ptr);
 
 
 	mesh* sideTableNativity = new mesh("models/tavolinoPresepe.obj", "models/");
-	texture* sideTableNativity_tex = new image_texture("models/legnoGiallo.jpg");
+	texture* sideTableNativity_tex = new image_texture("models/BaseColor.jpg");
 	material* sideTableNativity_m = new material();
 	sideTableNativity_m->texture = sideTableNativity_tex;
 	sideTableNativity_m->ka = white;
@@ -411,7 +425,7 @@ int main(int argc, char* argv[])
 	world.add(room_ptr);
 
 	mesh* wallForniture = new mesh("models/mobiliMuro.obj", "models/");
-	texture* wallForniture_tex = new image_texture("models/BaseColor.jpg");
+	texture* wallForniture_tex = new image_texture("models/legnoGiallo.jpg");
 	material* wallForniture_m = new material();
 	wallForniture_m->texture = wallForniture_tex;
 	wallForniture_m->ka = white;
@@ -445,21 +459,23 @@ int main(int argc, char* argv[])
 	
 	mesh* wallLamp2 = new mesh("models/lampadaMuro2.obj", "models/");
 	auto wallLamp_ptr2 = make_shared<instance>(wallLamp2, m_vetro_in_aria);
-	wallLamp_ptr2->scale(4.0, 4.0, 4.0);
+	wallLamp_ptr2->scale(3.8, 3.8, 3.8);
 	wallLamp_ptr2->rotate_y(-90.0f);
 	/*wallLamp_ptr->translate(0.5f, 0.0f, 0.7f);*/
-	wallLamp_ptr2->translate(50.5f, 0.0f, -15.7f); 
+	wallLamp_ptr2->translate(50.0f, 0.0f, -10.0f); 
 	wallLamp_ptr2->InOmbrabile = true;
 	wallLamp_ptr2->FaOmbra = false;
 	world.add(wallLamp_ptr2);
 
 	camera cam;
-	//vicino di fronte guarda dritto
+	//vicino di fronte, guarda dritto
 	/*cam.lookfrom = point3(0.0, -14.0, 35.0);*/
-	//lontano di fronte guarda centro
+	//lontano di fronte, guarda centro
 	cam.lookfrom = point3(0.0, 0.0, 75.0);
 	cam.lookat = point3(0.0f, -10.0f, -0.15f);
-
+	//guarda tv
+	/*cam.lookfrom = point3(-30.0, -6.0, 20.0);
+	cam.lookat = point3(-40.0f, -6.0f, -0.15f);*/
 
 	cam.aspect_ratio = 16.0f / 9.0f;
 	cam.image_width = 1500; // 1280;
