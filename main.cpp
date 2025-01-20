@@ -16,7 +16,7 @@
 #include "camera.h"
 #include "color.h"
 #include "texture.h"
-#include "plane.h"
+//#include "plane.h"
 #include <cstdio>
 #include <vector>
 #include "spline.h"
@@ -66,20 +66,25 @@ int main(int argc, char* argv[])
 	hittable_list world;
 	list_light worldlight;
 
-	//luce1 
+	//luce1 da sinistra avanti (simula una luce proveniente dall'esterno)
 	point3 light_position(-16.0, 3.0, 30.0);
 	shared_ptr<point_light> punto = make_shared<point_light>(light_position, black, darkgray, black);
 	worldlight.add(punto);
 
-
+	// luce2 da sopra (simula lampadario)
 	point3 light_position2(0.5f, 10.0f, 0.0f);
 	shared_ptr<point_light> punto2 = make_shared<point_light>(light_position2, black, darkgray, black);
-	worldlight.add(punto2);
+	//worldlight.add(punto2);
 
 	shared_ptr<diffuse_light> diff = make_shared<diffuse_light>(vec3(-10.0, 50.0, 60.0), darkgray, white, black);
 	worldlight.add(diff);
 	shared_ptr<diffuse_light> diff2 = make_shared<diffuse_light>(vec3(10.0, 50.0, 60.0), darkgray, white, black);
 	worldlight.add(diff2);
+
+	// imposto che tutte le luci provino ad usare la texture (dove presente) per il colore ambientale
+	for (int i = 0; i < worldlight.size; i++) {
+		worldlight.lights[i]->ambTex = true;
+	}
 
 	
 	// materiale per le superfici che dentro sono in vetro e fuori sono circondate da aria
@@ -349,6 +354,10 @@ int main(int argc, char* argv[])
 	mesh* stalla = new mesh("models/stalla.obj", "models/");
 	auto instance_ptrStalla = make_shared<instance>(stalla, m_vetro_in_aria);
 	instance_ptrStalla->scale(0.75, 0.7, 0.7);
+
+	instance_ptrStalla->scale(1.5, 1.6, 2.0);
+	instance_ptrStalla->translate(-7.0f, 5.4f, 5.0f);
+
 	/*instance_ptrStalla->translate(0.5f, 0.0f, 0.7f);*/
 	instance_ptrStalla->translate(0.5f, -10.4f, 0.7f);
 	instance_ptrStalla->InOmbrabile = true;
@@ -361,6 +370,7 @@ int main(int argc, char* argv[])
 	library_m->texture = library_tex;
 	library_m->ka = white;
 	library_m->ks = white;
+	library_m->alpha = 70;
 	auto library_ptr = make_shared<instance>(library, library_m);
 	library_ptr->scale(3.8f, 3.8f, 3.8f);
 	library_ptr->rotate_y(-90.0f);
@@ -375,6 +385,7 @@ int main(int argc, char* argv[])
 	chair_m->texture = chair_tex;
 	chair_m->ka = white;
 	chair_m->ks = white;
+	chair_m->alpha = 70;
 	auto chair_ptr = make_shared<instance>(chair, chair_m);
 	chair_ptr->scale(0.15f, 0.15f, 0.15f);
 	chair_ptr->rotate_y(-150.0f);
@@ -389,10 +400,13 @@ int main(int argc, char* argv[])
 	tv_m->texture = tv_tex;
 	tv_m->ka = black;
 	tv_m->ks = white;
+	tv_m->alpha = 150;
 	auto tv_ptr = make_shared<instance>(tv, tv_m);
+	tv_ptr->rotate_y(-20.0f);
 	tv_ptr->scale(12.0, 12.0, 12.0);
 	tv_ptr->translate(-47.5f, -8.7f, -34.0f);
 	tv_ptr->rotate_y(20.0f);
+	tv_ptr->translate(80.0f, 0.0f, -5.0f);
 	tv_ptr->InOmbrabile = true;
 	tv_ptr->FaOmbra = true;
 	world.add(tv_ptr);
@@ -403,10 +417,13 @@ int main(int argc, char* argv[])
 	material* sideTableNativity_m = new material();
 	sideTableNativity_m->texture = sideTableNativity_tex;
 	sideTableNativity_m->ka = white;
-	sideTableNativity_m->ks = black;
+	sideTableNativity_m->ks = lightgray;
+	sideTableNativity_m->alpha = 150;
 	auto sideTableNativity_ptr = make_shared<instance>(sideTableNativity, sideTableNativity_m);
+	sideTableNativity_ptr->scale(1.5, 1.6, 2.0);
 	sideTableNativity_ptr->scale(2.2, 2.2, 2.2);
 	sideTableNativity_ptr->translate(-6.0f, -16.1f, 3.0f);
+	sideTableNativity_ptr->translate(-7.0f, 1.88f, 5.0f);
 	sideTableNativity_ptr->InOmbrabile = true;
 	sideTableNativity_ptr->FaOmbra = true;
 	world.add(sideTableNativity_ptr);
@@ -418,25 +435,12 @@ int main(int argc, char* argv[])
 	room_m->ka = white;
 	room_m->ks = black;
 	auto room_ptr = make_shared<instance>(room, room_m);
-	room_ptr->scale(3.0, 3.0, 3.0);
+	room_ptr->scale(1.9, 3.0, 3.0);
+	room_ptr->translate(20.0f, 0.0f, 0.0f);
 	room_ptr->translate(-6.0f, -14.5f, 15.0f);
 	room_ptr->InOmbrabile = true;
 	room_ptr->FaOmbra = true;
 	world.add(room_ptr);
-
-	mesh* wallForniture = new mesh("models/mobiliMuro.obj", "models/");
-	texture* wallForniture_tex = new image_texture("models/legnoGiallo.jpg");
-	material* wallForniture_m = new material();
-	wallForniture_m->texture = wallForniture_tex;
-	wallForniture_m->ka = white;
-	wallForniture_m->ks = black;
-	auto wallForniture_ptr = make_shared<instance>(wallForniture, wallForniture_m);
-	wallForniture_ptr->scale(0.50, 0.50, 0.50);
-	wallForniture_ptr->rotate_y(270.0f);
-	wallForniture_ptr->translate(-73.0f, -28.5f, -30.0f);
-	wallForniture_ptr->InOmbrabile = true;
-	wallForniture_ptr->FaOmbra = true;
-	world.add(wallForniture_ptr);
 
 	mesh* chandelier = new mesh("models/chandelier.obj", "models/");
 	auto instance_ptrChandelier = make_shared<instance>(chandelier, m_vetro_in_aria);
@@ -446,6 +450,13 @@ int main(int argc, char* argv[])
 	instance_ptrChandelier->InOmbrabile = true;
 	instance_ptrChandelier->FaOmbra = false;
 	world.add(instance_ptrChandelier);
+
+	// luci del andelabro
+	// posizione nel sistema relativo
+	point3 light_position_chandelier(0.0, 0.2, 0.0);
+	light_position_chandelier = multiply(instance_ptrChandelier->getCMat(), light_position_chandelier);
+	shared_ptr<point_light> punto_chandelier = make_shared<point_light>(light_position_chandelier, darkyellow, darkyellow, darkyellow);
+	worldlight.add(punto_chandelier);
 
 	//mesh* wallLamp = new mesh("models/lampadaMuro.obj", "models/");
 	//auto wallLamp_ptr = make_shared<instance>(wallLamp, m_vetro_in_aria);
@@ -462,7 +473,7 @@ int main(int argc, char* argv[])
 	wallLamp_ptr2->scale(3.8, 3.8, 3.8);
 	wallLamp_ptr2->rotate_y(-90.0f);
 	/*wallLamp_ptr->translate(0.5f, 0.0f, 0.7f);*/
-	wallLamp_ptr2->translate(50.0f, 0.0f, -10.0f); 
+	wallLamp_ptr2->translate(50.0f, 0.0f, -10.0f);
 	wallLamp_ptr2->InOmbrabile = true;
 	wallLamp_ptr2->FaOmbra = false;
 	world.add(wallLamp_ptr2);
@@ -474,8 +485,14 @@ int main(int argc, char* argv[])
 	cam.lookfrom = point3(0.0, 0.0, 75.0);
 	cam.lookat = point3(0.0f, -10.0f, -0.15f);
 	//guarda tv
-	/*cam.lookfrom = point3(-30.0, -6.0, 20.0);
-	cam.lookat = point3(-40.0f, -6.0f, -0.15f);*/
+	/*cam.lookfrom = point3(35.0, 0.0, 3.0);
+	cam.lookat = point3(35.0f, 0.0f, -0.15f);*/
+	//guarda lampada
+	/*cam.lookfrom = point3(47.0, 0.0, 40.0);
+	cam.lookat = point3(47.0f, 0.0f, -0.15f);*/
+	//guarda tavolino
+	/*cam.lookfrom = point3(0.0, -8.0, 40.0);
+	cam.lookat = point3(0.0f, -15.0f, -0.15f);*/
 
 	cam.aspect_ratio = 16.0f / 9.0f;
 	cam.image_width = 1500; // 1280;

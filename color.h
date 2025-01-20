@@ -29,5 +29,6 @@ color cyan = color(0.0f, 1.0f, 1.0f);
 color brown = color(0.60f, 0.40f, 0.12f);
 color orange = color(0.95f, 0.55f, 0.14f);
 color yellow = color(1.0f, 1.0f, 0.0f);
+color darkyellow = color(0.25f, 0.25f, 0.0f);
 
 #endif
