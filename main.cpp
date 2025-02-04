@@ -14,7 +14,6 @@
 #include "mesh.h"
 #include "raster.h"
 #include "camera.h"
-#include "color.h"
 #include "texture.h"
 //#include "plane.h"
 #include <cstdio>
@@ -66,15 +65,15 @@ int main(int argc, char* argv[])
 	hittable_list world;
 	list_light worldlight;
 
-	//luce1 da sinistra avanti (simula una luce proveniente dall'esterno)
-	point3 light_position(-16.0, 3.0, 30.0);
-	shared_ptr<point_light> punto = make_shared<point_light>(light_position, black, darkgray, black);
+	//luce1 da sinistra avanti (simula lampada a muro)
+	point3 light_position(40.5, 10.0, -2.5);
+	shared_ptr<point_light> punto = make_shared<point_light>(light_position, black, darkgray, darkgray);
 	worldlight.add(punto);
 
 	// luce2 da sopra (simula lampadario)
-	point3 light_position2(0.5f, 10.0f, 0.0f);
-	shared_ptr<point_light> punto2 = make_shared<point_light>(light_position2, black, darkgray, black);
-	//worldlight.add(punto2);
+	point3 light_position2(0.5f, 20.0f, 0.0f);
+	shared_ptr<point_light> punto2 = make_shared<point_light>(light_position2, black, darkgray, darkgray);
+	worldlight.add(punto2);
 
 	shared_ptr<diffuse_light> diff = make_shared<diffuse_light>(vec3(-10.0, 50.0, 60.0), darkgray, white, black);
 	worldlight.add(diff);
@@ -86,192 +85,170 @@ int main(int argc, char* argv[])
 		worldlight.lights[i]->ambTex = true;
 	}
 
-	
+	//MATERIALI
+
+	// Vetro Marrone
 	// materiale per le superfici che dentro sono in vetro e fuori sono circondate da aria
-	// inoltre questo vetro è colorato di marrone/giallo (vedi c_in)
+	// inoltre questo vetro è colorato di marrone (vedi c_in)
 	dielectric* m_vetro_marrone_in_aria = new dielectric();
-
-	//consideriamo oggetti di vetro senza texture
+	// consideriamo oggetti di vetro senza texture
 	m_vetro_marrone_in_aria->texture = NULL;
-
-	// colori per l'illuminazione di phong
-	m_vetro_marrone_in_aria->kd = color(1.0, 1.0, 1.0) / 1.1; // /10.0;
-	m_vetro_marrone_in_aria->ka = color(1.0, 1.0, 1.0) / 1.1; // / 10.0;
+	// colori per l'illuminazione di Phong
+	m_vetro_marrone_in_aria->kd = color(1.0, 1.0, 1.0) / 1.1;
+	m_vetro_marrone_in_aria->ka = color(1.0, 1.0, 1.0) / 1.1;
 	m_vetro_marrone_in_aria->ks = color(1.0, 1.0, 1.0);
-	// (di solito kd e ka possono essere diminuiti per dare maggiore risalto ai giochi di
-	//  riflessione e rifrazione, ad esempio se ci fosse uno sfondo o molta luce li ridurrei)
-	
-	// definiamo il coefficiente di lucentezza (come per i metalli sarà grande)
+	// definiamo il coefficiente di lucentezza
 	m_vetro_marrone_in_aria->alpha = 180.0;
-
-	// definiamo gli indici di rifrazione all'interno ed all'esterno del materiale 
-	m_vetro_marrone_in_aria->eta_in = 1.51; // vetro
-	m_vetro_marrone_in_aria->eta_out = 1.0; // vuoto
-
+	// definiamo gli indici di rifrazione
+	m_vetro_marrone_in_aria->eta_in = 1.51;
+	m_vetro_marrone_in_aria->eta_out = 1.0;
 	// definisco i colori di filtraggio
-	m_vetro_marrone_in_aria->c_out = color(1.0, 1.0, 1.0); // bianco perchè l'aria non modifica il colore
-	m_vetro_marrone_in_aria->c_in = color(0.65, 0.45, 0.0);
-	
+	m_vetro_marrone_in_aria->c_out = color(1.0, 1.0, 1.0);
+	m_vetro_marrone_in_aria->c_in = color(139.0 / 255.0, 69.0 / 255.0, 19.0 / 255.0);
 
+	//Vetro verde
+	// materiale per le superfici che dentro sono in vetro e fuori sono circondate da aria
+	// inoltre questo vetro è colorato di verde (vedi c_in)
+	dielectric* m_vetro_verde_in_aria = new dielectric();
+	// consideriamo oggetti di vetro senza texture
+	m_vetro_verde_in_aria->texture = NULL;
+	// colori per l'illuminazione di Phong
+	m_vetro_verde_in_aria->kd = color(1.0, 1.0, 1.0) / 1.1;
+	m_vetro_verde_in_aria->ka = color(1.0, 1.0, 1.0) / 1.1;
+	m_vetro_verde_in_aria->ks = color(1.0, 1.0, 1.0);
+	// definiamo il coefficiente di lucentezza
+	m_vetro_verde_in_aria->alpha = 180.0;
+	// definiamo gli indici di rifrazione
+	m_vetro_verde_in_aria->eta_in = 1.51;
+	m_vetro_verde_in_aria->eta_out = 1.0;
+	// definisco i colori di filtraggio
+	m_vetro_verde_in_aria->c_out = color(1.0, 1.0, 1.0);
+	m_vetro_verde_in_aria->c_in = color(34.0 / 255.0, 139.0 / 255.0, 34.0 / 255.0);
 
+	//Vetro viola
+	// materiale per le superfici che dentro sono in vetro e fuori sono circondate da aria
+	// inoltre questo vetro è colorato di viola (vedi c_in)
+	dielectric* m_vetro_viola_in_aria = new dielectric();
+	// consideriamo oggetti di vetro senza texture
+	m_vetro_viola_in_aria->texture = NULL;
+	// colori per l'illuminazione di Phong
+	m_vetro_viola_in_aria->kd = color(1.0, 1.0, 1.0) / 1.1;
+	m_vetro_viola_in_aria->ka = color(1.0, 1.0, 1.0) / 1.1;
+	m_vetro_viola_in_aria->ks = color(1.0, 1.0, 1.0);
+	// definiamo il coefficiente di lucentezza
+	m_vetro_viola_in_aria->alpha = 180.0;
+	// definiamo gli indici di rifrazione
+	m_vetro_viola_in_aria->eta_in = 1.51;
+	m_vetro_viola_in_aria->eta_out = 1.0;
+	// definisco i colori di filtraggio
+	m_vetro_viola_in_aria->c_out = color(1.0, 1.0, 1.0);
+	m_vetro_viola_in_aria->c_in = color(138.0 / 255.0, 43.0 / 255.0, 226.0 / 255.0);
+
+	//Vetro celeste
 	// materiale per le superfici che dentro sono in vetro e fuori sono circondate da aria
 	// inoltre questo vetro è colorato di celeste (vedi c_in)
 	dielectric* m_vetro_caleste_in_aria = new dielectric();
-
 	//consideriamo oggetti di vetro senza texture
 	m_vetro_caleste_in_aria->texture = NULL;
-
 	// colori per l'illuminazione di phong
 	m_vetro_caleste_in_aria->kd = color(1.0, 1.0, 1.0) / 1.1;
 	m_vetro_caleste_in_aria->ka = color(1.0, 1.0, 1.0) / 1.1;
 	m_vetro_caleste_in_aria->ks = color(1.0, 1.0, 1.0);
 	// (di solito kd e ka possono essere diminuiti per dare maggiore risalto ai giochi di
 	//  riflessione e rifrazione, ad esempio se ci fosse uno sfondo o molta luce li ridurrei)
-
 	// definiamo il coefficiente di lucentezza (come per i metalli sarà grande)
 	m_vetro_caleste_in_aria->alpha = 180.0;
-
 	// definiamo gli indici di rifrazione all'interno ed all'esterno del materiale 
 	m_vetro_caleste_in_aria->eta_in = 1.51; // vetro
 	m_vetro_caleste_in_aria->eta_out = 1.0; // vuoto
-
 	// definisco i colori di filtraggio
 	m_vetro_caleste_in_aria->c_out = color(1.0, 1.0, 1.0); // bianco perchè l'aria non modifica il colore
-	m_vetro_caleste_in_aria->c_in = color(153.0/255.0, 203.0/255.0, 1.0);
+	m_vetro_caleste_in_aria->c_in = color(153.0 / 255.0, 203.0 / 255.0, 1.0);
 
-
-
+	//Vetro rosa
 	// materiale per le superfici che dentro sono in vetro e fuori sono circondate da aria
 	// inoltre questo vetro è colorato di rosa (vedi c_in)
 	dielectric* m_vetro_rosa_in_aria = new dielectric();
-
 	//consideriamo oggetti di vetro senza texture
 	m_vetro_rosa_in_aria->texture = NULL;
-
 	// colori per l'illuminazione di phong
 	m_vetro_rosa_in_aria->kd = color(1.0, 1.0, 1.0) / 1.1;
 	m_vetro_rosa_in_aria->ka = color(1.0, 1.0, 1.0) / 1.1;
 	m_vetro_rosa_in_aria->ks = color(1.0, 1.0, 1.0);
 	// (di solito kd e ka possono essere diminuiti per dare maggiore risalto ai giochi di
 	//  riflessione e rifrazione, ad esempio se ci fosse uno sfondo o molta luce li ridurrei)
-
 	// definiamo il coefficiente di lucentezza (come per i metalli sarà grande)
 	m_vetro_rosa_in_aria->alpha = 180.0;
-
 	// definiamo gli indici di rifrazione all'interno ed all'esterno del materiale 
 	m_vetro_rosa_in_aria->eta_in = 1.51; // vetro
 	m_vetro_rosa_in_aria->eta_out = 1.0; // vuoto
-
 	// definisco i colori di filtraggio
 	m_vetro_rosa_in_aria->c_out = color(1.0, 1.0, 1.0); // bianco perchè l'aria non modifica il colore
 	m_vetro_rosa_in_aria->c_in = color(pow(198.0 / 255.0, 3.0), pow(146.0 / 255.0, 3.0), pow(148.0 / 255.0, 3.0));
 
-
-
+	//Vetro oro
 	// materiale per le superfici che dentro sono in vetro e fuori sono circondate da aria
 	// inoltre questo vetro è color oro/giallo (vedi c_in)
 	dielectric* m_vetro_oro_in_aria = new dielectric();
-
 	//consideriamo oggetti di vetro senza texture
 	m_vetro_oro_in_aria->texture = NULL;
-
 	// colori per l'illuminazione di phong
 	m_vetro_oro_in_aria->kd = color(1.0, 1.0, 1.0) / 1.1;
 	m_vetro_oro_in_aria->ka = color(1.0, 1.0, 1.0) / 1.1;
 	m_vetro_oro_in_aria->ks = color(1.0, 1.0, 1.0);
 	// (di solito kd e ka possono essere diminuiti per dare maggiore risalto ai giochi di
 	//  riflessione e rifrazione, ad esempio se ci fosse uno sfondo o molta luce li ridurrei)
-
 	// definiamo il coefficiente di lucentezza (come per i metalli sarà grande)
 	m_vetro_oro_in_aria->alpha = 180.0;
-
 	// definiamo gli indici di rifrazione all'interno ed all'esterno del materiale 
 	m_vetro_oro_in_aria->eta_in = 1.51; // vetro
 	m_vetro_oro_in_aria->eta_out = 1.0; // vuoto
-
 	// definisco i colori di filtraggio
 	m_vetro_oro_in_aria->c_out = color(1.0, 1.0, 1.0); // bianco perchè l'aria non modifica il colore
 	m_vetro_oro_in_aria->c_in = color(0.65, 0.45, 0.0); //= color(205.0 / 255.0, 164.0 / 255.0, 52.0 / 255.0);
 
-
-
+	//Vetro grigio
 	// materiale per le superfici che dentro sono in vetro e fuori sono circondate da aria
 	// inoltre questo vetro è color grigio (vedi c_in)
 	dielectric* m_vetro_grigio_in_aria = new dielectric();
-
 	//consideriamo oggetti di vetro senza texture
 	m_vetro_grigio_in_aria->texture = NULL;
-
 	// colori per l'illuminazione di phong
 	m_vetro_grigio_in_aria->kd = color(1.0, 1.0, 1.0) / 1.1;
 	m_vetro_grigio_in_aria->ka = color(1.0, 1.0, 1.0) / 1.1;
 	m_vetro_grigio_in_aria->ks = color(1.0, 1.0, 1.0);
 	// (di solito kd e ka possono essere diminuiti per dare maggiore risalto ai giochi di
 	//  riflessione e rifrazione, ad esempio se ci fosse uno sfondo o molta luce li ridurrei)
-
 	// definiamo il coefficiente di lucentezza (come per i metalli sarà grande)
 	m_vetro_grigio_in_aria->alpha = 180.0;
-
 	// definiamo gli indici di rifrazione all'interno ed all'esterno del materiale 
 	m_vetro_grigio_in_aria->eta_in = 1.51; // vetro
 	m_vetro_grigio_in_aria->eta_out = 1.0; // vuoto
-
 	// definisco i colori di filtraggio
 	m_vetro_grigio_in_aria->c_out = color(1.0, 1.0, 1.0); // bianco perchè l'aria non modifica il colore
 	m_vetro_grigio_in_aria->c_in = color(120.0 / 255.0, 120.0 / 255.0, 120.0 / 255.0);
 
-
-
+	//Vetro normale
 	// materiale per le superfici che dentro sono in vetro e fuori sono circondate da aria
 	// inoltre questo vetro non ha colore (vedi c_in)
 	dielectric* m_vetro_in_aria = new dielectric();
-
 	//consideriamo oggetti di vetro senza texture
 	m_vetro_in_aria->texture = NULL;
-
 	// colori per l'illuminazione di phong
 	m_vetro_in_aria->kd = color(1.0, 1.0, 1.0) / 1.7;
 	m_vetro_in_aria->ka = color(1.0, 1.0, 1.0) / 1.7;
 	m_vetro_in_aria->ks = color(1.0, 1.0, 1.0);
 	// (di solito kd e ka possono essere diminuiti per dare maggiore risalto ai giochi di
 	//  riflessione e rifrazione, ad esempio se ci fosse uno sfondo o molta luce li ridurrei)
-
 	// definiamo il coefficiente di lucentezza (come per i metalli sarà grande)
 	m_vetro_in_aria->alpha = 180.0;
-
 	// definiamo gli indici di rifrazione all'interno ed all'esterno del materiale 
 	m_vetro_in_aria->eta_in = 1.51; // vetro
 	m_vetro_in_aria->eta_out = 1.0; // vuoto
-
 	// definisco i colori di filtraggio
 	m_vetro_in_aria->c_out = color(1.0, 1.0, 1.0); // bianco perchè l'aria non modifica il colore
 	m_vetro_in_aria->c_in = color(0.75, 0.75, 0.75);
 	
-
-	/*mesh* gatto = new mesh("models/cat.obj", "models/");
-	auto instance_ptrG = make_shared<instance>(gatto, m_vetro_marrone_in_aria);
-	instance_ptrG->rotate_x(-90.0f);
-	instance_ptrG->translate(0.0f, -17.0f, 0.0f);
-	instance_ptrG->scale(1.0 / 10.0f, 1.0 / 10.0f, 1.0 / 10.0f);
-	instance_ptrG->InOmbrabile = true;
-	instance_ptrG->FaOmbra = true;
-	world.add(instance_ptrG);*/
-
-	/*mesh* con = new mesh("models/bunny.obj", "models/");
-	auto instance_ptrG = make_shared<instance>(con, m_vetro_marrone_in_aria);
-	instance_ptrG->translate(0.0f, -0.5f, 0.0f);
-	instance_ptrG->scale(3.0, 3.0, 3.0);
-	instance_ptrG->InOmbrabile = true;
-	instance_ptrG->FaOmbra = true;
-	world.add(instance_ptrG);*/
-
-	/*mesh* con = new mesh("models/bunny2.obj", "models/");
-	auto instance_ptrG = make_shared<instance>(con, m_vetro_marrone_in_aria);
-	instance_ptrG->translate(0.0f, -0.07f, 0.0f);
-	instance_ptrG->scale(30.0f, 30.0f, 30.0f);
-	instance_ptrG->InOmbrabile = true;
-	instance_ptrG->FaOmbra = true;
-	world.add(instance_ptrG);*/
 
 	//NATIVITA'
 	//mesh* gesu = new mesh("models/Gesu con mangiatoia.obj", "models/");
@@ -351,18 +328,52 @@ int main(int argc, char* argv[])
 	//instance_ptrAsinello->FaOmbra = true;
 	//world.add(instance_ptrAsinello);
 
+	/*mesh* stalla = new mesh("models/stalla.obj", "models/");
+	auto instance_ptrStalla = make_shared<instance>(stalla, m_vetro_in_aria);
+	instance_ptrStalla->scale(0.75, 0.7, 0.7);
+	instance_ptrStalla->scale(1.5, 1.6, 2.0);
+	instance_ptrStalla->translate(-7.0f, 5.4f, 5.0f);
+	instance_ptrStalla->translate(0.5f, -10.4f, -7.7f);
+	instance_ptrStalla->InOmbrabile = true;
+	instance_ptrStalla->FaOmbra = true;
+	world.add(instance_ptrStalla);*/
+
 	mesh* stalla = new mesh("models/stalla.obj", "models/");
 	auto instance_ptrStalla = make_shared<instance>(stalla, m_vetro_in_aria);
 	instance_ptrStalla->scale(0.75, 0.7, 0.7);
-
 	instance_ptrStalla->scale(1.5, 1.6, 2.0);
 	instance_ptrStalla->translate(-7.0f, 5.4f, 5.0f);
-
-	/*instance_ptrStalla->translate(0.5f, 0.0f, 0.7f);*/
-	instance_ptrStalla->translate(0.5f, -10.4f, 0.7f);
+	instance_ptrStalla->translate(5.0f, -10.4f, -9.7f);
+	instance_ptrStalla->rotate_y(17.0);
 	instance_ptrStalla->InOmbrabile = true;
 	instance_ptrStalla->FaOmbra = true;
 	world.add(instance_ptrStalla);
+
+	mesh* palms = new mesh("models/palmsBase.obj", "models/");
+	//sinistra
+	auto instance_ptrPalms = make_shared<instance>(palms, m_vetro_verde_in_aria);
+	instance_ptrPalms->scale(8.5, 8.5, 8.5);
+	instance_ptrPalms->translate(-16.0f, -10.0f, -9.0f);
+	instance_ptrPalms->InOmbrabile = true;
+	instance_ptrPalms->FaOmbra = true;
+	world.add(instance_ptrPalms);
+	//destra
+	auto instance2_ptrPalms = make_shared<instance>(palms, m_vetro_verde_in_aria);
+	instance2_ptrPalms->scale(8.5, 8.5, 8.5);
+	instance2_ptrPalms->rotate_y(90.0);
+	instance2_ptrPalms->translate(6.5f, -10.0f, -5.0f);
+	instance2_ptrPalms->InOmbrabile = true;
+	instance2_ptrPalms->FaOmbra = true;
+	world.add(instance2_ptrPalms);
+
+	mesh* threeWise = new mesh("models/threeNegros.obj", "models/");
+	auto instance_ptrWise = make_shared<instance>(threeWise, m_vetro_viola_in_aria);
+	instance_ptrWise->scale(3.5, 3.5, 3.5);
+	instance_ptrWise->translate(2.5f, -8.5f, 4.0f);
+	instance_ptrWise->rotate_y(0.0);
+	instance_ptrWise->InOmbrabile = true;
+	instance_ptrWise->FaOmbra = true;
+	world.add(instance_ptrWise);
 
 	mesh* library = new mesh("models/library.obj", "models/");
 	texture* library_tex = new image_texture("models/BaseColor.jpg");
@@ -593,7 +604,7 @@ int main(int argc, char* argv[])
 	sideTableNativity_ptr->scale(1.5, 1.6, 2.0);
 	sideTableNativity_ptr->scale(2.2, 2.2, 2.2);
 	sideTableNativity_ptr->translate(-6.0f, -16.1f, 3.0f);
-	sideTableNativity_ptr->translate(-7.0f, 1.88f, 5.0f);
+	sideTableNativity_ptr->translate(-7.0f, 1.88f, -2.0f);
 	sideTableNativity_ptr->InOmbrabile = true;
 	sideTableNativity_ptr->FaOmbra = true;
 	world.add(sideTableNativity_ptr);
@@ -621,12 +632,12 @@ int main(int argc, char* argv[])
 	instance_ptrChandelier->FaOmbra = false;
 	world.add(instance_ptrChandelier);
 
-	// luci del andelabro
+	// luci del candelabro
 	// posizione nel sistema relativo
-	point3 light_position_chandelier(0.0, 0.2, 0.0);
+	/*point3 light_position_chandelier(0.0, 0.2, 0.0);
 	light_position_chandelier = multiply(instance_ptrChandelier->getCMat(), light_position_chandelier);
 	shared_ptr<point_light> punto_chandelier = make_shared<point_light>(light_position_chandelier, darkyellow, darkyellow, darkyellow);
-	worldlight.add(punto_chandelier);
+	worldlight.add(punto_chandelier);*/
 
 	mesh* wallLamp2 = new mesh("models/lampadaMuro2.obj", "models/");
 	auto wallLamp_ptr2 = make_shared<instance>(wallLamp2, m_vetro_in_aria);
@@ -642,9 +653,15 @@ int main(int argc, char* argv[])
 	//libreria
 	/*cam.lookfrom = point3(20.0, 5.0, 20.0);
 	cam.lookat = point3(20.0f, 0.0f, -20.f);*/
+
 	//lontano di fronte, guarda centro
-	cam.lookfrom = point3(0.0, 0.0, 55.0);
-	cam.lookat = point3(10.0f, 0.0f, -0.15f);
+	/*cam.lookfrom = point3(0.0, 0.0, 55.0);
+	cam.lookat = point3(10.0f, 0.0f, -0.15f);*/
+
+	//guarda nativita
+	cam.lookfrom = point3(0.0, -5.0, 30.0);
+	cam.lookat = point3(0.0f, -5.0f, -0.15f);
+
 	//guarda lampada
 	/*cam.lookfrom = point3(47.0, 0.0, 40.0);
 	cam.lookat = point3(47.0f, 0.0f, -0.15f);*/

@@ -205,6 +205,8 @@ public:
 				inverse_matrix(i, j) = A(i, j);
 	}
 
+
+
 private:
 	mat4			inverse_matrix;		// inverse transformation matrix
 	mat4			current_matrix; 	// current transformation matrix

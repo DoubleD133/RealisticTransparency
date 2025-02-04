@@ -26,5 +26,7 @@ public:
 			cos_angolo_critico_out = sqrt(A);
 	}
 
+
+
 	color shading(const ray& r, light& light, hit_record& hr, point3& camera_pos, hittable_list& world, int depth) override;
 };
