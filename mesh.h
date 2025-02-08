@@ -8,6 +8,12 @@
 #include "ray.h"
 #include "hittable.h"
 #include "interval.h"
+
+#include <cmath>
+#include "SDL.h"
+#include "SDL_image.h"
+#include "raster.h"
+
 #define TINYOBJLOADER_IMPLEMENTATION
 #include "tiny_obj_loader.h"
 #define TINYBVH_IMPLEMENTATION
@@ -33,19 +39,48 @@ public:
 	tinybvh::BVH bvh;
 
 	bool areNormals = false;
+	bool areImgNormals = false;
+	SDL_Surface* surface;
+	int imageWidth, imageHeight;
 	bool areTex = false;
 
 	mesh(const char* filename, const char* basepath = NULL, bool triangulate = true) {
 		load_mesh(filename, basepath, triangulate);
 	};
 
+	void loadImgNorm(const char* filename);
+
 	bool load_mesh(const char* filename, const char* basepath, bool triangulate);
+	vec3 value(float u, float v) const;
 
 	virtual bool hit(const ray& r, interval ray_t, hit_record& rec) const;
 	virtual bool hit_shadow(const ray& r, interval ray_t) const;
 
 	virtual bool bounding_box(aabb& box) const;
 };
+
+void mesh::loadImgNorm(const char* filename) {
+	areImgNormals = true;
+	surface = loadTexture(filename, imageWidth, imageHeight);
+}
+
+vec3 mesh::value(float u, float v) const {
+
+	int i = (u) * float(imageWidth);
+	int j = (1.0f - v) * imageHeight - 0.001f;
+	if (i < 0) i = 0;
+	if (j < 0) j = 0;
+	if (i > imageWidth - 1) i = imageWidth - 1;
+	if (j > imageHeight - 1) j = imageHeight - 1;
+
+	Uint32 value = getpixel(surface, i, j);
+
+	float red = float((value >> 16) & 0xff) / 255.0f;
+	float green = float((value >> 8) & 0xff) / 255.0f;
+	float blue = float(value & 0xff) / 255.0f;
+
+	return vec3(blue, green, red);
+}
 
 bool mesh::bounding_box(aabb& box) const {
 	box = aabb_mesh;
@@ -373,7 +408,12 @@ bool mesh::hit(const ray& ray, interval ray_t, hit_record& rec) const
 			point2 uv = uv0 * bary[0] + uv1 * bary[1] + uv2 * bary[2];
 			rec.u = uv.x;
 			rec.v = uv.y;
+
+			if (areImgNormals) {
+				rec.normal = value(rec.u, rec.v);
+			}
 		}
+
 
 
 		/*if (triangle_intersection(ray, ray_t.min, closest_so_far, temp_rec, v0, v1, v2, u, v)) {
@@ -453,6 +493,10 @@ bool mesh::hit(const ray& ray, interval ray_t, hit_record& rec) const
 				point2 uv = uv0 * bary[0] + uv1 * bary[1] + uv2 * bary[2];
 				rec.u = uv.x;
 				rec.v = uv.y;
+
+				if (areImgNormals) {
+					rec.normal = value(rec.u, rec.v);
+				}
 			}
 		}
 	}

@@ -66,13 +66,13 @@ int main(int argc, char* argv[])
 	list_light worldlight;
 
 	//luce1 da sinistra avanti (simula lampada a muro)
-	point3 light_position(40.5, 10.0, -2.5);
-	shared_ptr<point_light> punto = make_shared<point_light>(light_position, black, darkgray, darkgray);
+	point3 light_position(42.856, 12.54, -9.99999); // (40.5, 10.0, -2.5);
+	shared_ptr<point_light> punto = make_shared<point_light>(light_position, darkgray, darkgray, darkgray);
 	worldlight.add(punto);
 
 	// luce2 da sopra (simula lampadario)
-	point3 light_position2(0.5f, 20.0f, 0.0f);
-	shared_ptr<point_light> punto2 = make_shared<point_light>(light_position2, black, darkgray, darkgray);
+	point3 light_position2(0.5, 15.8, -14.5); // (0.5f, 20.0f, 0.0f);
+	shared_ptr<point_light> punto2 = make_shared<point_light>(light_position2, darkgray, darkgray, darkgray);
 	worldlight.add(punto2);
 
 	shared_ptr<diffuse_light> diff = make_shared<diffuse_light>(vec3(-10.0, 50.0, 60.0), darkgray, white, black);
@@ -113,8 +113,8 @@ int main(int argc, char* argv[])
 	// consideriamo oggetti di vetro senza texture
 	m_vetro_verde_in_aria->texture = NULL;
 	// colori per l'illuminazione di Phong
-	m_vetro_verde_in_aria->kd = color(1.0, 1.0, 1.0) / 1.1;
-	m_vetro_verde_in_aria->ka = color(1.0, 1.0, 1.0) / 1.1;
+	m_vetro_verde_in_aria->kd = color(1.0, 1.0, 1.0) / 1.8;
+	m_vetro_verde_in_aria->ka = color(1.0, 1.0, 1.0) / 1.8;
 	m_vetro_verde_in_aria->ks = color(1.0, 1.0, 1.0);
 	// definiamo il coefficiente di lucentezza
 	m_vetro_verde_in_aria->alpha = 180.0;
@@ -132,8 +132,8 @@ int main(int argc, char* argv[])
 	// consideriamo oggetti di vetro senza texture
 	m_vetro_viola_in_aria->texture = NULL;
 	// colori per l'illuminazione di Phong
-	m_vetro_viola_in_aria->kd = color(1.0, 1.0, 1.0) / 1.1;
-	m_vetro_viola_in_aria->ka = color(1.0, 1.0, 1.0) / 1.1;
+	m_vetro_viola_in_aria->kd = color(1.0, 1.0, 1.0) / 1.8;
+	m_vetro_viola_in_aria->ka = color(1.0, 1.0, 1.0) / 1.8;
 	m_vetro_viola_in_aria->ks = color(1.0, 1.0, 1.0);
 	// definiamo il coefficiente di lucentezza
 	m_vetro_viola_in_aria->alpha = 180.0;
@@ -249,84 +249,159 @@ int main(int argc, char* argv[])
 	m_vetro_in_aria->c_out = color(1.0, 1.0, 1.0); // bianco perchè l'aria non modifica il colore
 	m_vetro_in_aria->c_in = color(0.75, 0.75, 0.75);
 	
+	//Plastica trasparente in aria
+	// materiale per le superfici che dentro sono in plastica trasparente e fuori sono circondate da aria
+	// inoltre questo vetro non ha colore (vedi c_in)
+	dielectric* m_plastica_in_aria = new dielectric();
+	//consideriamo oggetti di vetro senza texture
+	m_plastica_in_aria->texture = NULL;
+	// colori per l'illuminazione di phong
+	m_plastica_in_aria->kd = color(1.0, 1.0, 1.0) / 1.7;
+	m_plastica_in_aria->ka = color(1.0, 1.0, 1.0) / 1.7;
+	m_plastica_in_aria->ks = color(1.0, 1.0, 1.0);
+	// (di solito kd e ka possono essere diminuiti per dare maggiore risalto ai giochi di
+	//  riflessione e rifrazione, ad esempio se ci fosse uno sfondo o molta luce li ridurrei)
+	// definiamo il coefficiente di lucentezza (come per i metalli sarà grande)
+	m_plastica_in_aria->alpha = 150.0;
+	// definiamo gli indici di rifrazione all'interno ed all'esterno del materiale 
+	m_plastica_in_aria->eta_in = 1.80; // plastica
+	m_plastica_in_aria->eta_out = 1.0; // vuoto
+	// definisco i colori di filtraggio
+	m_plastica_in_aria->c_out = color(1.0, 1.0, 1.0); // bianco perchè l'aria non modifica il colore
+	m_plastica_in_aria->c_in = color(1.0, 1.0, 1.0);
+
+	//Aria in plastica trasparente
+	// materiale per le superfici che dentro sono in aria e fuori sono circondate da plastica trasparente
+	// inoltre questo vetro non ha colore (vedi c_in)
+	dielectric* m_aria_in_plastica = new dielectric();
+	//consideriamo oggetti di vetro senza texture
+	m_aria_in_plastica->texture = NULL;
+	// colori per l'illuminazione di phong
+	m_aria_in_plastica->kd = color(1.0, 1.0, 1.0) / 1.7;
+	m_aria_in_plastica->ka = color(1.0, 1.0, 1.0) / 1.7;
+	m_aria_in_plastica->ks = color(1.0, 1.0, 1.0);
+	// (di solito kd e ka possono essere diminuiti per dare maggiore risalto ai giochi di
+	//  riflessione e rifrazione, ad esempio se ci fosse uno sfondo o molta luce li ridurrei)
+	// definiamo il coefficiente di lucentezza (come per i metalli sarà grande)
+	m_aria_in_plastica->alpha = 150.0;
+	// definiamo gli indici di rifrazione all'interno ed all'esterno del materiale 
+	m_aria_in_plastica->eta_in = 1.0; // vuoto
+	m_aria_in_plastica->eta_out = 1.80; // plastica
+	// definisco i colori di filtraggio
+	m_aria_in_plastica->c_out = color(1.0, 1.0, 1.0);
+	m_aria_in_plastica->c_in = color(1.0, 1.0, 1.0); // bianco perchè l'aria non modifica il colore
+
 
 	//NATIVITA'
-	//mesh* gesu = new mesh("models/Gesu con mangiatoia.obj", "models/");
-	//auto instance_ptrGesu = make_shared<instance>(gesu, m_vetro_oro_in_aria);
-	//// ingrandimento
-	//float scala = 2.0;
-	//instance_ptrGesu->translate(0.0f, 0.0f, -0.15f);
-	//instance_ptrGesu->scale(scala, scala, scala);
-	//instance_ptrGesu->translate(0.0f, 0.0f, scala * 0.15f);
 
-	//instance_ptrGesu->translate(0.0f, -0.5f, 0.0f);
-	//instance_ptrGesu->scale(6.0, 6.0, 6.0);
-	//instance_ptrGesu->InOmbrabile = true;
-	//instance_ptrGesu->FaOmbra = true;
-	//world.add(instance_ptrGesu);
+	mesh* gesu = new mesh("models/Gesu con mangiatoia.obj", "models/");
 
-	//mesh* madonna = new mesh("models/virginMary.obj", "models/");
-	//auto instance_ptrMadonna = make_shared<instance>(madonna, m_vetro_rosa_in_aria);
-	//// ingrandimento
-	//float scala2 = 1.75;
-	//instance_ptrMadonna->translate(0.1f, 0.0f, -0.05f);
-	//instance_ptrMadonna->scale(scala2, scala2, scala2);
-	//instance_ptrMadonna->translate( - scala2 / 10.0f, 0.0f, scala2 / 20.0f);
+	// creo un'istanza solo al fine di usarne le matrici
+	// NON SARà INSERITA NELLA SCENA
+	auto instance_di_supporto = make_shared<instance>(gesu, m_vetro_oro_in_aria);
+	instance_di_supporto->translate(-0.5f, 0.0f, -0.7f);
+	instance_di_supporto->scale(1.5, 1.6, 2.0);
+	instance_di_supporto->translate(-7.0f, 5.4f, 5.0f);
+	instance_di_supporto->translate(5.0f, -10.4f, -9.7f);
+	instance_di_supporto->rotate_y(17.0);/**/
+	// ho replicato le trasformazioni che vengono fatte alla stalla
+	// ora le applico a tutti i personaggi della natività
 
-	//instance_ptrMadonna->translate(-0.05f, -0.5f, 0.0f);
-	//instance_ptrMadonna->translate(0.0f, -0.0f, 0.12f);
-	//instance_ptrMadonna->scale(6.0, 6.0, 6.0);
-	//instance_ptrMadonna->InOmbrabile = true;
-	//instance_ptrMadonna->FaOmbra = true;
-	//world.add(instance_ptrMadonna);
+	auto instance_ptrGesu = make_shared<instance>(gesu, m_vetro_oro_in_aria);
+	// ingrandimento
+	float scala = 2.0;
+	instance_ptrGesu->translate(0.0f, 0.0f, -0.15f);
+	instance_ptrGesu->scale(scala, scala, scala);
+	instance_ptrGesu->translate(0.0f, 0.0f, scala * 0.15f);
 
-	//mesh* giuseppe = new mesh("models/Giuseppe.obj", "models/");
-	//auto instance_ptrGiuseppe = make_shared<instance>(giuseppe, m_vetro_caleste_in_aria);
-	//// ingrandimento
-	//float scala3 = 1.9;
-	//instance_ptrGiuseppe->translate(-0.11f, 0.0f, -0.05f);
-	//instance_ptrGiuseppe->scale(scala3, scala3, scala3);
-	//instance_ptrGiuseppe->rotate_y(0.0);
-	//instance_ptrGiuseppe->translate(scala3 * 0.11f, 0.0f, scala3 / 20.0f);
+	instance_ptrGesu->translate(0.0f, -0.5f, 0.0f);
+	instance_ptrGesu->scale(6.0, 6.0, 6.0);
 
-	////instance_ptrGiuseppe->translate(0.2f, -0.48f, 0.15f);
-	//instance_ptrGiuseppe->translate(0.07f, -0.48f, 0.15f);
-	//instance_ptrGiuseppe->translate(-0.07f, -0.0f, -0.20f);
-	//instance_ptrGiuseppe->scale(6.0, 6.0, 6.0);
-	//instance_ptrGiuseppe->InOmbrabile = true;
-	//instance_ptrGiuseppe->FaOmbra = true;
-	//world.add(instance_ptrGiuseppe);
+	instance_ptrGesu->setCMat(instance_di_supporto->getCMat()* instance_ptrGesu->getCMat());
+	instance_ptrGesu->setIMat(instance_ptrGesu->getIMat()* instance_di_supporto->getIMat());
 
-	//mesh* bue = new mesh("models/bue.obj", "models/");
-	//auto instance_ptrBue = make_shared<instance>(bue, m_vetro_grigio_in_aria);
-	//// ingrandimento
-	//instance_ptrBue->translate(-0.1f, 0.0f, 0.07f);
-	//instance_ptrBue->scale(scala2, scala2, scala2);
-	//instance_ptrBue->rotate_y(-15.0);
-	//instance_ptrBue->translate(scala2 * 0.1f, -0.0f, - scala2 * 0.07f);
+	instance_ptrGesu->InOmbrabile = true;
+	instance_ptrGesu->FaOmbra = true;
+	world.add(instance_ptrGesu);
 
-	//instance_ptrBue->translate(0.15f, -0.48f, -0.020f);
-	//instance_ptrBue->translate(0.0f, -0.0f, 0.4f);
-	//instance_ptrBue->scale(6.0, 6.0, 6.0);
-	//instance_ptrBue->InOmbrabile = true;
-	//instance_ptrBue->FaOmbra = true;
-	//world.add(instance_ptrBue);
+	mesh* madonna = new mesh("models/virginMary.obj", "models/");
+	auto instance_ptrMadonna = make_shared<instance>(madonna, m_vetro_rosa_in_aria);
+	// ingrandimento
+	float scala2 = 1.75;
+	instance_ptrMadonna->translate(0.1f, 0.0f, -0.05f);
+	instance_ptrMadonna->scale(scala2, scala2, scala2);
+	instance_ptrMadonna->translate( - scala2 / 10.0f, 0.0f, scala2 / 20.0f);
 
-	//mesh* asinello = new mesh("models/asinello.obj", "models/");
-	//auto instance_ptrAsinello = make_shared<instance>(asinello, m_vetro_grigio_in_aria);
-	//// ingrandimento
-	//instance_ptrAsinello->translate(0.11f, 0.0f, 0.07f);
-	//instance_ptrAsinello->scale(scala3, scala3, scala3);
-	//instance_ptrAsinello->rotate_y(-25.0);
-	//instance_ptrAsinello->translate(- scala3 * 0.11f, 0.0f, - scala3 * 0.07f);
+	instance_ptrMadonna->translate(-0.05f, -0.5f, 0.0f);
+	instance_ptrMadonna->translate(0.0f, -0.0f, 0.12f);
+	instance_ptrMadonna->scale(6.0, 6.0, 6.0);
 
-	//instance_ptrAsinello->translate(-0.1f, -0.5f, -0.05f);
-	//instance_ptrAsinello->translate(0.15f, -0.0f, -0.07f);
-	//instance_ptrAsinello->rotate_y(10);
-	//instance_ptrAsinello->scale(6, 6, 6);
-	//instance_ptrAsinello->InOmbrabile = true;
-	//instance_ptrAsinello->FaOmbra = true;
-	//world.add(instance_ptrAsinello);
+	instance_ptrMadonna->setCMat(instance_di_supporto->getCMat()* instance_ptrMadonna->getCMat());
+	instance_ptrMadonna->setIMat(instance_ptrMadonna->getIMat()* instance_di_supporto->getIMat());
+
+	instance_ptrMadonna->InOmbrabile = true;
+	instance_ptrMadonna->FaOmbra = true;
+	world.add(instance_ptrMadonna);
+
+	mesh* giuseppe = new mesh("models/Giuseppe.obj", "models/");
+	auto instance_ptrGiuseppe = make_shared<instance>(giuseppe, m_vetro_caleste_in_aria);
+	// ingrandimento
+	float scala3 = 1.9;
+	instance_ptrGiuseppe->translate(-0.11f, 0.0f, -0.05f);
+	instance_ptrGiuseppe->scale(scala3, scala3, scala3);
+	instance_ptrGiuseppe->rotate_y(0.0);
+	instance_ptrGiuseppe->translate(scala3 * 0.11f, 0.0f, scala3 / 20.0f);
+
+	//instance_ptrGiuseppe->translate(0.2f, -0.48f, 0.15f);
+	instance_ptrGiuseppe->translate(0.07f, -0.48f, 0.15f);
+	instance_ptrGiuseppe->translate(-0.07f, -0.0f, -0.20f);
+	instance_ptrGiuseppe->scale(6.0, 6.0, 6.0);
+
+	instance_ptrGiuseppe->setCMat(instance_di_supporto->getCMat()* instance_ptrGiuseppe->getCMat());
+	instance_ptrGiuseppe->setIMat(instance_ptrGiuseppe->getIMat()* instance_di_supporto->getIMat());
+
+	instance_ptrGiuseppe->InOmbrabile = true;
+	instance_ptrGiuseppe->FaOmbra = true;
+	world.add(instance_ptrGiuseppe);
+
+	mesh* bue = new mesh("models/bue.obj", "models/");
+	auto instance_ptrBue = make_shared<instance>(bue, m_vetro_grigio_in_aria);
+	// ingrandimento
+	instance_ptrBue->translate(-0.1f, 0.0f, 0.07f);
+	instance_ptrBue->scale(scala2, scala2, scala2);
+	instance_ptrBue->rotate_y(-15.0);
+	instance_ptrBue->translate(scala2 * 0.1f, -0.0f, - scala2 * 0.07f);
+
+	instance_ptrBue->translate(0.15f, -0.48f, -0.020f);
+	instance_ptrBue->translate(0.0f, -0.0f, 0.4f);
+	instance_ptrBue->scale(6.0, 6.0, 6.0);
+
+	instance_ptrBue->setCMat(instance_di_supporto->getCMat()* instance_ptrBue->getCMat());
+	instance_ptrBue->setIMat(instance_ptrBue->getIMat()* instance_di_supporto->getIMat());
+
+	instance_ptrBue->InOmbrabile = true;
+	instance_ptrBue->FaOmbra = true;
+	world.add(instance_ptrBue);
+
+	mesh* asinello = new mesh("models/asinello.obj", "models/");
+	auto instance_ptrAsinello = make_shared<instance>(asinello, m_vetro_grigio_in_aria);
+	// ingrandimento
+	instance_ptrAsinello->translate(0.11f, 0.0f, 0.07f);
+	instance_ptrAsinello->scale(scala3, scala3, scala3);
+	instance_ptrAsinello->rotate_y(-25.0);
+	instance_ptrAsinello->translate(- scala3 * 0.11f, 0.0f, - scala3 * 0.07f);
+
+	instance_ptrAsinello->translate(-0.1f, -0.5f, -0.05f);
+	instance_ptrAsinello->translate(0.15f, -0.0f, -0.07f);
+	instance_ptrAsinello->rotate_y(10);
+	instance_ptrAsinello->scale(6, 6, 6);
+
+	instance_ptrAsinello->setCMat(instance_di_supporto->getCMat()* instance_ptrAsinello->getCMat());
+	instance_ptrAsinello->setIMat(instance_ptrAsinello->getIMat()* instance_di_supporto->getIMat());
+
+	instance_ptrAsinello->InOmbrabile = true;
+	instance_ptrAsinello->FaOmbra = true;
+	world.add(instance_ptrAsinello);
 
 	/*mesh* stalla = new mesh("models/stalla.obj", "models/");
 	auto instance_ptrStalla = make_shared<instance>(stalla, m_vetro_in_aria);
@@ -395,49 +470,49 @@ int main(int argc, char* argv[])
 	material* book_m = new material();
 	book_m->texture = book_tex;
 	book_m->ka = white;
-	book_m->ks = black;
+	book_m->ks = darkgray;
 	book_m->alpha = 70;
 	auto book_ptr = make_shared<instance>(book, book_m);
 	book_ptr->scale(15.5f, 15.5f, 15.5f);
 	book_ptr->rotate_y(-270.0f);
 	book_ptr->translate(38.0f, 5.75f, -21.5f);
-	book_ptr->InOmbrabile = false;
-	book_ptr->FaOmbra = false;
+	book_ptr->InOmbrabile = true;
+	book_ptr->FaOmbra = true;
 	world.add(book_ptr);
 	auto book2_ptr = make_shared<instance>(book, book_m);
 	book2_ptr->scale(15.5f, 15.5f, 15.5f);
 	book2_ptr->rotate_y(-270.0f);
 	book2_ptr->translate(37.0f, 5.75f, -21.5f);
-	book2_ptr->InOmbrabile = false;
-	book2_ptr->FaOmbra = false;
+	book2_ptr->InOmbrabile = true;
+	book2_ptr->FaOmbra = true;
 	world.add(book2_ptr);
 	auto book3_ptr = make_shared<instance>(book, book_m);
 	book3_ptr->scale(15.5f, 15.5f, 15.5f);
 	book3_ptr->rotate_y(-270.0f);
 	book3_ptr->translate(36.0f, 5.75f, -21.5f);
-	book3_ptr->InOmbrabile = false;
-	book3_ptr->FaOmbra = false;
+	book3_ptr->InOmbrabile = true;
+	book3_ptr->FaOmbra = true;
 	world.add(book3_ptr);
 	auto book4_ptr = make_shared<instance>(book, book_m);
 	book4_ptr->scale(15.5f, 15.5f, 15.5f);
 	book4_ptr->rotate_y(-270.0f);
 	book4_ptr->translate(35.0f, 5.75f, -21.5f);
-	book4_ptr->InOmbrabile = false;
-	book4_ptr->FaOmbra = false;
+	book4_ptr->InOmbrabile = true;
+	book4_ptr->FaOmbra = true;
 	world.add(book4_ptr);
 	auto book5_ptr = make_shared<instance>(book, book_m);
 	book5_ptr->scale(15.5f, 15.5f, 15.5f);
 	book5_ptr->rotate_y(-270.0f);
 	book5_ptr->translate(34.0f, 5.75f, -21.5f);
 	book5_ptr->InOmbrabile = true;
-	book5_ptr->FaOmbra = false;
+	book5_ptr->FaOmbra = true;
 	world.add(book5_ptr);
 	auto book6_ptr = make_shared<instance>(book, book_m);
 	book6_ptr->scale(15.5f, 15.5f, 15.5f);
 	book6_ptr->rotate_y(-270.0f);
 	book6_ptr->translate(33.0f, 5.75f, -21.5f);
 	book6_ptr->InOmbrabile = true;
-	book6_ptr->FaOmbra = false;
+	book6_ptr->FaOmbra = true;
 	world.add(book6_ptr);
 
 	mesh* greenBook = new mesh("models/greenBook.obj", "models/");
@@ -445,39 +520,39 @@ int main(int argc, char* argv[])
 	material* greenBook_m = new material();
 	greenBook_m->texture = greenBook_tex;
 	greenBook_m->ka = white;
-	greenBook_m->ks = black;
+	greenBook_m->ks = darkgray;
 	greenBook_m->alpha = 70;
 	auto greenBook_ptr = make_shared<instance>(greenBook, greenBook_m);
 	greenBook_ptr->scale(1.7f, 1.5f, 1.7f);
 	greenBook_ptr->rotate_y(-90.0f);
 	greenBook_ptr->rotate_z(180.0f);
 	greenBook_ptr->translate(39.0f, 2.8f, -22.5f);
-	greenBook_ptr->InOmbrabile = false;
-	greenBook_ptr->FaOmbra = false;
+	greenBook_ptr->InOmbrabile = true;
+	greenBook_ptr->FaOmbra = true;
 	world.add(greenBook_ptr);
 	auto greenBook2_ptr = make_shared<instance>(greenBook, greenBook_m);
 	greenBook2_ptr->scale(1.7f, 1.5f, 1.7f);
 	greenBook2_ptr->rotate_y(-90.0f);
 	greenBook2_ptr->rotate_z(180.0f);
 	greenBook2_ptr->translate(38.0f, 2.8f, -22.5f);
-	greenBook2_ptr->InOmbrabile = false;
-	greenBook2_ptr->FaOmbra = false;
+	greenBook2_ptr->InOmbrabile = true;
+	greenBook2_ptr->FaOmbra = true;
 	world.add(greenBook2_ptr);
 	auto greenBook3_ptr = make_shared<instance>(greenBook, greenBook_m);
 	greenBook3_ptr->scale(1.7f, 1.5f, 1.7f);
 	greenBook3_ptr->rotate_y(-90.0f);
 	greenBook3_ptr->rotate_z(180.0f);
 	greenBook3_ptr->translate(37.0f, 2.8f, -22.5f);
-	greenBook3_ptr->InOmbrabile = false;
-	greenBook3_ptr->FaOmbra = false;
+	greenBook3_ptr->InOmbrabile = true;
+	greenBook3_ptr->FaOmbra = true;
 	world.add(greenBook3_ptr);
 	auto greenBook4_ptr = make_shared<instance>(greenBook, greenBook_m);
 	greenBook4_ptr->scale(1.7f, 1.5f, 1.7f);
 	greenBook4_ptr->rotate_y(-90.0f);
 	greenBook4_ptr->rotate_z(180.0f);
 	greenBook4_ptr->translate(36.0f, 2.8f, -22.5f);
-	greenBook4_ptr->InOmbrabile = false;
-	greenBook4_ptr->FaOmbra = false;
+	greenBook4_ptr->InOmbrabile = true;
+	greenBook4_ptr->FaOmbra = true;
 	world.add(greenBook4_ptr);
 	auto greenBook5_ptr = make_shared<instance>(greenBook, greenBook_m);
 	greenBook5_ptr->scale(1.7f, 1.5f, 1.7f);
@@ -485,7 +560,7 @@ int main(int argc, char* argv[])
 	greenBook5_ptr->rotate_z(180.0f);
 	greenBook5_ptr->translate(35.0f, 2.8f, -22.5f);
 	greenBook5_ptr->InOmbrabile = true;
-	greenBook5_ptr->FaOmbra = false;
+	greenBook5_ptr->FaOmbra = true;
 	world.add(greenBook5_ptr);
 
 	mesh* book2 = new mesh("models/book2.obj", "models/");
@@ -493,42 +568,42 @@ int main(int argc, char* argv[])
 	material* book_m2 = new material();
 	book_m2->texture = book_tex2;
 	book_m2->ka = white;
-	book_m2->ks = black;
+	book_m2->ks = darkgray;
 	book_m2->alpha = 70;
 	auto book_ptr2 = make_shared<instance>(book2, book_m2);
 	book_ptr2->scale(2.5f, 2.5f, 2.5f);
 	book_ptr2->rotate_y(-270.0f);
 	book_ptr2->translate(38.0f, -9.0f, -22.0f);
-	book_ptr2->InOmbrabile = false;
-	book_ptr2->FaOmbra = false;
+	book_ptr2->InOmbrabile = true;
+	book_ptr2->FaOmbra = true;
 	world.add(book_ptr2);
 	auto book2_ptr2 = make_shared<instance>(book2, book_m2);
 	book2_ptr2->scale(2.5f, 2.5f, 2.5f);
 	book2_ptr2->rotate_y(-270.0f);
 	book2_ptr2->translate(37.0f, -9.0f, -22.0f);
-	book2_ptr2->InOmbrabile = false;
-	book2_ptr2->FaOmbra = false;
+	book2_ptr2->InOmbrabile = true;
+	book2_ptr2->FaOmbra = true;
 	world.add(book2_ptr2);
 	auto book3_ptr2 = make_shared<instance>(book2, book_m2);
 	book3_ptr2->scale(2.5f, 2.5f, 2.5f);
 	book3_ptr2->rotate_y(-270.0f);
 	book3_ptr2->translate(36.0f, -9.0f, -22.0f);
-	book3_ptr2->InOmbrabile = false;
-	book3_ptr2->FaOmbra = false;
+	book3_ptr2->InOmbrabile = true;
+	book3_ptr2->FaOmbra = true;
 	world.add(book3_ptr2);
 	auto book4_ptr2 = make_shared<instance>(book2, book_m2);
 	book4_ptr2->scale(2.5f, 2.5f, 2.5f);
 	book4_ptr2->rotate_y(-270.0f);
 	book4_ptr2->translate(35.0f, -9.0f, -22.0f);
-	book4_ptr2->InOmbrabile = false;
-	book4_ptr2->FaOmbra = false;
+	book4_ptr2->InOmbrabile = true;
+	book4_ptr2->FaOmbra = true;
 	world.add(book4_ptr2);
 	auto book5_ptr2 = make_shared<instance>(book2, book_m2);
 	book5_ptr2->scale(2.5f, 2.5f, 2.5f);
 	book5_ptr2->rotate_y(-270.0f);
 	book5_ptr2->translate(34.0f, -9.0f, -22.0f);
 	book5_ptr2->InOmbrabile = true;
-	book5_ptr2->FaOmbra = false;
+	book5_ptr2->FaOmbra = true;
 	world.add(book5_ptr2);
 
 	mesh* bookend = new mesh("models/bookend.obj", "models/");
@@ -536,14 +611,14 @@ int main(int argc, char* argv[])
 	material* bookend_m = new material();
 	bookend_m->texture = bookend_tex;
 	bookend_m->ka = white;
-	bookend_m->ks = black;
-	bookend_m->alpha = 70;
+	bookend_m->ks = white;
+	bookend_m->alpha = 180;
 	auto bookend_ptr = make_shared<instance>(bookend, bookend_m);
 	bookend_ptr->scale(0.215f, 0.215f, 0.215f);
 	bookend_ptr->rotate_y(-90.0f);
 	bookend_ptr->translate(32.3f, -8.7f, -22.0f);
 	bookend_ptr->InOmbrabile = true;
-	bookend_ptr->FaOmbra = false;
+	bookend_ptr->FaOmbra = true;
 	world.add(bookend_ptr);
 
 	mesh* vase = new mesh("models/vase.obj", "models/");
@@ -552,12 +627,12 @@ int main(int argc, char* argv[])
 	vase_m->texture = vase_tex;
 	vase_m->ka = white;
 	vase_m->ks = white;
-	vase_m->alpha = 70;
+	vase_m->alpha = 120;
 	auto vase_ptr = make_shared<instance>(vase, vase_m);
 	vase_ptr->scale(0.8f, 0.8f, 0.8f);
 	vase_ptr->translate(28.0f, 6.0f, -22.0f);
-	vase_ptr->InOmbrabile = false;
-	vase_ptr->FaOmbra = false;
+	vase_ptr->InOmbrabile = true;
+	vase_ptr->FaOmbra = true;
 	world.add(vase_ptr);
 
 	mesh* chair = new mesh("models/chair.obj", "models/");
@@ -623,6 +698,58 @@ int main(int argc, char* argv[])
 	room_ptr->FaOmbra = true;
 	world.add(room_ptr);
 
+	mesh* painting = new mesh("models/painting.obj", "models/");
+	painting->loadImgNorm("models/cadre_lowpoly_blinn2_Normal.jpg");
+	texture* painting_tex = new image_texture("models/painting.jpg");
+	material* painting_m = new material();
+	painting_m->texture = painting_tex;
+	painting_m->ka = white;
+	painting_m->ks = white;
+	painting_m->alpha = 130;
+	auto painting_ptr = make_shared<instance>(painting, painting_m);
+	painting_ptr->rotate_x(90.0f);
+	painting_ptr->rotate_z(90.0f);
+	painting_ptr->scale(10.0, 10.0, 10.0);
+	point3 pos_rel(-9.00, 7.00, -13.48);
+	painting_ptr->translate(multiply(room_ptr->getCMat(), pos_rel));
+	painting_ptr->InOmbrabile = true;
+	painting_ptr->FaOmbra = true;
+	world.add(painting_ptr);
+	
+	mesh* clock = new mesh("models/WallClock_LP.obj", "models/");
+	clock->loadImgNorm("models/WallClock_LP_Clock_Normal.jpg");
+	texture* clock_tex = new image_texture("models/WallClock_LP_Clock_Specular.jpg");
+	material* clock_m = new material();
+	clock_m->texture = clock_tex;
+	clock_m->ka = white;
+	clock_m->ks = white;
+	clock_m->alpha = 130;
+	auto clock_ptr = make_shared<instance>(clock, clock_m);
+	clock_ptr->translate(0.00, 0.00, -73.75);
+	clock_ptr->scale(0.025, 0.025, 0.05);
+	clock_ptr->rotate_y(90.0);
+	clock_ptr->translate(multiply(room_ptr->getCMat(), point3(-21.89, 8.00, -7.00)));
+	clock_ptr->InOmbrabile = true;
+	clock_ptr->FaOmbra = true;
+	world.add(clock_ptr);
+
+	mesh* clock_cover = new mesh("models/WallClock_LP_plastica.obj", "models/");
+	clock->loadImgNorm("models/WallClock_LP_Clock_Normal.jpg");
+	auto clock_cover_ptr = make_shared<instance>(clock_cover, m_plastica_in_aria);
+	clock_cover_ptr->setCMat(clock_ptr->getCMat());
+	clock_cover_ptr->setIMat(clock_ptr->getIMat());
+	clock_cover_ptr->InOmbrabile = true;
+	clock_cover_ptr->FaOmbra = false;
+	world.add(clock_cover_ptr);
+
+	auto clock_cover_ptr2 = make_shared<instance>(clock_cover, m_aria_in_plastica);
+	clock_cover_ptr2->translate(0.00, 0.00, -5.70);
+	clock_cover_ptr2->setCMat(clock_ptr->getCMat() * clock_cover_ptr2->getCMat());
+	clock_cover_ptr2->setIMat(clock_cover_ptr2->getIMat() * clock_ptr->getIMat());
+	clock_cover_ptr2->InOmbrabile = true;
+	clock_cover_ptr2->FaOmbra = false;
+	world.add(clock_cover_ptr2);
+
 	mesh* chandelier = new mesh("models/chandelier.obj", "models/");
 	auto instance_ptrChandelier = make_shared<instance>(chandelier, m_vetro_in_aria);
 	instance_ptrChandelier->scale(29.0, 29.0, 29.0);
@@ -638,6 +765,7 @@ int main(int argc, char* argv[])
 	light_position_chandelier = multiply(instance_ptrChandelier->getCMat(), light_position_chandelier);
 	shared_ptr<point_light> punto_chandelier = make_shared<point_light>(light_position_chandelier, darkyellow, darkyellow, darkyellow);
 	worldlight.add(punto_chandelier);*/
+	//(0.5, 15.8, - 14.5)
 
 	mesh* wallLamp2 = new mesh("models/lampadaMuro2.obj", "models/");
 	auto wallLamp_ptr2 = make_shared<instance>(wallLamp2, m_vetro_in_aria);
@@ -649,22 +777,55 @@ int main(int argc, char* argv[])
 	wallLamp_ptr2->FaOmbra = false;
 	world.add(wallLamp_ptr2);
 
+	/*point3 l(0.00, 3.30, 1.88);
+	l = multiply(wallLamp_ptr2->getCMat(), l);
+	cout << "(" << l[0] << ", " << l[1] << ", " << l[2] << ")\n";*/
+	// (42.856, 12.54, -9.99999)
+
 	camera cam;
 	//libreria
 	/*cam.lookfrom = point3(20.0, 5.0, 20.0);
 	cam.lookat = point3(20.0f, 0.0f, -20.f);*/
 
 	//lontano di fronte, guarda centro
-	/*cam.lookfrom = point3(0.0, 0.0, 55.0);
-	cam.lookat = point3(10.0f, 0.0f, -0.15f);*/
+	cam.lookfrom = point3(0.0, 0.0, 55.0);
+	cam.lookat = point3(10.0f, 0.0f, -0.15f);
+	// in questa posizione risulta:
+	// 30 samples_per_pixel
+	// 8 DEEP_MAX
+	// 2000 image_width
+	// 266 secondi
 
 	//guarda nativita
-	cam.lookfrom = point3(0.0, -5.0, 30.0);
-	cam.lookat = point3(0.0f, -5.0f, -0.15f);
+	/*cam.lookfrom = point3(0.0, -5.0, 30.0);
+	cam.lookat = point3(0.0f, -5.0f, -0.15f);*/
+	// in questa posizione risulta:
+	// 30 samples_per_pixel
+	// 8 DEEP_MAX
+	// 2000 image_width
+	// 529 secondi
+
+	//guarda nativita vicino
+	/*cam.lookfrom = point3(0.0, -8.0, 10.0);
+	cam.lookat = point3(0.0f, -6.0f, -0.15f);*/
+	// in questa posizione risulta:
+	// 10 samples_per_pixel
+	// 8 DEEP_MAX
+	// 1028 image_width
+	// 371 secondi
+	// in questa posizione risulta:
+	// 10 samples_per_pixel
+	// 8 DEEP_MAX
+	// 1500 image_width
+	// 788 secondi
 
 	//guarda lampada
 	/*cam.lookfrom = point3(47.0, 0.0, 40.0);
 	cam.lookat = point3(47.0f, 0.0f, -0.15f);*/
+
+	//guarda quadro de lato
+	/*cam.lookfrom = multiply(room_ptr->getCMat(), point3(0.00, 13.00, -10.48));
+	cam.lookat = multiply(room_ptr->getCMat(), point3(-9.00, 7.00, -13.48));*/
 
 	cam.aspect_ratio = 16.0f / 9.0f;
 	cam.image_width = 1500; // 1280;
