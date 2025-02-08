@@ -248,6 +248,69 @@ int main(int argc, char* argv[])
 	// definisco i colori di filtraggio
 	m_vetro_in_aria->c_out = color(1.0, 1.0, 1.0); // bianco perchè l'aria non modifica il colore
 	m_vetro_in_aria->c_in = color(0.75, 0.75, 0.75);
+
+
+	//Vetro scuro
+	// materiale per le superfici che dentro sono in vetro e fuori sono circondate da aria
+	// inoltre questo vetro non ha colore (vedi c_in)
+	dielectric* m_vetroS_in_aria = new dielectric();
+	//consideriamo oggetti di vetro senza texture
+	m_vetroS_in_aria->texture = NULL;
+	// colori per l'illuminazione di phong
+	m_vetroS_in_aria->kd = color(0.75, 0.75, 0.75) / 4.6;
+	m_vetroS_in_aria->ka = color(0.75, 0.75, 0.75) / 4.6;
+	m_vetroS_in_aria->ks = color(1.0, 1.0, 1.0);
+	// (di solito kd e ka possono essere diminuiti per dare maggiore risalto ai giochi di
+	//  riflessione e rifrazione, ad esempio se ci fosse uno sfondo o molta luce li ridurrei)
+	// definiamo il coefficiente di lucentezza (come per i metalli sarà grande)
+	m_vetroS_in_aria->alpha = 180.0;
+	// definiamo gli indici di rifrazione all'interno ed all'esterno del materiale 
+	m_vetroS_in_aria->eta_in = 1.51; // vetro
+	m_vetroS_in_aria->eta_out = 1.0; // vuoto
+	// definisco i colori di filtraggio
+	m_vetroS_in_aria->c_out = color(1.0, 1.0, 1.0); // bianco perchè l'aria non modifica il colore
+	m_vetroS_in_aria->c_in = color(0.75, 0.75, 0.75);
+
+	//vetro normale in acqua
+	// materiale per le superfici che dentro sono in vetro e fuori sono di acqua
+	// inoltre questo vetro non ha colore (vedi c_in)
+	dielectric* m_vetro_in_acqua = new dielectric();
+	//consideriamo oggetti di vetro senza texture
+	m_vetro_in_acqua->texture = NULL;
+	// colori per l'illuminazione di phong
+	m_vetro_in_acqua->kd = color(1.0, 1.0, 1.0) / 3.5;
+	m_vetro_in_acqua->ka = color(1.0, 1.0, 1.0) / 3.5;
+	m_vetro_in_acqua->ks = color(1.0, 1.0, 1.0);
+	// (di solito kd e ka possono essere diminuiti per dare maggiore risalto ai giochi di
+	//  riflessione e rifrazione, ad esempio se ci fosse uno sfondo o molta luce li ridurrei)
+	// definiamo il coefficiente di lucentezza (come per i metalli sarà grande)
+	m_vetro_in_acqua->alpha = 180.0;
+	// definiamo gli indici di rifrazione all'interno ed all'esterno del materiale 
+	m_vetro_in_acqua->eta_in = 1.51; // vetro
+	m_vetro_in_acqua->eta_out = 1.33; // acqua
+	// definisco i colori di filtraggio
+	m_vetro_in_acqua->c_out = color(pow(153.0 / 255.0, 0.1), pow(203.0 / 255.0, 0.1), 1.0);
+	m_vetro_in_acqua->c_in = color(0.75, 0.75, 0.75);
+
+	//acqua in aria
+	// materiale per le superfici che dentro sono in acqua e fuori hanno l'aria
+	dielectric* m_acqua_in_aria = new dielectric();
+	//consideriamo oggetti di vetro senza texture
+	m_acqua_in_aria->texture = NULL;
+	// colori per l'illuminazione di phong
+	m_acqua_in_aria->kd = color(1.0, 1.0, 1.0) / 3.5;
+	m_acqua_in_aria->ka = color(1.0, 1.0, 1.0) / 3.5;
+	m_acqua_in_aria->ks = color(1.0, 1.0, 1.0);
+	// (di solito kd e ka possono essere diminuiti per dare maggiore risalto ai giochi di
+	//  riflessione e rifrazione, ad esempio se ci fosse uno sfondo o molta luce li ridurrei)
+	// definiamo il coefficiente di lucentezza (come per i metalli sarà grande)
+	m_acqua_in_aria->alpha = 180.0;
+	// definiamo gli indici di rifrazione all'interno ed all'esterno del materiale 
+	m_acqua_in_aria->eta_in = 1.33; // acqua
+	m_acqua_in_aria->eta_out = 1.0; // aria
+	// definisco i colori di filtraggio
+	m_acqua_in_aria->c_out = color(1.0, 1.0, 1.0);
+	m_acqua_in_aria->c_in = color(pow(153.0 / 255.0, 0.1), pow(203.0 / 255.0, 0.1), 1.0);
 	
 	//Plastica trasparente in aria
 	// materiale per le superfici che dentro sono in plastica trasparente e fuori sono circondate da aria
@@ -782,6 +845,119 @@ int main(int argc, char* argv[])
 	cout << "(" << l[0] << ", " << l[1] << ", " << l[2] << ")\n";*/
 	// (42.856, 12.54, -9.99999)
 
+
+	// iperboloide per la superfice esterna
+	float h_min = -1.0, h_max = 1.0;
+	iperb1faldaStandard* vasoFiore1 = new iperb1faldaStandard(h_min, h_max);
+	auto iperb1_ptr = make_shared<instance>(vasoFiore1, m_vetro_in_aria);
+	iperb1_ptr->translate(0.0, -h_min, 0.0);
+	iperb1_ptr->scale(1.5, 4.0, 1.5);
+	iperb1_ptr->scale(0.5, 0.5, 0.5);
+	iperb1_ptr->translate(multiply(library_ptr->getCMat(),point3(-0.85, 5.23, 2.10)));
+	world.add(iperb1_ptr);
+
+	// iperboloide per la superfice interna
+	float spessore = 0.05;
+	float h_min2 = h_min + spessore*2.0/3.0, h_water = h_max / 2.0, h_max2 = h_max;
+
+	iperb1faldaStandard* vasoFioreInt1 = new iperb1faldaStandard(h_min2, h_water);
+	vasoFioreInt1->normEst = false;
+	auto iperb2_ptr1 = make_shared<instance>(vasoFioreInt1, m_vetro_in_acqua);
+	iperb2_ptr1->scale(1.0 - spessore, 1.0, 1.0 - spessore);
+	iperb2_ptr1->setCMat(iperb1_ptr->getCMat()* iperb2_ptr1->getCMat());
+	iperb2_ptr1->setIMat(iperb2_ptr1->getIMat()* iperb1_ptr->getIMat());
+	world.add(iperb2_ptr1);
+
+	iperb1faldaStandard* vasoFioreInt2 = new iperb1faldaStandard(h_water, h_max2);
+	vasoFioreInt2->normEst = false;
+	auto iperb2_ptr2 = make_shared<instance>(vasoFioreInt2, m_vetroS_in_aria);
+	iperb2_ptr2->setCMat(iperb2_ptr1->getCMat());
+	iperb2_ptr2->setIMat(iperb2_ptr1->getIMat());
+	world.add(iperb2_ptr2);
+
+	discoStandard* acqua_aria = new discoStandard();
+	acqua_aria->normAlto = true;
+	auto disc0_ptr = make_shared<instance>(acqua_aria, m_acqua_in_aria);
+	disc0_ptr->scale(sqrt(1.0 + h_water * h_water), 1.0, sqrt(1.0 + h_water * h_water));
+	disc0_ptr->translate(0.0, h_water, 0.0);
+	disc0_ptr->setCMat(iperb2_ptr1->getCMat()* disc0_ptr->getCMat());
+	disc0_ptr->setIMat(disc0_ptr->getIMat()* iperb2_ptr1->getIMat());
+	world.add(disc0_ptr);
+
+	coronaStandard* vasoFiore2 = new coronaStandard(1.0 - spessore);
+	vasoFiore2->normAlto = true; // indca la direzione in cui c'è l'aria
+	auto disc1_ptr = make_shared<instance>(vasoFiore2, m_vetroS_in_aria);
+	disc1_ptr->scale(sqrt(1.0 + h_max * h_max), 1.0, sqrt(1.0 + h_max * h_max));
+	disc1_ptr->translate(0.0, h_max, 0.0);
+	disc1_ptr->setCMat(iperb1_ptr->getCMat()* disc1_ptr->getCMat());
+	disc1_ptr->setIMat(disc1_ptr->getIMat()* iperb1_ptr->getIMat());
+	world.add(disc1_ptr);
+
+	discoStandard* vasoFiore3 = new discoStandard();
+	vasoFiore3->normAlto = false;
+	auto disc2_ptr = make_shared<instance>(vasoFiore3, m_vetroS_in_aria);
+	disc2_ptr->scale( sqrt(1.0 + h_min * h_min), 1.0, sqrt(1.0 + h_min * h_min) );
+	disc2_ptr->translate(0.0, h_min, 0.0);
+	disc2_ptr->setCMat(iperb1_ptr->getCMat()* disc2_ptr->getCMat());
+	disc2_ptr->setIMat(disc2_ptr->getIMat()* iperb1_ptr->getIMat());
+	world.add(disc2_ptr);
+
+	discoStandard* vasoFiore4 = new discoStandard();
+	vasoFiore3->normAlto = true;
+	auto disc3_ptr = make_shared<instance>(vasoFiore4, m_vetro_in_acqua);
+	disc3_ptr->scale(sqrt(1.0 + h_min2 * h_min2), 1.0, sqrt(1.0 + h_min2 * h_min2));
+	disc3_ptr->translate(0.0, h_min2, 0.0);
+	disc3_ptr->setCMat(iperb2_ptr1->getCMat()* disc3_ptr->getCMat());
+	disc3_ptr->setIMat(disc3_ptr->getIMat()* iperb2_ptr1->getIMat());
+	world.add(disc3_ptr);
+
+
+	mesh* flower1 = new mesh("models/tulip_flower_stalk.obj", "models/");
+	texture* flower1_tex = new image_texture("models/tulip_flower_stalk_Diffuse.jpg");
+	material* flower1_m = new material();
+	flower1_m->texture = flower1_tex;
+	flower1_m->ka = white;
+	flower1_m->ks = white;
+	flower1_m->alpha = 100;
+	auto flower1_ptr = make_shared<instance>(flower1, flower1_m);
+	flower1_ptr->rotate_x(-90.0);
+	flower1_ptr->scale(0.4, 0.2, 0.4);
+	flower1_ptr->translate(0.0, h_min2 + 0.001, 0.0);
+	flower1_ptr->rotate_z(20.0);
+	flower1_ptr->setCMat(iperb1_ptr->getCMat()* flower1_ptr->getCMat());
+	flower1_ptr->setIMat(flower1_ptr->getIMat()* iperb1_ptr->getIMat());
+	flower1_ptr->InOmbrabile = true;
+	flower1_ptr->FaOmbra = true;
+	world.add(flower1_ptr);
+
+	mesh* flower2 = new mesh("models/tulip_flower_leaf.obj", "models/");
+	texture* flower2_tex = new image_texture("models/tulip_flower_leaf_Diffuse.jpg");
+	material* flower2_m = new material();
+	flower2_m->texture = flower2_tex;
+	flower2_m->ka = white;
+	flower2_m->ks = white;
+	flower2_m->alpha = 130;
+	auto flower2_ptr = make_shared<instance>(flower2, flower2_m);
+	flower2_ptr->setCMat(flower1_ptr->getCMat());
+	flower2_ptr->setIMat(flower1_ptr->getIMat());
+	flower2_ptr->InOmbrabile = true;
+	flower2_ptr->FaOmbra = true;
+	world.add(flower2_ptr);
+
+	mesh* flower3 = new mesh("models/tulip_flower_petal.obj", "models/");
+	texture* flower3_tex = new image_texture("models/tulip_flower_petal_Diffuse.jpg");
+	material* flower3_m = new material();
+	flower3_m->texture = flower3_tex;
+	flower3_m->ka = white;
+	flower3_m->ks = white;
+	flower3_m->alpha = 50;
+	auto flower3_ptr = make_shared<instance>(flower3, flower3_m);
+	flower3_ptr->setCMat(flower1_ptr->getCMat());
+	flower3_ptr->setIMat(flower1_ptr->getIMat());
+	flower3_ptr->InOmbrabile = true;
+	flower3_ptr->FaOmbra = true;
+	world.add(flower3_ptr);
+
 	camera cam;
 	//libreria
 	/*cam.lookfrom = point3(20.0, 5.0, 20.0);
@@ -826,6 +1002,11 @@ int main(int argc, char* argv[])
 	//guarda quadro de lato
 	/*cam.lookfrom = multiply(room_ptr->getCMat(), point3(0.00, 13.00, -10.48));
 	cam.lookat = multiply(room_ptr->getCMat(), point3(-9.00, 7.00, -13.48));*/
+
+	//guarda fiore
+	/*vec3 ppp = multiply(library_ptr->getCMat(), point3(-0.85, 5.23, 2.10)) + vec3(0.0, 4.0, 0.0);
+	cam.lookfrom = ppp + vec3(2.0, 3.5, 10.0);
+	cam.lookat = ppp;*/
 
 	cam.aspect_ratio = 16.0f / 9.0f;
 	cam.image_width = 1500; // 1280;
