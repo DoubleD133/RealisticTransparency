@@ -257,8 +257,8 @@ int main(int argc, char* argv[])
 	//consideriamo oggetti di vetro senza texture
 	m_vetroS_in_aria->texture = NULL;
 	// colori per l'illuminazione di phong
-	m_vetroS_in_aria->kd = color(0.75, 0.75, 0.75) / 4.6;
-	m_vetroS_in_aria->ka = color(0.75, 0.75, 0.75) / 4.6;
+	m_vetroS_in_aria->kd = color(0.75, 0.75, 0.75) / 9.2;
+	m_vetroS_in_aria->ka = color(0.75, 0.75, 0.75) / 9.2;
 	m_vetroS_in_aria->ks = color(1.0, 1.0, 1.0);
 	// (di solito kd e ka possono essere diminuiti per dare maggiore risalto ai giochi di
 	//  riflessione e rifrazione, ad esempio se ci fosse uno sfondo o molta luce li ridurrei)
@@ -278,8 +278,8 @@ int main(int argc, char* argv[])
 	//consideriamo oggetti di vetro senza texture
 	m_vetro_in_acqua->texture = NULL;
 	// colori per l'illuminazione di phong
-	m_vetro_in_acqua->kd = color(1.0, 1.0, 1.0) / 3.5;
-	m_vetro_in_acqua->ka = color(1.0, 1.0, 1.0) / 3.5;
+	m_vetro_in_acqua->kd = color(1.0, 1.0, 1.0) / 7.0;
+	m_vetro_in_acqua->ka = color(1.0, 1.0, 1.0) / 7.0;
 	m_vetro_in_acqua->ks = color(1.0, 1.0, 1.0);
 	// (di solito kd e ka possono essere diminuiti per dare maggiore risalto ai giochi di
 	//  riflessione e rifrazione, ad esempio se ci fosse uno sfondo o molta luce li ridurrei)
@@ -298,8 +298,8 @@ int main(int argc, char* argv[])
 	//consideriamo oggetti di vetro senza texture
 	m_acqua_in_aria->texture = NULL;
 	// colori per l'illuminazione di phong
-	m_acqua_in_aria->kd = color(1.0, 1.0, 1.0) / 3.5;
-	m_acqua_in_aria->ka = color(1.0, 1.0, 1.0) / 3.5;
+	m_acqua_in_aria->kd = color(1.0, 1.0, 1.0) / 7.0;
+	m_acqua_in_aria->ka = color(1.0, 1.0, 1.0) / 7.0;
 	m_acqua_in_aria->ks = color(1.0, 1.0, 1.0);
 	// (di solito kd e ka possono essere diminuiti per dare maggiore risalto ai giochi di
 	//  riflessione e rifrazione, ad esempio se ci fosse uno sfondo o molta luce li ridurrei)
@@ -999,9 +999,29 @@ int main(int argc, char* argv[])
 	/*cam.lookfrom = point3(47.0, 0.0, 40.0);
 	cam.lookat = point3(47.0f, 0.0f, -0.15f);*/
 
+	//guarda libreria da destra/lontano
+	/*cam.lookfrom = point3(47.0, 10.0, 25.0);
+	cam.lookat = point3(30.0f, 0.0f, -0.15f);*/
+
+	//guarda quadro
+	//cam.lookfrom = multiply(room_ptr->getCMat(), point3(-9.00, 7.00, -1.0));
+	//cam.lookat = multiply(room_ptr->getCMat(), point3(-9.00, 7.00, -13.48));
+	//cout << "(" << cam.lookfrom[0] << ", " << cam.lookfrom[1] << ", " << cam.lookfrom[2] << ")\n";
+	//cout << "(" << cam.lookat[0] << ", " << cam.lookat[1] << ", " << cam.lookat[2] << ")\n";
+	//(-3.1, 6.5, 12)
+	//(-3.1, 6.5, -25.44)
+
 	//guarda quadro de lato
 	/*cam.lookfrom = multiply(room_ptr->getCMat(), point3(0.00, 13.00, -10.48));
 	cam.lookat = multiply(room_ptr->getCMat(), point3(-9.00, 7.00, -13.48));*/
+
+	//guarda orologio
+	//cam.lookfrom = multiply(room_ptr->getCMat(), point3(-9.00, 7.00, 3.0));
+	//cam.lookat = multiply(room_ptr->getCMat(), point3(-21.89, 8.00, -7.00));
+	//cout << "(" << cam.lookfrom[0] << ", " << cam.lookfrom[1] << ", " << cam.lookfrom[2] << ")\n";
+	//cout << "(" << cam.lookat[0] << ", " << cam.lookat[1] << ", " << cam.lookat[2] << ")\n";
+	//(-3.1, 6.5, 24)
+	//(-27.591, 9.5, -6)
 
 	//guarda fiore
 	/*vec3 ppp = multiply(library_ptr->getCMat(), point3(-0.85, 5.23, 2.10)) + vec3(0.0, 4.0, 0.0);
@@ -1010,9 +1030,73 @@ int main(int argc, char* argv[])
 
 	cam.aspect_ratio = 16.0f / 9.0f;
 	cam.image_width = 1500; // 1280;
-	cam.samples_per_pixel = 10;
+	cam.samples_per_pixel = 1;
 	cam.vfov = 50;
 
+	cam.initialize();
+
+	//if (init(cam.image_width, cam.image_height) == 1) {
+	//	cout << "App Error! " << std::endl;
+	//	return 1;
+	//}
+
+	//cout << "Image Resolution: " << cam.image_width << "x" << cam.image_height << "\n255\n";
+
+	//time_t start, end;
+	//time(&start);
+
+	//cam.parallel_render(world, worldlight);
+	////cam.render(world, *worldlight);
+
+	//cout << "(" << cam.lookfrom[0] << ", " << cam.lookfrom[1] << ", " << cam.lookfrom[2] << ")\n";
+	//cout << "(" << cam.lookat[0] << ", " << cam.lookat[1] << ", " << cam.lookat[2] << ")\n";
+	//cout << cam.vfov << "\n";
+	////(0, 0, 55)
+	////(10, 0, -0.15)
+	////50
+
+	//time(&end);
+	//double dif = difftime(end, start);
+	//cout << "\n" << "Rendering time: " << dif << "\n";
+
+	//SDL_Event event;
+	//bool quit = false;
+
+	///* Poll for events */
+	//while (SDL_PollEvent(&event) || (!quit)) {
+
+	//	switch (event.type) {
+
+	//	case SDL_QUIT:
+	//		quit = true;
+	//		break;
+
+	//	case SDL_KEYDOWN:
+	//		switch (event.key.keysym.sym) {
+	//		case SDLK_ESCAPE:
+	//			quit = true;
+	//			break;
+	//			// cases for other keypresses
+
+	//		case SDLK_s:
+	//			saveScreenshotBMP("screenshot.bmp");
+	//			cout << "Screenshot saved!" << endl;
+	//			break;
+	//		}
+	//	}
+	//}
+
+	//close();
+	//return 0;
+
+
+	// animazione
+
+	cam.aspect_ratio = 16.0f / 9.0f;
+	cam.image_width = 1500; // 1280;
+	cam.samples_per_pixel = 20;
+	cam.vfov = 50;
+	cam.vup = vec3(0.0, 1.0, 0.0);
 	cam.initialize();
 
 	if (init(cam.image_width, cam.image_height) == 1) {
@@ -1020,45 +1104,130 @@ int main(int argc, char* argv[])
 		return 1;
 	}
 
-	cout << "Image Resolution: " << cam.image_width << "x" << cam.image_height << "\n255\n";
-
-	time_t start, end;
-	time(&start);
-
-	cam.parallel_render(world, worldlight);
-	//cam.render(world, *worldlight);
-
-	time(&end);
-	double dif = difftime(end, start);
-	cout << "\n" << "Rendering time: " << dif << "\n";
-
 	SDL_Event event;
 	bool quit = false;
 
-	/* Poll for events */
-	while (SDL_PollEvent(&event) || (!quit)) {
+	int Nframe = 425;
 
-		switch (event.type) {
+	// vettore degli istanti
+	std::vector<double> T = { 0.0, 1.0, 2.0, 4.0, 5.0, 6.0, 7.5, 8.0, 8.5, 9.5}; // must be increasing
+	double tempo = T[T.size() -2] - T[0];
+	cout << "Il percorso dura " << tempo << endl;
 
-		case SDL_QUIT:
-			quit = true;
-			break;
+	vec3 ppp = multiply(library_ptr->getCMat(), point3(-0.85, 5.23, 2.10)) + vec3(0.0, 4.0, 0.0);
+	vec3 qqq = ppp + vec3(2.0, 3.5, 10.0);
 
-		case SDL_KEYDOWN:
-			switch (event.key.keysym.sym) {
-			case SDLK_ESCAPE:
-				quit = true;
-				break;
-				// cases for other keypresses
+	// vettore delle ascisse della camera (lookfrom) nei corrispondenti istanti
+	std::vector<double> X_lookfrom = {  0.0,  0.0,  0.0, 47.0, 20.0, qqq[0], -3.1, -3.1,  0.0,  0.0};
+	// vettore delle ordinate della camera (lookfrom) nei corrispondenti istanti
+	std::vector<double> Y_lookfrom = {  0.0, -5.0, -8.0, 10.0,  5.0, qqq[1],  6.5,  6.5,  0.0, -5.0};
+	// vettore delle quote della camera (lookfrom) nei corrispondenti istanti
+	std::vector<double> Z_lookfrom = { 55.0, 30.0, 10.0, 25.0, 20.0, qqq[2], 12.0, 24.0, 55.0, 30.0};
 
-			case SDLK_s:
-				saveScreenshotBMP("screenshot.bmp");
-				cout << "Screenshot saved!" << endl;
-				break;
-			}
-		}
+	// vettore delle ascisse del lookat nei corrispondenti istanti
+	std::vector<double> X_lookat = {  10.0,   0.0,   0.0,  30.0,  20.0, ppp[0],   -3.1, -27.6,  10.0,   0.0};
+	// vettore delle ordinate della camera (lookfrom) nei corrispondenti istanti
+	std::vector<double> Y_lookat = {   0.0,  -5.0,  -6.0,   0.0,   0.0, ppp[1],    6.5,   9.5,   0.0,  -5.0};
+	// vettore delle quote della camera (lookfrom) nei corrispondenti istanti
+	std::vector<double> Z_lookat = { -0.15, -0.15, -0.15, -0.15, -20.0, ppp[2], -25.44,  -6.0, -0.15, -0.15};
+
+	// i 4 punti visitati:
+	//lontano di fronte, guarda centro
+	//guarda nativita
+	//guarda nativita vicino
+	//guarda libreria da destra/lontano
+	//libreria
+	//guarda fiore
+	//guarda quadro
+	//guarda orologio
+	
+	// spline interpolanti
+	tk::spline sX_lookfrom(T, X_lookfrom);
+	tk::spline sY_lookfrom(T, Y_lookfrom);
+	tk::spline sZ_lookfrom(T, Z_lookfrom);
+	tk::spline sX_lookat(T, X_lookat);
+	tk::spline sY_lookat(T, Y_lookat);
+	tk::spline sZ_lookat(T, Z_lookat);
+
+	// vettori di punti che useremo
+	std::vector<float> xx_lookfrom, yy_lookfrom, zz_lookfrom, xx_lookat, yy_lookat, zz_lookat;
+	for (int frame = 0; frame < Nframe; frame++) {
+		double fattore = tempo * double(frame) / double(Nframe - 1) + T[0];
+		xx_lookfrom.push_back((float)(sX_lookfrom(fattore)));
+		yy_lookfrom.push_back((float)(sY_lookfrom(fattore)));
+		zz_lookfrom.push_back((float)(sZ_lookfrom(fattore)));
+		xx_lookat.push_back((float)(sX_lookat(fattore)));
+		yy_lookat.push_back((float)(sY_lookat(fattore)));
+		zz_lookat.push_back((float)(sZ_lookat(fattore)));
 	}
 
-	close();
-	return 0;
+	while (SDL_PollEvent(&event) || (!quit)) {
+
+		float fattore;
+
+		for (int frame = 0; frame < Nframe; frame++) {
+
+			cam.lookfrom = point3(xx_lookfrom[frame], yy_lookfrom[frame], zz_lookfrom[frame]);
+			cam.lookat = point3(xx_lookat[frame], yy_lookat[frame], zz_lookat[frame]);
+
+			cam.initialize();
+
+			
+			//cam.render(world);
+			cam.parallel_render(world, worldlight);
+			SDL_RenderPresent(renderer);
+
+			switch (event.type) {
+
+			case SDL_QUIT:
+				quit = true;
+				break;
+
+			case SDL_KEYDOWN:
+				switch (event.key.keysym.sym) {
+				case SDLK_ESCAPE:
+					quit = true;
+					break;
+					// cases for other keypresses
+
+				case SDLK_s:
+					saveScreenshotBMP("screenshot.bmp");
+					break;
+				}
+			}
+
+
+
+			int NNNframe = frame;
+			string NNframe = "";
+			if (NNNframe / 1000 > 0) {
+				NNframe += to_string(NNNframe / 1000);
+				NNNframe = NNNframe % 1000;
+			}
+			else
+				NNframe += "0";
+			if (NNNframe / 100 > 0) {
+				NNframe += to_string(NNNframe / 100);
+				NNNframe = NNNframe % 100;
+			}
+			else
+				NNframe += "0";
+			if (NNNframe / 10 > 0) {
+				NNframe += to_string(NNNframe / 10);
+				NNNframe = NNNframe % 10;
+			}
+			else
+				NNframe += "0";
+			if (NNNframe > 0)
+				NNframe += to_string(NNNframe);
+			else
+				NNframe += "0";
+
+			saveScreenshotBMP("screenshot" + NNframe + ".bmp");
+			cout << "screenshot" + NNframe + ".bmp" << endl;
+
+		}
+		close();
+		return 0;
+	}
 }

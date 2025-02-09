@@ -15,7 +15,7 @@
 using std::shared_ptr;
 using std::make_shared;
 
-const int DEEP_MAX = 8;
+const int DEEP_MAX = 5;
 
 inline vec3 reflect(const vec3& i, const vec3& n)
 {
