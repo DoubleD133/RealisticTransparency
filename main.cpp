@@ -67,18 +67,18 @@ int main(int argc, char* argv[])
 
 	//luce1 da sinistra avanti (simula lampada a muro)
 	point3 light_position(42.856, 12.54, -9.99999); // (40.5, 10.0, -2.5);
-	shared_ptr<point_light> punto = make_shared<point_light>(light_position, darkgray, darkgray, darkgray);
+	shared_ptr<point_light> punto = make_shared<point_light>(light_position, 1.5 * darkgray, 1.5 * darkgray, 1.5 * darkgray);
 	worldlight.add(punto);
 
 	// luce2 da sopra (simula lampadario)
 	point3 light_position2(0.5, 15.8, -14.5); // (0.5f, 20.0f, 0.0f);
-	shared_ptr<point_light> punto2 = make_shared<point_light>(light_position2, darkgray, darkgray, darkgray);
+	shared_ptr<point_light> punto2 = make_shared<point_light>(light_position2, 1.5 * darkgray, 1.5 * darkgray, 1.5 * darkgray);
 	worldlight.add(punto2);
 
 	shared_ptr<diffuse_light> diff = make_shared<diffuse_light>(vec3(-10.0, 50.0, 60.0), darkgray, white, black);
-	worldlight.add(diff);
+	//worldlight.add(diff);
 	shared_ptr<diffuse_light> diff2 = make_shared<diffuse_light>(vec3(10.0, 50.0, 60.0), darkgray, white, black);
-	worldlight.add(diff2);
+	//worldlight.add(diff2);
 
 	// imposto che tutte le luci provino ad usare la texture (dove presente) per il colore ambientale
 	for (int i = 0; i < worldlight.size; i++) {
@@ -113,8 +113,8 @@ int main(int argc, char* argv[])
 	// consideriamo oggetti di vetro senza texture
 	m_vetro_verde_in_aria->texture = NULL;
 	// colori per l'illuminazione di Phong
-	m_vetro_verde_in_aria->kd = color(1.0, 1.0, 1.0) / 1.8;
-	m_vetro_verde_in_aria->ka = color(1.0, 1.0, 1.0) / 1.8;
+	m_vetro_verde_in_aria->kd = color(1.0, 1.0, 1.0) / 3.8;
+	m_vetro_verde_in_aria->ka = color(1.0, 1.0, 1.0) / 3.8;
 	m_vetro_verde_in_aria->ks = color(1.0, 1.0, 1.0);
 	// definiamo il coefficiente di lucentezza
 	m_vetro_verde_in_aria->alpha = 180.0;
@@ -132,8 +132,8 @@ int main(int argc, char* argv[])
 	// consideriamo oggetti di vetro senza texture
 	m_vetro_viola_in_aria->texture = NULL;
 	// colori per l'illuminazione di Phong
-	m_vetro_viola_in_aria->kd = color(1.0, 1.0, 1.0) / 1.8;
-	m_vetro_viola_in_aria->ka = color(1.0, 1.0, 1.0) / 1.8;
+	m_vetro_viola_in_aria->kd = color(1.0, 1.0, 1.0) / 2.2;
+	m_vetro_viola_in_aria->ka = color(1.0, 1.0, 1.0) / 2.2;
 	m_vetro_viola_in_aria->ks = color(1.0, 1.0, 1.0);
 	// definiamo il coefficiente di lucentezza
 	m_vetro_viola_in_aria->alpha = 180.0;
@@ -151,8 +151,8 @@ int main(int argc, char* argv[])
 	//consideriamo oggetti di vetro senza texture
 	m_vetro_caleste_in_aria->texture = NULL;
 	// colori per l'illuminazione di phong
-	m_vetro_caleste_in_aria->kd = color(1.0, 1.0, 1.0) / 1.1;
-	m_vetro_caleste_in_aria->ka = color(1.0, 1.0, 1.0) / 1.1;
+	m_vetro_caleste_in_aria->kd = color(1.0, 1.0, 1.0) / 2.1;
+	m_vetro_caleste_in_aria->ka = color(1.0, 1.0, 1.0) / 2.1;
 	m_vetro_caleste_in_aria->ks = color(1.0, 1.0, 1.0);
 	// (di solito kd e ka possono essere diminuiti per dare maggiore risalto ai giochi di
 	//  riflessione e rifrazione, ad esempio se ci fosse uno sfondo o molta luce li ridurrei)
@@ -235,8 +235,8 @@ int main(int argc, char* argv[])
 	//consideriamo oggetti di vetro senza texture
 	m_vetro_in_aria->texture = NULL;
 	// colori per l'illuminazione di phong
-	m_vetro_in_aria->kd = color(1.0, 1.0, 1.0) / 1.7;
-	m_vetro_in_aria->ka = color(1.0, 1.0, 1.0) / 1.7;
+	m_vetro_in_aria->kd = color(1.0, 1.0, 1.0) / 1.7 / 2.0;
+	m_vetro_in_aria->ka = color(1.0, 1.0, 1.0) / 1.7 / 2.0;
 	m_vetro_in_aria->ks = color(1.0, 1.0, 1.0);
 	// (di solito kd e ka possono essere diminuiti per dare maggiore risalto ai giochi di
 	//  riflessione e rifrazione, ad esempio se ci fosse uno sfondo o molta luce li ridurrei)
@@ -257,8 +257,8 @@ int main(int argc, char* argv[])
 	//consideriamo oggetti di vetro senza texture
 	m_vetroS_in_aria->texture = NULL;
 	// colori per l'illuminazione di phong
-	m_vetroS_in_aria->kd = color(0.75, 0.75, 0.75) / 9.2;
-	m_vetroS_in_aria->ka = color(0.75, 0.75, 0.75) / 9.2;
+	m_vetroS_in_aria->kd = color(0.75, 0.75, 0.75) / 4.2;
+	m_vetroS_in_aria->ka = color(0.75, 0.75, 0.75) / 4.2;
 	m_vetroS_in_aria->ks = color(1.0, 1.0, 1.0);
 	// (di solito kd e ka possono essere diminuiti per dare maggiore risalto ai giochi di
 	//  riflessione e rifrazione, ad esempio se ci fosse uno sfondo o molta luce li ridurrei)
@@ -278,8 +278,8 @@ int main(int argc, char* argv[])
 	//consideriamo oggetti di vetro senza texture
 	m_vetro_in_acqua->texture = NULL;
 	// colori per l'illuminazione di phong
-	m_vetro_in_acqua->kd = color(1.0, 1.0, 1.0) / 7.0;
-	m_vetro_in_acqua->ka = color(1.0, 1.0, 1.0) / 7.0;
+	m_vetro_in_acqua->kd = color(1.0, 1.0, 1.0) / 4.0;
+	m_vetro_in_acqua->ka = color(1.0, 1.0, 1.0) / 4.0;
 	m_vetro_in_acqua->ks = color(1.0, 1.0, 1.0);
 	// (di solito kd e ka possono essere diminuiti per dare maggiore risalto ai giochi di
 	//  riflessione e rifrazione, ad esempio se ci fosse uno sfondo o molta luce li ridurrei)
@@ -298,8 +298,8 @@ int main(int argc, char* argv[])
 	//consideriamo oggetti di vetro senza texture
 	m_acqua_in_aria->texture = NULL;
 	// colori per l'illuminazione di phong
-	m_acqua_in_aria->kd = color(1.0, 1.0, 1.0) / 7.0;
-	m_acqua_in_aria->ka = color(1.0, 1.0, 1.0) / 7.0;
+	m_acqua_in_aria->kd = color(1.0, 1.0, 1.0) / 4.0;
+	m_acqua_in_aria->ka = color(1.0, 1.0, 1.0) / 4.0;
 	m_acqua_in_aria->ks = color(1.0, 1.0, 1.0);
 	// (di solito kd e ka possono essere diminuiti per dare maggiore risalto ai giochi di
 	//  riflessione e rifrazione, ad esempio se ci fosse uno sfondo o molta luce li ridurrei)
@@ -319,8 +319,8 @@ int main(int argc, char* argv[])
 	//consideriamo oggetti di vetro senza texture
 	m_plastica_in_aria->texture = NULL;
 	// colori per l'illuminazione di phong
-	m_plastica_in_aria->kd = color(1.0, 1.0, 1.0) / 1.7;
-	m_plastica_in_aria->ka = color(1.0, 1.0, 1.0) / 1.7;
+	m_plastica_in_aria->kd = color(1.0, 1.0, 1.0) / 1.7 / 3.0;
+	m_plastica_in_aria->ka = color(1.0, 1.0, 1.0) / 1.7 / 3.0;
 	m_plastica_in_aria->ks = color(1.0, 1.0, 1.0);
 	// (di solito kd e ka possono essere diminuiti per dare maggiore risalto ai giochi di
 	//  riflessione e rifrazione, ad esempio se ci fosse uno sfondo o molta luce li ridurrei)
@@ -340,8 +340,8 @@ int main(int argc, char* argv[])
 	//consideriamo oggetti di vetro senza texture
 	m_aria_in_plastica->texture = NULL;
 	// colori per l'illuminazione di phong
-	m_aria_in_plastica->kd = color(1.0, 1.0, 1.0) / 1.7;
-	m_aria_in_plastica->ka = color(1.0, 1.0, 1.0) / 1.7;
+	m_aria_in_plastica->kd = color(1.0, 1.0, 1.0) / 1.7 / 3.0;
+	m_aria_in_plastica->ka = color(1.0, 1.0, 1.0) / 1.7 / 3.0;
 	m_aria_in_plastica->ks = color(1.0, 1.0, 1.0);
 	// (di solito kd e ka possono essere diminuiti per dare maggiore risalto ai giochi di
 	//  riflessione e rifrazione, ad esempio se ci fosse uno sfondo o molta luce li ridurrei)
@@ -506,6 +506,12 @@ int main(int argc, char* argv[])
 
 	mesh* threeWise = new mesh("models/threeNegros.obj", "models/");
 	auto instance_ptrWise = make_shared<instance>(threeWise, m_vetro_viola_in_aria);
+
+	float scalaRe = 1.25;
+	instance_ptrWise->translate(0.00, -0.38, 0.00);
+	instance_ptrWise->scale(scalaRe, scalaRe, scalaRe);
+	instance_ptrWise->translate(0.00, scalaRe * 0.38 + 0.13, 0.00);
+
 	instance_ptrWise->scale(3.5, 3.5, 3.5);
 	instance_ptrWise->translate(2.5f, -8.5f, 4.0f);
 	instance_ptrWise->rotate_y(0.0);
@@ -779,7 +785,7 @@ int main(int argc, char* argv[])
 	painting_ptr->FaOmbra = true;
 	world.add(painting_ptr);
 	
-	mesh* clock = new mesh("models/WallClock_LP.obj", "models/");
+	mesh* clock = new mesh("models/WallClock_LP_not_second.obj", "models/");
 	clock->loadImgNorm("models/WallClock_LP_Clock_Normal.jpg");
 	texture* clock_tex = new image_texture("models/WallClock_LP_Clock_Specular.jpg");
 	material* clock_m = new material();
@@ -795,6 +801,20 @@ int main(int argc, char* argv[])
 	clock_ptr->InOmbrabile = true;
 	clock_ptr->FaOmbra = true;
 	world.add(clock_ptr);
+
+
+	mesh* clock_seconds = new mesh("models/WallClock_LP_second.obj", "models/");
+	clock_seconds->loadImgNorm("models/WallClock_LP_Clock_Normal.jpg");
+	material* clock_seconds_m = new material();
+	clock_seconds_m->texture = NULL;
+	clock_seconds_m->kd = color(144.0 / 265.0, 51.0 / 265.0, 37.0 / 265.0);
+	clock_seconds_m->ka = color( 144.0 / 265.0, 51.0 / 265.0, 37.0 / 265.0);
+	clock_seconds_m->ks = color(144.0 / 265.0, 51.0 / 265.0, 37.0 / 265.0);
+	clock_seconds_m->alpha = 130;
+	auto clock_seconds_ptr = make_shared<instance>(clock_seconds, clock_seconds_m);
+	clock_seconds_ptr->InOmbrabile = true;
+	clock_seconds_ptr->FaOmbra = true;
+	world.add(clock_seconds_ptr);
 
 	mesh* clock_cover = new mesh("models/WallClock_LP_plastica.obj", "models/");
 	clock->loadImgNorm("models/WallClock_LP_Clock_Normal.jpg");
@@ -1024,16 +1044,20 @@ int main(int argc, char* argv[])
 	//(-27.591, 9.5, -6)
 
 	//guarda fiore
-	/*vec3 ppp = multiply(library_ptr->getCMat(), point3(-0.85, 5.23, 2.10)) + vec3(0.0, 4.0, 0.0);
-	cam.lookfrom = ppp + vec3(2.0, 3.5, 10.0);
-	cam.lookat = ppp;*/
+	//vec3 ppp = multiply(library_ptr->getCMat(), point3(-0.85, 5.23, 2.10)) + vec3(0.0, 4.0, 0.0);
+	//cam.lookfrom = ppp + vec3(2.0, 3.5, 10.0);
+	//cam.lookat = ppp;
+	//cout << "(" << cam.lookfrom[0] << ", " << cam.lookfrom[1] << ", " << cam.lookfrom[2] << ")\n";
+	//cout << "(" << cam.lookat[0] << ", " << cam.lookat[1] << ", " << cam.lookat[2] << ")\n";
+	//(22.02, 8.374, -11.23)
+	//(20.02, 4.874, -21.23)
 
-	cam.aspect_ratio = 16.0f / 9.0f;
-	cam.image_width = 1500; // 1280;
-	cam.samples_per_pixel = 1;
-	cam.vfov = 50;
+	//cam.aspect_ratio = 16.0f / 9.0f;
+	//cam.image_width = 1500; // 1280;
+	//cam.samples_per_pixel = 10;
+	//cam.vfov = 50;
 
-	cam.initialize();
+	//cam.initialize();
 
 	//if (init(cam.image_width, cam.image_height) == 1) {
 	//	cout << "App Error! " << std::endl;
@@ -1089,12 +1113,13 @@ int main(int argc, char* argv[])
 	//close();
 	//return 0;
 
+	/**/
 
 	// animazione
 
 	cam.aspect_ratio = 16.0f / 9.0f;
-	cam.image_width = 1500; // 1280;
-	cam.samples_per_pixel = 20;
+	cam.image_width = 720;// 1500; // 1280;
+	cam.samples_per_pixel = 4;// 20;
 	cam.vfov = 50;
 	cam.vup = vec3(0.0, 1.0, 0.0);
 	cam.initialize();
@@ -1107,29 +1132,40 @@ int main(int argc, char* argv[])
 	SDL_Event event;
 	bool quit = false;
 
-	int Nframe = 425;
+	int Nframe = 360;// 450;// 90;
 
 	// vettore degli istanti
-	std::vector<double> T = { 0.0, 1.0, 2.0, 4.0, 5.0, 6.0, 7.5, 8.0, 8.5, 9.5}; // must be increasing
+	std::vector<double> T = { 0.0, 1.0, 2.0, 4.0, 5.0, 6.0, 7.5, 9.0, 10.0, 11.0}; // must be increasing
 	double tempo = T[T.size() -2] - T[0];
 	cout << "Il percorso dura " << tempo << endl;
 
 	vec3 ppp = multiply(library_ptr->getCMat(), point3(-0.85, 5.23, 2.10)) + vec3(0.0, 4.0, 0.0);
 	vec3 qqq = ppp + vec3(2.0, 3.5, 10.0);
+	//(22.02, 8.374, -11.23)
+	//(20.02, 4.874, -21.23)
 
 	// vettore delle ascisse della camera (lookfrom) nei corrispondenti istanti
 	std::vector<double> X_lookfrom = {  0.0,  0.0,  0.0, 47.0, 20.0, qqq[0], -3.1, -3.1,  0.0,  0.0};
 	// vettore delle ordinate della camera (lookfrom) nei corrispondenti istanti
-	std::vector<double> Y_lookfrom = {  0.0, -5.0, -8.0, 10.0,  5.0, qqq[1],  6.5,  6.5,  0.0, -5.0};
+	std::vector<double> Y_lookfrom = {  0.0, -5.0, -8.0, 10.0,  5.0, qqq[1],  4.0,  2.5,  0.0, -5.0};
 	// vettore delle quote della camera (lookfrom) nei corrispondenti istanti
-	std::vector<double> Z_lookfrom = { 55.0, 30.0, 10.0, 25.0, 20.0, qqq[2], 12.0, 24.0, 55.0, 30.0};
+	std::vector<double> Z_lookfrom = { 55.0, 30.0, 10.0, 25.0, 20.0, qqq[2], 12.0, 18.0, 55.0, 30.0};
 
 	// vettore delle ascisse del lookat nei corrispondenti istanti
 	std::vector<double> X_lookat = {  10.0,   0.0,   0.0,  30.0,  20.0, ppp[0],   -3.1, -27.6,  10.0,   0.0};
 	// vettore delle ordinate della camera (lookfrom) nei corrispondenti istanti
 	std::vector<double> Y_lookat = {   0.0,  -5.0,  -6.0,   0.0,   0.0, ppp[1],    6.5,   9.5,   0.0,  -5.0};
 	// vettore delle quote della camera (lookfrom) nei corrispondenti istanti
-	std::vector<double> Z_lookat = { -0.15, -0.15, -0.15, -0.15, -20.0, ppp[2], -25.44,  -6.0, -0.15, -0.15};
+	std::vector<double> Z_lookat = { -0.15, -0.15, -0.15, -0.15, -20.0, ppp[2], -25.44,  -16.0, -0.15, -0.15};
+
+	int k;
+	for (k = 0; k < X_lookat.size(); k++) {
+		vec3 dir_unit = unit_vector(point3(X_lookat[k], Y_lookat[k], Z_lookat[k]) - point3(X_lookfrom[k], Y_lookfrom[k], Z_lookfrom[k]));
+		X_lookat[k] = X_lookfrom[k] + dir_unit[0];
+		Y_lookat[k] = Y_lookfrom[k] + dir_unit[1];
+		Z_lookat[k] = Z_lookfrom[k] + dir_unit[2];
+	}
+
 
 	// i 4 punti visitati:
 	//lontano di fronte, guarda centro
@@ -1163,9 +1199,20 @@ int main(int argc, char* argv[])
 
 	while (SDL_PollEvent(&event) || (!quit)) {
 
-		float fattore;
 
-		for (int frame = 0; frame < Nframe; frame++) {
+		int inizio = 0;
+		float fattore;
+		float angolo_secondi = 360.0 / float(Nframe-1);
+
+		for (int frame = inizio; frame < Nframe; frame++) {
+
+			// rotazione secondi
+			clock_seconds_ptr->identity();
+			clock_seconds_ptr->translate(-0.88, 3.70, 0.00);
+			clock_seconds_ptr->rotate_z(-angolo_secondi * frame);
+			clock_seconds_ptr->translate(0.88, -3.70, 0.00);
+			clock_seconds_ptr->setCMat(clock_ptr->getCMat() * clock_seconds_ptr->getCMat());
+			clock_seconds_ptr->setIMat(clock_seconds_ptr->getIMat() * clock_ptr->getIMat());
 
 			cam.lookfrom = point3(xx_lookfrom[frame], yy_lookfrom[frame], zz_lookfrom[frame]);
 			cam.lookat = point3(xx_lookat[frame], yy_lookat[frame], zz_lookat[frame]);
@@ -1223,11 +1270,14 @@ int main(int argc, char* argv[])
 			else
 				NNframe += "0";
 
-			//saveScreenshotBMP("screenshot" + NNframe + ".bmp");
+			//saveScreenshotBMP("screenshot_test_" + NNframe + ".bmp");
 			//cout << "screenshot" + NNframe + ".bmp" << endl;
 
 		}
 		close();
 		return 0;
 	}
+
+	/**/
+
 }
