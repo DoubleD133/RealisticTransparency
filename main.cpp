@@ -1223,8 +1223,8 @@ int main(int argc, char* argv[])
 			else
 				NNframe += "0";
 
-			saveScreenshotBMP("screenshot" + NNframe + ".bmp");
-			cout << "screenshot" + NNframe + ".bmp" << endl;
+			//saveScreenshotBMP("screenshot" + NNframe + ".bmp");
+			//cout << "screenshot" + NNframe + ".bmp" << endl;
 
 		}
 		close();
