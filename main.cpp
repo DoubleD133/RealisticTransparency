@@ -542,6 +542,11 @@ int main(int argc, char* argv[])
 	book_m->ks = darkgray;
 	book_m->alpha = 70;
 	auto book_ptr = make_shared<instance>(book, book_m);
+
+	book_ptr->translate(0.1175, -0.01, 0.00);
+	book_ptr->scale(1.0f, 1.1f, 1.6f);
+	book_ptr->translate(-0.1175, 0.006, 0.00);
+
 	book_ptr->scale(15.5f, 15.5f, 15.5f);
 	book_ptr->rotate_y(-270.0f);
 	book_ptr->translate(38.0f, 5.75f, -21.5f);
@@ -549,6 +554,11 @@ int main(int argc, char* argv[])
 	book_ptr->FaOmbra = true;
 	world.add(book_ptr);
 	auto book2_ptr = make_shared<instance>(book, book_m);
+
+	book2_ptr->translate(0.1175, -0.01, 0.00);
+	book2_ptr->scale(1.0f, 1.1f, 1.6f);
+	book2_ptr->translate(-0.1175, 0.006, 0.00);
+
 	book2_ptr->scale(15.5f, 15.5f, 15.5f);
 	book2_ptr->rotate_y(-270.0f);
 	book2_ptr->translate(37.0f, 5.75f, -21.5f);
@@ -556,6 +566,11 @@ int main(int argc, char* argv[])
 	book2_ptr->FaOmbra = true;
 	world.add(book2_ptr);
 	auto book3_ptr = make_shared<instance>(book, book_m);
+
+	book3_ptr->translate(0.1175, -0.01, 0.00);
+	book3_ptr->scale(1.0f, 1.1f, 1.6f);
+	book3_ptr->translate(-0.1175, 0.006, 0.00);
+
 	book3_ptr->scale(15.5f, 15.5f, 15.5f);
 	book3_ptr->rotate_y(-270.0f);
 	book3_ptr->translate(36.0f, 5.75f, -21.5f);
@@ -563,6 +578,11 @@ int main(int argc, char* argv[])
 	book3_ptr->FaOmbra = true;
 	world.add(book3_ptr);
 	auto book4_ptr = make_shared<instance>(book, book_m);
+
+	book4_ptr->translate(0.1175, -0.01, 0.00);
+	book4_ptr->scale(1.0f, 1.1f, 1.6f);
+	book4_ptr->translate(-0.1175, 0.006, 0.00);
+
 	book4_ptr->scale(15.5f, 15.5f, 15.5f);
 	book4_ptr->rotate_y(-270.0f);
 	book4_ptr->translate(35.0f, 5.75f, -21.5f);
@@ -570,6 +590,11 @@ int main(int argc, char* argv[])
 	book4_ptr->FaOmbra = true;
 	world.add(book4_ptr);
 	auto book5_ptr = make_shared<instance>(book, book_m);
+
+	book5_ptr->translate(0.1175, -0.01, 0.00);
+	book5_ptr->scale(1.0f, 1.1f, 1.6f);
+	book5_ptr->translate(-0.1175, 0.006, 0.00);
+
 	book5_ptr->scale(15.5f, 15.5f, 15.5f);
 	book5_ptr->rotate_y(-270.0f);
 	book5_ptr->translate(34.0f, 5.75f, -21.5f);
@@ -577,6 +602,11 @@ int main(int argc, char* argv[])
 	book5_ptr->FaOmbra = true;
 	world.add(book5_ptr);
 	auto book6_ptr = make_shared<instance>(book, book_m);
+
+	book6_ptr->translate(0.1175, -0.01, 0.00);
+	book6_ptr->scale(1.0f, 1.1f, 1.6f);
+	book6_ptr->translate(-0.1175, 0.006, 0.00);
+
 	book6_ptr->scale(15.5f, 15.5f, 15.5f);
 	book6_ptr->rotate_y(-270.0f);
 	book6_ptr->translate(33.0f, 5.75f, -21.5f);
@@ -596,6 +626,7 @@ int main(int argc, char* argv[])
 	greenBook_ptr->rotate_y(-90.0f);
 	greenBook_ptr->rotate_z(180.0f);
 	greenBook_ptr->translate(39.0f, 2.8f, -22.5f);
+	greenBook_ptr->translate(-0.25f, 0.0f, 0.f);
 	greenBook_ptr->InOmbrabile = true;
 	greenBook_ptr->FaOmbra = true;
 	world.add(greenBook_ptr);
@@ -604,6 +635,7 @@ int main(int argc, char* argv[])
 	greenBook2_ptr->rotate_y(-90.0f);
 	greenBook2_ptr->rotate_z(180.0f);
 	greenBook2_ptr->translate(38.0f, 2.8f, -22.5f);
+	greenBook2_ptr->translate(-0.15f, 0.0f, 0.f);
 	greenBook2_ptr->InOmbrabile = true;
 	greenBook2_ptr->FaOmbra = true;
 	world.add(greenBook2_ptr);
@@ -612,6 +644,7 @@ int main(int argc, char* argv[])
 	greenBook3_ptr->rotate_y(-90.0f);
 	greenBook3_ptr->rotate_z(180.0f);
 	greenBook3_ptr->translate(37.0f, 2.8f, -22.5f);
+	greenBook3_ptr->translate(-0.05f, 0.0f, 0.f);
 	greenBook3_ptr->InOmbrabile = true;
 	greenBook3_ptr->FaOmbra = true;
 	world.add(greenBook3_ptr);
@@ -620,6 +653,7 @@ int main(int argc, char* argv[])
 	greenBook4_ptr->rotate_y(-90.0f);
 	greenBook4_ptr->rotate_z(180.0f);
 	greenBook4_ptr->translate(36.0f, 2.8f, -22.5f);
+	greenBook4_ptr->translate(0.05f, 0.0f, 0.f);
 	greenBook4_ptr->InOmbrabile = true;
 	greenBook4_ptr->FaOmbra = true;
 	world.add(greenBook4_ptr);
@@ -628,6 +662,7 @@ int main(int argc, char* argv[])
 	greenBook5_ptr->rotate_y(-90.0f);
 	greenBook5_ptr->rotate_z(180.0f);
 	greenBook5_ptr->translate(35.0f, 2.8f, -22.5f);
+	greenBook5_ptr->translate(0.15f, 0.0f, 0.f);
 	greenBook5_ptr->InOmbrabile = true;
 	greenBook5_ptr->FaOmbra = true;
 	world.add(greenBook5_ptr);
@@ -643,6 +678,7 @@ int main(int argc, char* argv[])
 	book_ptr2->scale(2.5f, 2.5f, 2.5f);
 	book_ptr2->rotate_y(-270.0f);
 	book_ptr2->translate(38.0f, -9.0f, -22.0f);
+	book_ptr2->translate(0.34f, 0.39f, 0.0f);
 	book_ptr2->InOmbrabile = true;
 	book_ptr2->FaOmbra = true;
 	world.add(book_ptr2);
@@ -650,6 +686,8 @@ int main(int argc, char* argv[])
 	book2_ptr2->scale(2.5f, 2.5f, 2.5f);
 	book2_ptr2->rotate_y(-270.0f);
 	book2_ptr2->translate(37.0f, -9.0f, -22.0f);
+	book2_ptr2->translate(0.34f, 0.39f, 0.0f);
+	book2_ptr2->translate(0.11f, 0.0f, 0.0f);
 	book2_ptr2->InOmbrabile = true;
 	book2_ptr2->FaOmbra = true;
 	world.add(book2_ptr2);
@@ -657,6 +695,8 @@ int main(int argc, char* argv[])
 	book3_ptr2->scale(2.5f, 2.5f, 2.5f);
 	book3_ptr2->rotate_y(-270.0f);
 	book3_ptr2->translate(36.0f, -9.0f, -22.0f);
+	book3_ptr2->translate(0.34f, 0.39f, 0.0f);
+	book3_ptr2->translate(0.22f, 0.0f, 0.0f);
 	book3_ptr2->InOmbrabile = true;
 	book3_ptr2->FaOmbra = true;
 	world.add(book3_ptr2);
@@ -664,6 +704,8 @@ int main(int argc, char* argv[])
 	book4_ptr2->scale(2.5f, 2.5f, 2.5f);
 	book4_ptr2->rotate_y(-270.0f);
 	book4_ptr2->translate(35.0f, -9.0f, -22.0f);
+	book4_ptr2->translate(0.34f, 0.39f, 0.0f);
+	book4_ptr2->translate(0.33f, 0.0f, 0.0f);
 	book4_ptr2->InOmbrabile = true;
 	book4_ptr2->FaOmbra = true;
 	world.add(book4_ptr2);
@@ -671,9 +713,20 @@ int main(int argc, char* argv[])
 	book5_ptr2->scale(2.5f, 2.5f, 2.5f);
 	book5_ptr2->rotate_y(-270.0f);
 	book5_ptr2->translate(34.0f, -9.0f, -22.0f);
+	book5_ptr2->translate(0.34f, 0.39f, 0.0f);
+	book5_ptr2->translate(0.44f, 0.0f, 0.0f);
 	book5_ptr2->InOmbrabile = true;
 	book5_ptr2->FaOmbra = true;
 	world.add(book5_ptr2);
+	auto book6_ptr2 = make_shared<instance>(book2, book_m2);
+	book6_ptr2->scale(2.5f, 2.5f, 2.5f);
+	book6_ptr2->rotate_y(-270.0f);
+	book6_ptr2->translate(33.0f, -9.0f, -22.0f);
+	book6_ptr2->translate(0.34f, 0.39f, 0.0f);
+	book6_ptr2->translate(0.55f, 0.0f, 0.0f);
+	book6_ptr2->InOmbrabile = true;
+	book6_ptr2->FaOmbra = true;
+	world.add(book6_ptr2);
 
 	mesh* bookend = new mesh("models/bookend.obj", "models/");
 	texture* bookend_tex = new image_texture("models/marmoGiallo.jpg");
@@ -686,6 +739,7 @@ int main(int argc, char* argv[])
 	bookend_ptr->scale(0.215f, 0.215f, 0.215f);
 	bookend_ptr->rotate_y(-90.0f);
 	bookend_ptr->translate(32.3f, -8.7f, -22.0f);
+	bookend_ptr->translate(0.28f, 0.0f, 0.0f);
 	bookend_ptr->InOmbrabile = true;
 	bookend_ptr->FaOmbra = true;
 	world.add(bookend_ptr);
@@ -699,7 +753,7 @@ int main(int argc, char* argv[])
 	vase_m->alpha = 120;
 	auto vase_ptr = make_shared<instance>(vase, vase_m);
 	vase_ptr->scale(0.8f, 0.8f, 0.8f);
-	vase_ptr->translate(28.0f, 6.0f, -22.0f);
+	vase_ptr->translate(28.0f, 5.8f, -22.0f);
 	vase_ptr->InOmbrabile = true;
 	vase_ptr->FaOmbra = true;
 	world.add(vase_ptr);
@@ -1052,74 +1106,72 @@ int main(int argc, char* argv[])
 	//(22.02, 8.374, -11.23)
 	//(20.02, 4.874, -21.23)
 
-	//cam.aspect_ratio = 16.0f / 9.0f;
-	//cam.image_width = 1500; // 1280;
-	//cam.samples_per_pixel = 10;
-	//cam.vfov = 50;
 
-	//cam.initialize();
+	/*
 
-	//if (init(cam.image_width, cam.image_height) == 1) {
-	//	cout << "App Error! " << std::endl;
-	//	return 1;
-	//}
+	cam.aspect_ratio = 16.0f / 9.0f;
+	cam.image_width = 1200; // 1280;
+	cam.samples_per_pixel = 10;
+	cam.vfov = 50;
 
-	//cout << "Image Resolution: " << cam.image_width << "x" << cam.image_height << "\n255\n";
+	cam.initialize();
 
-	//time_t start, end;
-	//time(&start);
+	if (init(cam.image_width, cam.image_height) == 1) {
+		cout << "App Error! " << std::endl;
+		return 1;
+	}
 
-	//cam.parallel_render(world, worldlight);
-	////cam.render(world, *worldlight);
+	cout << "Image Resolution: " << cam.image_width << "x" << cam.image_height << "\n255\n";
 
-	//cout << "(" << cam.lookfrom[0] << ", " << cam.lookfrom[1] << ", " << cam.lookfrom[2] << ")\n";
-	//cout << "(" << cam.lookat[0] << ", " << cam.lookat[1] << ", " << cam.lookat[2] << ")\n";
-	//cout << cam.vfov << "\n";
-	////(0, 0, 55)
-	////(10, 0, -0.15)
-	////50
+	time_t start, end;
+	time(&start);
 
-	//time(&end);
-	//double dif = difftime(end, start);
-	//cout << "\n" << "Rendering time: " << dif << "\n";
+	cam.parallel_render(world, worldlight);
+	//cam.render(world, *worldlight);
 
-	//SDL_Event event;
-	//bool quit = false;
+	time(&end);
+	double dif = difftime(end, start);
+	cout << "\n" << "Rendering time: " << dif << "\n";
 
-	///* Poll for events */
-	//while (SDL_PollEvent(&event) || (!quit)) {
+	SDL_Event event;
+	bool quit = false;
 
-	//	switch (event.type) {
+	//Poll for events
+	while (SDL_PollEvent(&event) || (!quit)) {
 
-	//	case SDL_QUIT:
-	//		quit = true;
-	//		break;
+		switch (event.type) {
 
-	//	case SDL_KEYDOWN:
-	//		switch (event.key.keysym.sym) {
-	//		case SDLK_ESCAPE:
-	//			quit = true;
-	//			break;
-	//			// cases for other keypresses
+		case SDL_QUIT:
+			quit = true;
+			break;
 
-	//		case SDLK_s:
-	//			saveScreenshotBMP("screenshot.bmp");
-	//			cout << "Screenshot saved!" << endl;
-	//			break;
-	//		}
-	//	}
-	//}
+		case SDL_KEYDOWN:
+			switch (event.key.keysym.sym) {
+			case SDLK_ESCAPE:
+				quit = true;
+				break;
+				// cases for other keypresses
 
-	//close();
-	//return 0;
+			case SDLK_s:
+				saveScreenshotBMP("screenshot.bmp");
+				cout << "Screenshot saved!" << endl;
+				break;
+			}
+		}
+	}
+
+	close();
+	return 0;
+
+	*/
 
 	/**/
 
 	// animazione
 
 	cam.aspect_ratio = 16.0f / 9.0f;
-	cam.image_width = 720;// 1500; // 1280;
-	cam.samples_per_pixel = 4;// 20;
+	cam.image_width = 1500;// 1500; // 1280;
+	cam.samples_per_pixel = 20;// 20;
 	cam.vfov = 50;
 	cam.vup = vec3(0.0, 1.0, 0.0);
 	cam.initialize();
@@ -1132,7 +1184,7 @@ int main(int argc, char* argv[])
 	SDL_Event event;
 	bool quit = false;
 
-	int Nframe = 360;// 450;// 90;
+	int Nframe = 500;// 360;// 90;
 
 	// vettore degli istanti
 	std::vector<double> T = { 0.0, 1.0, 2.0, 4.0, 5.0, 6.0, 7.5, 9.0, 10.0, 11.0}; // must be increasing
@@ -1270,8 +1322,8 @@ int main(int argc, char* argv[])
 			else
 				NNframe += "0";
 
-			//saveScreenshotBMP("screenshot_test_" + NNframe + ".bmp");
-			//cout << "screenshot" + NNframe + ".bmp" << endl;
+			saveScreenshotBMP("screenshot_testLibri_" + NNframe + ".bmp");
+			cout << "screenshot" + NNframe + ".bmp" << endl;
 
 		}
 		close();
