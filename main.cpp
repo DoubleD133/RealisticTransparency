@@ -1170,7 +1170,7 @@ int main(int argc, char* argv[])
 	// animazione
 
 	cam.aspect_ratio = 16.0f / 9.0f;
-	cam.image_width = 1500;// 1500; // 1280;
+	cam.image_width = 1920;// 1500; // 1280;
 	cam.samples_per_pixel = 20;// 20;
 	cam.vfov = 50;
 	cam.vup = vec3(0.0, 1.0, 0.0);
@@ -1252,11 +1252,12 @@ int main(int argc, char* argv[])
 	while (SDL_PollEvent(&event) || (!quit)) {
 
 
-		int inizio = 0;
+		int inizio = 0, i_men_1 = -1;
 		float fattore;
 		float angolo_secondi = 360.0 / float(Nframe-1);
 
-		for (int frame = inizio; frame < Nframe; frame++) {
+		//for (int frame = inizio; frame < Nframe; frame++) {
+		for (int frame = Nframe - 1 ; frame > i_men_1; frame--) {
 
 			// rotazione secondi
 			clock_seconds_ptr->identity();
