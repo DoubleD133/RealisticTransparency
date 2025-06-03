@@ -75,11 +75,6 @@ int main(int argc, char* argv[])
 	shared_ptr<point_light> punto2 = make_shared<point_light>(light_position2, 1.5 * darkgray, 1.5 * darkgray, 1.5 * darkgray);
 	worldlight.add(punto2);
 
-	shared_ptr<diffuse_light> diff = make_shared<diffuse_light>(vec3(-10.0, 50.0, 60.0), darkgray, white, black);
-	//worldlight.add(diff);
-	shared_ptr<diffuse_light> diff2 = make_shared<diffuse_light>(vec3(10.0, 50.0, 60.0), darkgray, white, black);
-	//worldlight.add(diff2);
-
 	// imposto che tutte le luci provino ad usare la texture (dove presente) per il colore ambientale
 	for (int i = 0; i < worldlight.size; i++) {
 		worldlight.lights[i]->ambTex = true;
@@ -892,6 +887,7 @@ int main(int argc, char* argv[])
 	instance_ptrChandelier->scale(29.0, 29.0, 29.0);
 	/*instance_ptrChandelier->translate(0.5f, 0.0f, 0.7f);*/
 	instance_ptrChandelier->translate(0.5f, 10.0f, -14.5f);
+	instance_ptrChandelier->translate(0.0f, 1.08f, 0.0f);
 	instance_ptrChandelier->InOmbrabile = true;
 	instance_ptrChandelier->FaOmbra = false;
 	world.add(instance_ptrChandelier);
@@ -1032,86 +1028,53 @@ int main(int argc, char* argv[])
 	flower3_ptr->FaOmbra = true;
 	world.add(flower3_ptr);
 
+	material* light_stella = new material();
+	light_stella->texture = new constant_texture(5 * color(252.0 / 255.0, 186.0 / 255.0, 3.0 / 255.0));
+	mesh* stella = new mesh("models/Stella_Cometa.obj", "models/");
+	auto stella_ptr = make_shared<instance>(stella, light_stella);
+	stella_ptr->translate(-150.00, -65.00, 0.00);
+	stella_ptr->scale(0.01, 0.01, 0.01);
+	stella_ptr->rotate_y(-16.0);
+	stella_ptr->translate(multiply(instance_ptrStalla->getCMat(), point3(2.50, -1.00, -2.42)));
+	//world.add(stella_ptr);
+
 	camera cam;
-	//libreria
-	/*cam.lookfrom = point3(20.0, 5.0, 20.0);
-	cam.lookat = point3(20.0f, 0.0f, -20.f);*/
 
 	//lontano di fronte, guarda centro
 	cam.lookfrom = point3(0.0, 0.0, 55.0);
 	cam.lookat = point3(10.0f, 0.0f, -0.15f);
-	// in questa posizione risulta:
-	// 30 samples_per_pixel
-	// 8 DEEP_MAX
-	// 2000 image_width
-	// 266 secondi
-
-	//guarda nativita
-	/*cam.lookfrom = point3(0.0, -5.0, 30.0);
-	cam.lookat = point3(0.0f, -5.0f, -0.15f);*/
-	// in questa posizione risulta:
-	// 30 samples_per_pixel
-	// 8 DEEP_MAX
-	// 2000 image_width
-	// 529 secondi
-
-	//guarda nativita vicino
-	/*cam.lookfrom = point3(0.0, -8.0, 10.0);
-	cam.lookat = point3(0.0f, -6.0f, -0.15f);*/
-	// in questa posizione risulta:
-	// 10 samples_per_pixel
-	// 8 DEEP_MAX
-	// 1028 image_width
-	// 371 secondi
-	// in questa posizione risulta:
-	// 10 samples_per_pixel
-	// 8 DEEP_MAX
-	// 1500 image_width
-	// 788 secondi
 
 	//guarda lampada
-	/*cam.lookfrom = point3(47.0, 0.0, 40.0);
-	cam.lookat = point3(47.0f, 0.0f, -0.15f);*/
+	//cam.lookfrom = point3(47.0, 0.0, 40.0);
+	//cam.lookat = point3(47.0f, 0.0f, -0.15f);
 
 	//guarda libreria da destra/lontano
-	/*cam.lookfrom = point3(47.0, 10.0, 25.0);
-	cam.lookat = point3(30.0f, 0.0f, -0.15f);*/
+	//cam.lookfrom = point3(47.0, 10.0, 25.0);
+	//cam.lookat = point3(30.0f, 0.0f, -0.15f);
 
 	//guarda quadro
 	//cam.lookfrom = multiply(room_ptr->getCMat(), point3(-9.00, 7.00, -1.0));
 	//cam.lookat = multiply(room_ptr->getCMat(), point3(-9.00, 7.00, -13.48));
-	//cout << "(" << cam.lookfrom[0] << ", " << cam.lookfrom[1] << ", " << cam.lookfrom[2] << ")\n";
-	//cout << "(" << cam.lookat[0] << ", " << cam.lookat[1] << ", " << cam.lookat[2] << ")\n";
-	//(-3.1, 6.5, 12)
-	//(-3.1, 6.5, -25.44)
-
-	//guarda quadro de lato
-	/*cam.lookfrom = multiply(room_ptr->getCMat(), point3(0.00, 13.00, -10.48));
-	cam.lookat = multiply(room_ptr->getCMat(), point3(-9.00, 7.00, -13.48));*/
 
 	//guarda orologio
 	//cam.lookfrom = multiply(room_ptr->getCMat(), point3(-9.00, 7.00, 3.0));
 	//cam.lookat = multiply(room_ptr->getCMat(), point3(-21.89, 8.00, -7.00));
-	//cout << "(" << cam.lookfrom[0] << ", " << cam.lookfrom[1] << ", " << cam.lookfrom[2] << ")\n";
-	//cout << "(" << cam.lookat[0] << ", " << cam.lookat[1] << ", " << cam.lookat[2] << ")\n";
-	//(-3.1, 6.5, 24)
-	//(-27.591, 9.5, -6)
 
 	//guarda fiore
 	//vec3 ppp = multiply(library_ptr->getCMat(), point3(-0.85, 5.23, 2.10)) + vec3(0.0, 4.0, 0.0);
 	//cam.lookfrom = ppp + vec3(2.0, 3.5, 10.0);
 	//cam.lookat = ppp;
-	//cout << "(" << cam.lookfrom[0] << ", " << cam.lookfrom[1] << ", " << cam.lookfrom[2] << ")\n";
-	//cout << "(" << cam.lookat[0] << ", " << cam.lookat[1] << ", " << cam.lookat[2] << ")\n";
-	//(22.02, 8.374, -11.23)
-	//(20.02, 4.874, -21.23)
 
+	// vista presepe
+	//cam.lookfrom = point3(-12.0, -7.0, 30.0);
+	//cam.lookat = point3(-5.0f, -7.0f, -0.15f);
+	//cam.lookfrom = lerp(cam.lookfrom, cam.lookat, 0.3);
 
+	// Rendering 1 immagine
 	/*
-
 	cam.aspect_ratio = 16.0f / 9.0f;
-	cam.image_width = 1200; // 1280;
-	cam.samples_per_pixel = 10;
+	cam.image_width = 1920;
+	cam.samples_per_pixel = 20;
 	cam.vfov = 50;
 
 	cam.initialize();
@@ -1162,16 +1125,13 @@ int main(int argc, char* argv[])
 
 	close();
 	return 0;
-
 	*/
 
-	/**/
-
 	// animazione
-
+	
 	cam.aspect_ratio = 16.0f / 9.0f;
-	cam.image_width = 1920;// 1500; // 1280;
-	cam.samples_per_pixel = 20;// 20;
+	cam.image_width = 800;
+	cam.samples_per_pixel = 2;
 	cam.vfov = 50;
 	cam.vup = vec3(0.0, 1.0, 0.0);
 	cam.initialize();
@@ -1184,7 +1144,7 @@ int main(int argc, char* argv[])
 	SDL_Event event;
 	bool quit = false;
 
-	int Nframe = 500;// 360;// 90;
+	int Nframe = 50;
 
 	// vettore degli istanti
 	std::vector<double> T = { 0.0, 1.0, 2.0, 4.0, 5.0, 6.0, 7.5, 9.0, 10.0, 11.0}; // must be increasing
@@ -1256,8 +1216,8 @@ int main(int argc, char* argv[])
 		float fattore;
 		float angolo_secondi = 360.0 / float(Nframe-1);
 
-		//for (int frame = inizio; frame < Nframe; frame++) {
-		for (int frame = Nframe - 1 ; frame > i_men_1; frame--) {
+		//for (int frame = Nframe - 1 ; frame > i_men_1; frame--) {
+		for (int frame = inizio; frame < Nframe; frame++) {
 
 			// rotazione secondi
 			clock_seconds_ptr->identity();
@@ -1295,42 +1255,10 @@ int main(int argc, char* argv[])
 					break;
 				}
 			}
-
-
-
-			int NNNframe = frame;
-			string NNframe = "";
-			if (NNNframe / 1000 > 0) {
-				NNframe += to_string(NNNframe / 1000);
-				NNNframe = NNNframe % 1000;
-			}
-			else
-				NNframe += "0";
-			if (NNNframe / 100 > 0) {
-				NNframe += to_string(NNNframe / 100);
-				NNNframe = NNNframe % 100;
-			}
-			else
-				NNframe += "0";
-			if (NNNframe / 10 > 0) {
-				NNframe += to_string(NNNframe / 10);
-				NNNframe = NNNframe % 10;
-			}
-			else
-				NNframe += "0";
-			if (NNNframe > 0)
-				NNframe += to_string(NNNframe);
-			else
-				NNframe += "0";
-
-			saveScreenshotBMP("screenshot_testLibri_" + NNframe + ".bmp");
-			cout << "screenshot" + NNframe + ".bmp" << endl;
-
 		}
 		close();
 		return 0;
 	}
 
-	/**/
 
 }
